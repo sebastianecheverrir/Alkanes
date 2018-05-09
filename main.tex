@@ -724,6 +724,51 @@ In terms of the shearing velocities, the behaviour of $\left< R^2 \right>/\left(
 First,  when the movement of the surfaces is slower, the  polymer chains have more time to organise themselves in layers parallel to the surfaces, as evidenced in the mass density profiles plotted in Figure \ref{fig:VelProf_MDP2}, where the peaks are more pronounced for  a velocity of \SI{20}{\meter\per\second} than for \SI{100}{\meter\per\second}. Then, as the chains position themselves in layers, they are  elongated by the opposite relative movement of the surfaces, resulting in larger values of $\left< R^2 \right>/\left(N_\text{bonds}\right)^2$ for slower shearing velocities.
 
 
+\pgfmathsetmacro{\SERFigwidth}{.035\linewidth}
+\pgfmathsetmacro{\SERFigheight}{.026\linewidth}
+\begin{figure}
+    	\begin{center}
+		\begin{gnuplot}[terminal=pdf, terminaloptions={size \SERFigwidth cm, \SERFigheight cm color solid}]
+			set multiplot layout 2,1 rowsfirst
+			set format x ' '
+			unset xlabel
+
+			set key bottom right
+			set key samplen  0.0
+			set label at graph 0.03,0.89 left "a)"
+			set lmargin at screen 0.25; set rmargin at screen 0.9
+			set tmargin at screen 1.00; set bmargin at screen 0.55
+			set ylabel "x Velocity $\\left[ \\SI{}{\\meter\\per\\second} \\right]$"
+			set key noautotitle
+			set xrange [-50:50]
+			set yrange [-60:60]
+			set ytics -40,20,40
+			plot  	'Data/Shear/C30/1.0GPa/20m_s3/vel_prof_x_s_1800.dump' u ($2-36.52):($4*100) w l lw 2   lt 4   ,\
+				  	'Data/Shear/C30/1.0GPa/100m_s2/vel_prof_x_s_1000.dump' u ($2-38.77):($4*100) w l  lw 2  lt 10   		
+					
+			unset label
+
+			set format x '%g'
+			set format y '%g'
+			set tmargin at screen 0.55; set bmargin at screen 0.10
+			set label at graph 0.03,0.89 left "b)"
+			set key top center
+			set xlabel "z coordinate"  
+			set ylabel "AMD $\\left[ \\SI{}{\\gram\\per\\cubic\\centi\\meter} \\right]$ "
+			set ylabel offset -1,0
+			set ytics 0,1,4
+			set yrange [0:3]
+			set key noautotitle
+			plot  	'Data/Shear/C30/1.0GPa/20m_s3/fluid_mdp_z_s_1800.dump' u ($2-36.52):($4) w l  lw 2  lt 4  title "\\SI{20}{\\meter\\per\\second}" ,\
+				  	'Data/Shear/C30/1.0GPa/100m_s2/fluid_mdp_z_s_1000.dump' u ($2-38.77):($4) w l  lw 2  lt 10  title "\\SI{100}{\\meter\\per\\second}" 
+			
+			unset multiplot
+		\end{gnuplot}
+		\caption{a) Velocity profiles along x  during the steady state of the simulation.  b) Atomic mass density profile along z $\left(\rho \left(z\right) \right)$ measured during the  steady state of the simulation. In both cases results are presented for the case of  C30,  \SI{1.0}{\giga\pascal}, and  \SI{20}{\meter\per\second} and  \SI{100}{\meter\per\second}.}
+		\label{fig:VelProf_MDP2}
+	\end{center}
+ \end{figure}
+
 
 
 
