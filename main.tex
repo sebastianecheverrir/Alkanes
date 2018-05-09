@@ -828,7 +828,7 @@ For the lateral (friction) force the following trends have been identified (see 
 \pgfmathsetmacro{\SERFigheight}{.026\linewidth}
 \begin{figure}
     	\begin{center}
-		\begin{gnuplot}[terminal=epslatex, terminaloptions={size \SERFigwidth cm, \SERFigheight cm color solid}]
+		\begin{gnuplot}[terminal=pdf, terminaloptions={size \SERFigwidth cm, \SERFigheight cm color solid}]
 			set key above
 			set xlabel  "x Velocity $\\left[ \\SI{}{\\meter\\per\\second} \\right]$"  
 			set ylabel "$F_L \\, [\\SI{}{\\mega\\pascal}]$"
@@ -867,7 +867,7 @@ Second, in general, longer chains generate more friction than shorter chains (du
 \pgfmathsetmacro{\SERFigheight}{.026\linewidth}
 \begin{figure}
     	\begin{center}
-		\begin{gnuplot}[terminal=epslatex, terminaloptions={size \SERFigwidth cm, \SERFigheight cm color solid}]
+		\begin{gnuplot}[terminal=pdf, terminaloptions={size \SERFigwidth cm, \SERFigheight cm color solid}]
 			set key bottom right
 			set xlabel "z coordinate"  
 			set ylabel "x Velocity $\\left[ \\SI{}{\\meter\\per\\second} \\right]$"
