@@ -863,6 +863,31 @@ First, higher pressures result on higher lateral (friction) forces, consistent w
 Second, in general, longer chains generate more friction than shorter chains (due to their higher viscosities)  by  generating larger amounts of viscous drag  --viscous drag can be interpreted as the force of friction caused by a a flowing fluid. Nevertheless,  at higher velocities the  lateral (friction) force is almost independent of the chain length. This behaviour can be explained by comparing  the velocity profiles of two limiting cases: C60 and C16 at a pressure of \SI{1.5}{\giga\pascal}, see Figure  \ref{fig:VelProfFL}. At higher shearing velocities  $\left( \SI{100}{\meter\per\second}\right)$, the velocity profiles are very similar and they superimpose on each other: for both chain lengths, the velocity changes linearly   between the surfaces resulting in similar lateral (friction) forces. 
 
 
+\pgfmathsetmacro{\SERFigwidth}{.035\linewidth}
+\pgfmathsetmacro{\SERFigheight}{.026\linewidth}
+\begin{figure}
+    	\begin{center}
+		\begin{gnuplot}[terminal=epslatex, terminaloptions={size \SERFigwidth cm, \SERFigheight cm color solid}]
+			set key bottom right
+			set xlabel "z coordinate"  
+			set ylabel "x Velocity $\\left[ \\SI{}{\\meter\\per\\second} \\right]$"
+			set key noautotitle
+			set xrange [-50:50]
+			plot  	'Data/Shear/C16/1.5GPa/100m_s2/vel_prof_x_s.dump' u ($2-38.76):($4*100) w l lw 2   lt 4  title "C16" ,\
+				  	'Data/Shear/C60/1.5GPa/100m_s3/vel_prof_x_s.dump' u ($2-36.76):($4*100) w l lw 2   lt 10  title "C60" 
+		\end{gnuplot}
+		\caption{Velocity profiles along x  during the steady state of the simulation. Results are presented for the case of  C16 and C60 at   \SI{1.5}{\giga\pascal} and  \SI{100}{\meter\per\second}. }
+		\label{fig:VelProfFL}
+	\end{center}
+ \end{figure}
+
+
+And third, for lower pressures and, especially for shorter chains, the lateral (friction) force remains constant independent of the velocity, similar to  Coulomb's law for dry friction that postulates that kinetic (dry) friction is independent of the sliding velocity. In spite of that,  at higher pressures, there is a reduction of the lateral (friction) force as the shearing velocity  increases, especially for the longest chains.  
+
+
+This reduction of the friction is a consequence of a combination of factors: the increase of the temperature generates a decrease of the viscosity and, simultaneously, a decrease in friction.   And, the lower $\left<P_{2}^{xz} \right> $  and $\left< R^2 \right>$, which indicate that the chains are  less elongated, not orderly  oriented parallel to the surfaces and, thus, farther from having a solid like behaviour, also result in a reduction of the friction of the system.
+
+
 
 
 
