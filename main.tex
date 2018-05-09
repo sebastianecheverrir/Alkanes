@@ -770,6 +770,107 @@ First,  when the movement of the surfaces is slower, the  polymer chains have mo
  \end{figure}
 
 
+And second,   higher shearing velocities increase the slip between the surfaces and the lubricant, as shown in the velocity profiles of Figure \ref{fig:VelProf_MDP2}, where, at \SI{100}{\meter\per\second}, there is a discontinuity in the velocity when passing from the surfaces to the lubricant. Higher slip causes more turbulent flows, which,   at the same time, hinders the formation of lubricant layers and the elongation of the chains.
+
+
+Although for most all of the studied systems the measurements of the end-to-end distances follow the same trend (reduction of  $\left< R^2 \right>/\left(N_\text{bonds}\right)^2$ as the velocity is increased), there is one that stands out because of its different behaviour, namely the one with the largest chains (C60) at the highest pressures (\SI{1.5}{\giga\pascal}). In this case, due to the higher pressure and long chains, the lubricant starts to solidify, making it more difficult for the chains to slide against each other and forcing the system into a stick-slip regime.  
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{Segmental orientation}
+
+
+Just like with the squared end-to-end distance,  the segmental orientation has a stronger dependency on the shearing velocity and the chain length than on the applied pressure, at least for the intervals considered in this work --see Figure \ref{fig:P2_v}. 
+
+There is a reduction of  $\left<P_{2}^{xz} \right> $ with the increase of velocity for all the considered chain lengths, indicating an increase of the average  angle of segments relative  to the sharing direction; in other words, at higher velocities, the chains tend not to be lying parallel to the shearing direction. This is confirmed by the reduction of the height of the peaks in the  mass density profile with the increase of the velocity, as can be seen e.g.  in Figure  \ref{fig:VelProf_MDP2} for the case of C30, \SI{1.0}{\giga\pascal} and velocities of  \SI{20}{\meter\per\second} and  \SI{100}{\meter\per\second}. Additionally, the results show that longer chains tend to  lye  with a smaller angle with respect to the shearing direction.
+
+\pgfmathsetmacro{\SERFigwidth}{.035\linewidth}
+\pgfmathsetmacro{\SERFigheight}{.026\linewidth}
+\begin{figure}
+    	\begin{center}
+		\begin{gnuplot}[terminal=pdf, terminaloptions={size \SERFigwidth cm, \SERFigheight cm color solid}]
+			set key above
+			set xlabel  "x Velocity $\\left[ \\SI{}{\\meter\\per\\second} \\right]$"  
+			set ylabel "$\\left<P_{2}^{xz}\\right>$"
+			set key noautotitle
+			p [:110][]	'Data/Shear/Compiled_e2e2_v.plot8' i 0 u ($3):($8):($9) w errorbars  title "$\\SI{0.5}{\\giga\\pascal}$" lt 1 lc 0 ps 2,\
+					'Data/Shear/Compiled_e2e2_v.plot8' i 1 u ($3):($8):($9) w errorbars title  "$\\SI{1.0}{\\giga\\pascal}$" lt 2 lc 0 ps 2,\
+					'Data/Shear/Compiled_e2e2_v.plot8' i 1 u ($3):($8) w l notitle lt 2 lc 1  lw 2 ,\
+					'Data/Shear/Compiled_e2e2_v.plot8' i 2 u ($3):($8):($9) w errorbars title  "$\\SI{1.5}{\\giga\\pascal}$" lt 3 lc 0 ps 2,\
+					'Data/Shear/Compiled_e2e2_v.plot8' i 2 u ($3):($8) w l notitle lt 3 lc 1 lw 2 ,\
+					'Data/Shear/Compiled_e2e2_v.plot8' i 3 u ($3):($8):($9) w errorbars notitle lt 1 lc 0 ps 2 ,\
+					'Data/Shear/Compiled_e2e2_v.plot8' i 0 u ($3):($8) w l title "C16" lt 1 lc 1 lw 2 ,\
+					'Data/Shear/Compiled_e2e2_v.plot8' i 3 u ($3):($8) w l title "C30" lt 1 lc 2 lw 2 ,\				
+					'Data/Shear/Compiled_e2e2_v.plot8' i 4 u ($3):($8) w l notitle lt 2 lc 2 lw 2 ,\
+					'Data/Shear/Compiled_e2e2_v.plot8' i 4 u ($3):($8):($9) w errorbars notitle lt 2 lc 0 ps 2,\
+					'Data/Shear/Compiled_e2e2_v.plot8' i 5 u ($3):($8) w l notitle lt 3 lc 2 lw 2 ,\
+					'Data/Shear/Compiled_e2e2_v.plot8' i 5 u ($3):($8):($9) w errorbars notitle lt 3 lc 0 ps 2 ,\
+					'Data/Shear/Compiled_e2e2_v.plot8' i 6 u ($3):($8):($9) w errorbars notitle lt 1 lc 0 ps 2 ,\
+					'Data/Shear/Compiled_e2e2_v.plot8' i 6 u ($3):($8) w l title 'C60' lt 1 lc 3 lw 2 ,\				
+					'Data/Shear/Compiled_e2e2_v.plot8' i 7 u ($3):($8) w l notitle  lt 2 lc 3 lw 2 ,\
+					'Data/Shear/Compiled_e2e2_v.plot8' i 7 u ($3):($8):($9) w errorbars notitle  lt 2 lc 0 ps 2,\
+					'Data/Shear/Compiled_e2e2_v.plot8' i 8 u ($3):($8) w l notitle  lt 3 lc 3 lw 2 ,\
+					'Data/Shear/Compiled_e2e2_v.plot8' i 8 u ($3):($8):($9) w errorbars notitle  lt 3 lc 0 ps 2,\
+		\end{gnuplot}
+		\caption{Average segmental orientation as a function of the shearing velocity measured after reaching steady state.}
+		\label{fig:P2_v}
+	\end{center}
+ \end{figure}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsubsection{Lateral (Friction) force}
+
+For the lateral (friction) force the following trends have been identified (see Figure \ref{fig:FL_v}):
+
+\pgfmathsetmacro{\SERFigwidth}{.035\linewidth}
+\pgfmathsetmacro{\SERFigheight}{.026\linewidth}
+\begin{figure}
+    	\begin{center}
+		\begin{gnuplot}[terminal=pdf, terminaloptions={size \SERFigwidth cm, \SERFigheight cm color solid}]
+			set key above
+			set xlabel  "x Velocity $\\left[ \\SI{}{\\meter\\per\\second} \\right]$"  
+			set ylabel "$F_L \\, [\\SI{}{\\mega\\pascal}]$"
+			set key noautotitle
+			p [:110][]	'Data/Shear/Compiled_e2e2_v.plot8' i 0 u ($3):($4):($5) w p title "$\\SI{0.5}{\\giga\\pascal}$" lt 1 lc 0 ps 2,\
+				'Data/Shear/Compiled_e2e2_v.plot8' i 1 u ($3):($4):($5) w p title  "$\\SI{1.0}{\\giga\\pascal}$" lt 2 lc 0 ps 2,\
+				'Data/Shear/Compiled_e2e2_v.plot8' i 1 u ($3):($4) w l notitle lt 2 lc 1  lw 2 ,\
+				'Data/Shear/Compiled_e2e2_v.plot8' i 2 u ($3):($4):($5) w p title  "$\\SI{1.5}{\\giga\\pascal}$" lt 3 lc 0 ps 2,\
+				'Data/Shear/Compiled_e2e2_v.plot8' i 2 u ($3):($4) w l notitle lt 3 lc 1 lw 2 ,\
+				'Data/Shear/Compiled_e2e2_v.plot8' i 3 u ($3):($4):($5) w p notitle lt 1 lc 0 ps 2 ,\
+				'Data/Shear/Compiled_e2e2_v.plot8' i 0 u ($3):($4) w l title "C16" lt 1 lc 1 lw 2 ,\
+				'Data/Shear/Compiled_e2e2_v.plot8' i 3 u ($3):($4) w l title "C30" lt 1 lc 2 lw 2 ,\				
+				'Data/Shear/Compiled_e2e2_v.plot8' i 4 u ($3):($4) w l notitle lt 2 lc 2 lw 2 ,\
+				'Data/Shear/Compiled_e2e2_v.plot8' i 4 u ($3):($4):($5) w p notitle lt 2 lc 0 ps 2,\
+				'Data/Shear/Compiled_e2e2_v.plot8' i 5 u ($3):($4) w l notitle lt 3 lc 2 lw 2 ,\
+				'Data/Shear/Compiled_e2e2_v.plot8' i 5 u ($3):($4):($5) w p notitle lt 3 lc 0 ps 2 ,\
+				'Data/Shear/Compiled_e2e2_v.plot8' i 6 u ($3):($4):($5) w p notitle lt 1 lc 0 ps 2 ,\
+				'Data/Shear/Compiled_e2e2_v.plot8' i 6 u ($3):($4) w l title 'C60' lt 1 lc 3 lw 2 ,\				
+				'Data/Shear/Compiled_e2e2_v.plot8' i 7 u ($3):($4) w l notitle  lt 2 lc 3 lw 2 ,\
+				'Data/Shear/Compiled_e2e2_v.plot8' i 7 u ($3):($4):($5) w p notitle  lt 2 lc 0 ps 2,\
+				'Data/Shear/Compiled_e2e2_v.plot8' i 8 u ($3):($4) w l notitle  lt 3 lc 3 lw 2 ,\
+				'Data/Shear/Compiled_e2e2_v.plot8' i 8 u ($3):($4):($5) w p notitle  lt 3 lc 0 ps 2,\
+		\end{gnuplot}
+		\caption{Lateral (friction) force as a function of the shearing velocity measured after reaching steady state. Error bars, calculated from the standard deviation between the trajectory time-averages, are omitted for clarity, but are of a similar size to the symbols.}
+		\label{fig:FL_v}
+	\end{center}
+ \end{figure}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
