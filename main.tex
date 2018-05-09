@@ -818,8 +818,49 @@ There is a reduction of  $\left<P_{2}^{xz} \right> $ with the increase of veloci
  \end{figure}
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsubsection{Lateral (Friction) force}
+
+For the lateral (friction) force the following trends have been identified (see Figure \ref{fig:FL_v}):
+
+\pgfmathsetmacro{\SERFigwidth}{.035\linewidth}
+\pgfmathsetmacro{\SERFigheight}{.026\linewidth}
+\begin{figure}
+    	\begin{center}
+		\begin{gnuplot}[terminal=epslatex, terminaloptions={size \SERFigwidth cm, \SERFigheight cm color solid}]
+			set key above
+			set xlabel  "x Velocity $\\left[ \\SI{}{\\meter\\per\\second} \\right]$"  
+			set ylabel "$F_L \\, [\\SI{}{\\mega\\pascal}]$"
+			set key noautotitle
+			p [:110][]	'Data/Shear/Compiled_e2e2_v.plot8.plot' i 0 u ($3):($4):($5) w p title "$\\SI{0.5}{\\giga\\pascal}$" lt 1 lc 0 ps 2,\
+				'Data/Shear/Compiled_e2e2_v.plot8.plot' i 1 u ($3):($4):($5) w p title  "$\\SI{1.0}{\\giga\\pascal}$" lt 2 lc 0 ps 2,\
+				'Data/Shear/Compiled_e2e2_v.plot8.plot' i 1 u ($3):($4) w l notitle lt 2 lc 1  lw 2 ,\
+				'Data/Shear/Compiled_e2e2_v.plot8.plot' i 2 u ($3):($4):($5) w p title  "$\\SI{1.5}{\\giga\\pascal}$" lt 3 lc 0 ps 2,\
+				'Data/Shear/Compiled_e2e2_v.plot8.plot' i 2 u ($3):($4) w l notitle lt 3 lc 1 lw 2 ,\
+				'Data/Shear/Compiled_e2e2_v.plot8.plot' i 3 u ($3):($4):($5) w p notitle lt 1 lc 0 ps 2 ,\
+				'Data/Shear/Compiled_e2e2_v.plot8.plot' i 0 u ($3):($4) w l title "C16" lt 1 lc 1 lw 2 ,\
+				'Data/Shear/Compiled_e2e2_v.plot8.plot' i 3 u ($3):($4) w l title "C30" lt 1 lc 2 lw 2 ,\				
+				'Data/Shear/Compiled_e2e2_v.plot8.plot' i 4 u ($3):($4) w l notitle lt 2 lc 2 lw 2 ,\
+				'Data/Shear/Compiled_e2e2_v.plot8.plot' i 4 u ($3):($4):($5) w p notitle lt 2 lc 0 ps 2,\
+				'Data/Shear/Compiled_e2e2_v.plot8.plot' i 5 u ($3):($4) w l notitle lt 3 lc 2 lw 2 ,\
+				'Data/Shear/Compiled_e2e2_v.plot8.plot' i 5 u ($3):($4):($5) w p notitle lt 3 lc 0 ps 2 ,\
+				'Data/Shear/Compiled_e2e2_v.plot8.plot' i 6 u ($3):($4):($5) w p notitle lt 1 lc 0 ps 2 ,\
+				'Data/Shear/Compiled_e2e2_v.plot8.plot' i 6 u ($3):($4) w l title 'C60' lt 1 lc 3 lw 2 ,\				
+				'Data/Shear/Compiled_e2e2_v.plot8.plot' i 7 u ($3):($4) w l notitle  lt 2 lc 3 lw 2 ,\
+				'Data/Shear/Compiled_e2e2_v.plot8.plot' i 7 u ($3):($4):($5) w p notitle  lt 2 lc 0 ps 2,\
+				'Data/Shear/Compiled_e2e2_v.plot8.plot' i 8 u ($3):($4) w l notitle  lt 3 lc 3 lw 2 ,\
+				'Data/Shear/Compiled_e2e2_v.plot8.plot' i 8 u ($3):($4):($5) w p notitle  lt 3 lc 0 ps 2,\
+		\end{gnuplot}
+		\caption{Lateral (friction) force as a function of the shearing velocity measured after reaching steady state. Error bars, calculated from the standard deviation between the trajectory time-averages, are omitted for clarity, but are of a similar size to the symbols.}
+		\label{fig:FL_v}
+	\end{center}
+ \end{figure}
 
 
+First, higher pressures result on higher lateral (friction) forces, consistent with Amontons' first law for dry friction that postulates that the force of friction is directly proportional to the applied load. 
+
+Second, in general, longer chains generate more friction than shorter chains (due to their higher viscosities)  by  generating larger amounts of viscous drag  --viscous drag can be interpreted as the force of friction caused by a a flowing fluid. Nevertheless,  at higher velocities the  lateral (friction) force is almost independent of the chain length. This behaviour can be explained by comparing  the velocity profiles of two limiting cases: C60 and C16 at a pressure of \SI{1.5}{\giga\pascal}, see Figure  \ref{fig:VelProfFL}. At higher shearing velocities  $\left( \SI{100}{\meter\per\second}\right)$, the velocity profiles are very similar and they superimpose on each other: for both chain lengths, the velocity changes linearly   between the surfaces resulting in similar lateral (friction) forces. 
 
 
 
