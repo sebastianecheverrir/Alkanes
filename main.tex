@@ -888,6 +888,48 @@ And third, for lower pressures and, especially for shorter chains, the lateral (
 This reduction of the friction is a consequence of a combination of factors: the increase of the temperature generates a decrease of the viscosity and, simultaneously, a decrease in friction.   And, the lower $\left<P_{2}^{xz} \right> $  and $\left< R^2 \right>$, which indicate that the chains are  less elongated, not orderly  oriented parallel to the surfaces and, thus, farther from having a solid like behaviour, also result in a reduction of the friction of the system.
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{Effective Viscosity}
+
+The effective viscosity of the lubricant is calculated as the ratio between the lateral friction force $\left(F_L\right)$ and the shear rate $\left(\dot{\gamma}\right)$. The shear rate is calculated as the ratio of the shearing velocity and the thickness of the fluid region after steady state is reached. 
+
+In Figure \ref{fig:eta_v} we present the measured values of the effective viscosity as a function of the shear rate for all the systems considered in this work.   As already seen by other authors in the literature, increasing the velocity results in a reduced effective viscosity, showing that thin films exhibit shear thinning\cite{Sivebaek2012}. It is also interesting to see that the logarithms of the two plotted quantities present a linear relation.
+
+\pgfmathsetmacro{\SERFigwidth}{.035\linewidth}
+\pgfmathsetmacro{\SERFigheight}{.026\linewidth}
+\begin{figure}
+    	\begin{center}
+		\begin{gnuplot}[terminal=pdf, terminaloptions={size \SERFigwidth cm, \SERFigheight cm color solid}]
+			set key above
+			set xlabel  "$\\dot{\\gamma} \\, \\left[ \\SI{}{\\per\\second} \\right]$"  
+			set ylabel "$\\eta_{\\text{eff}} \\, \\left[\\SI{}{\\pascal\\second} \\right]$"
+			set format y  '$10^{%L}$' 
+			set format x  '$10^{%L}$' 
+			set key noautotitle
+			set logscale xy
+			p [:2e10][]	'Data/Shear/Compiled_e2e2_v.plot8.plot' i 0 u ($3/($12*1e-10)):($4*1e6/($3/($12*1e-10))):($5*1e6/($3/($12*1e-10))) w p title "$\\SI{0.5}{\\giga\\pascal}$" lt 1 lc 0 ps 2,\
+					'Data/Shear/Compiled_e2e2_v.plot8.plot' i 1 u ($3/($12*1e-10)):($4*1e6/($3/($12*1e-10))):($5*1e6/($3/($12*1e-10))) w p title  "$\\SI{1.0}{\\giga\\pascal}$" lt 2 lc 0 ps 2,\
+					'Data/Shear/Compiled_e2e2_v.plot8.plot' i 1 u ($3/($12*1e-10)):($4*1e6/($3/($12*1e-10))) w l notitle lt 2 lc 1  lw 2 ,\
+					'Data/Shear/Compiled_e2e2_v.plot8.plot' i 2 u ($3/($12*1e-10)):($4*1e6/($3/($12*1e-10))):($5*1e6/($3/($12*1e-10))) w p title  "$\\SI{1.5}{\\giga\\pascal}$" lt 3 lc 0 ps 2,\
+					'Data/Shear/Compiled_e2e2_v.plot8.plot' i 2 u ($3/($12*1e-10)):($4*1e6/($3/($12*1e-10))) w l notitle lt 3 lc 1 lw 2 ,\
+					'Data/Shear/Compiled_e2e2_v.plot8.plot' i 3 u ($3/($12*1e-10)):($4*1e6/($3/($12*1e-10))):($5*1e6/($3/($12*1e-10))) w p notitle lt 1 lc 0 ps 2 ,\
+					'Data/Shear/Compiled_e2e2_v.plot8.plot' i 0 u ($3/($12*1e-10)):($4*1e6/($3/($12*1e-10))) w l title "C16" lt 1 lc 1 lw 2 ,\
+					'Data/Shear/Compiled_e2e2_v.plot8.plot' i 3 u ($3/($12*1e-10)):($4*1e6/($3/($12*1e-10))) w l title "C30" lt 1 lc 2 lw 2 ,\				
+					'Data/Shear/Compiled_e2e2_v.plot8.plot' i 4 u ($3/($12*1e-10)):($4*1e6/($3/($12*1e-10))) w l notitle lt 2 lc 2 lw 2 ,\
+					'Data/Shear/Compiled_e2e2_v.plot8.plot' i 4 u ($3/($12*1e-10)):($4*1e6/($3/($12*1e-10))):($5*1e6/($3/($12*1e-10))) w p notitle lt 2 lc 0 ps 2,\
+					'Data/Shear/Compiled_e2e2_v.plot8.plot' i 5 u ($3/($12*1e-10)):($4*1e6/($3/($12*1e-10))) w l notitle lt 3 lc 2 lw 2 ,\
+					'Data/Shear/Compiled_e2e2_v.plot8.plot' i 5 u ($3/($12*1e-10)):($4*1e6/($3/($12*1e-10))):($5*1e6/($3/($12*1e-10))) w p notitle lt 3 lc 0 ps 2 ,\
+					'Data/Shear/Compiled_e2e2_v.plot8.plot' i 6 u ($3/($12*1e-10)):($4*1e6/($3/($12*1e-10))):($5*1e6/($3/($12*1e-10))) w p notitle lt 1 lc 0 ps 2 ,\
+					'Data/Shear/Compiled_e2e2_v.plot8.plot' i 6 u ($3/($12*1e-10)):($4*1e6/($3/($12*1e-10))) w l title 'C60' lt 1 lc 3 lw 2 ,\				
+					'Data/Shear/Compiled_e2e2_v.plot8.plot' i 7 u ($3/($12*1e-10)):($4*1e6/($3/($12*1e-10))) w l notitle  lt 2 lc 3 lw 2 ,\
+					'Data/Shear/Compiled_e2e2_v.plot8.plot' i 7 u ($3/($12*1e-10)):($4*1e6/($3/($12*1e-10))):($5*1e6/($3/($12*1e-10))) w p notitle  lt 2 lc 0 ps 2,\
+					'Data/Shear/Compiled_e2e2_v.plot8.plot' i 8 u ($3/($12*1e-10)):($4*1e6/($3/($12*1e-10))) w l notitle  lt 3 lc 3 lw 2 ,\
+					'Data/Shear/Compiled_e2e2_v.plot8.plot' i 8 u ($3/($12*1e-10)):($4*1e6/($3/($12*1e-10))):($5*1e6/($3/($12*1e-10))) w p notitle  lt 3 lc 0 ps 2,\
+		\end{gnuplot}
+		\caption{Effective viscosity $\left( \eta_{\text{eff}} \right)$ as a function of the shear rate $\left( \dot{\gamma} \right)$ measured after reaching steady state. Error bars, calculated from the standard deviation between the trajectory time-averages, are omitted for clarity, but are of a similar size to the symbols.}
+		\label{fig:eta_v}
+	\end{center}
+ \end{figure}
 
 
 
