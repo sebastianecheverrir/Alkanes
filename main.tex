@@ -35,6 +35,7 @@
 \definecolor{SERorange2}{HTML}{F64724}
 \definecolor{SERyellow}{HTML}{FFCC00}
 \definecolor{SERblue}{HTML}{4295F9}
+\DeclareSIUnit{\calorie}{cal}
 
 %\usepackage{enumitem}
 \begin{document}
@@ -61,8 +62,8 @@
 % \affiliation can be followed by \email, \homepage, \thanks as well.
 \author{Sebasti\'{a}n Echeverri Restrepo}
 \email[]{sebastian.echeverri.restrepo@skf.com}
-\affiliation{SKF Engineering \& Research Centre (ERC), SKF B.V., Nieuwegein, The Netherlands}
-\affiliation{Department of Physics, King's College London, Strand, London WC2R 2LS, United Kingdom}
+\affiliation{SKF Research \& Technology Development (RTD), SKF B.V., Nieuwegein, The Netherlands}
+\affiliation{Department of Physics, King's College London, Strand, London WC2R 2LS, UK}
 \author{James P. Ewen}
 \affiliation{Department of Mechanical Engineering, Imperial College London, London SW7 2AZ, England, UK}
 \author{Daniele Dini}
@@ -78,7 +79,7 @@
 \date{\today}
 
 \begin{abstract}
-A comprehensive understanding of the behaviour of fluids confined and sheared between solid surfaces is important to a range of fields and in particular tribology. In the present study, the behaviour of linear alkanes confined and sheared between iron oxide surfaces have been investigated under thin film lubrication conditions. The effect of the alkane chain length (C16 - C60) as well as the applied pressure (0.5 - 1.5 GPa) and the sliding velocity (10 - 100 m/s) have been studied. The shear stress always increases with increasing alkane chain length; however, the difference becomes smaller at high sliding velocity. This is because, while short alkanes show the common increase with sliding velocity, long chains show a decrease due to shear-induced melting.
+A comprehensive understanding of the behaviour of fluids confined and sheared between solid surfaces is important to a range of fields and in particular tribology. In the present study, the behaviour of linear alkanes confined and sheared between iron oxide surfaces has been investigated under thin film lubrication conditions. The effect of the alkane chain length (C16 - C60) as well as the applied pressure (0.5 - 1.5 GPa) and the sliding velocity (10 - 100 m/s) have been studied. The shear stress always increases with increasing alkane chain length; however, the difference becomes smaller at high sliding velocity. This is because, while short alkanes show the common increase with sliding velocity, long chains show a decrease due to shear-induced melting.
 
 \end{abstract}
 
@@ -94,36 +95,30 @@ A comprehensive understanding of the behaviour of fluids confined and sheared be
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
 \section{Introduction}
 
-The behaviour of fluids confined and sheared between solid surfaces is of broad technological interest, from polymer processing to microfluidic devices. A detailed understanding of confined fluid behaviour is particularly critical in tribology, where lubricants are entrained into the contact to generate a film to separate the sliding surfaces to minimise friction and wear.
+The behaviour of fluids confined and sheared between solid surfaces is of broad technological interest, from polymer processing to microfluidic devices. A detailed understanding of this behaviour is particularly critical in tribology, where lubricant films are employed to separate sliding surfaces to minimize friction and wear. In lubricated machine components that are based on elements that both roll and slide together, including rolling bearings, gears, constant velocity joints and cam/follower systems, most friction losses originates from the elastohydrodynamic lubrication (EHL) regime. In the EHL regime, thin lubricant films are subjected to very high pressures and shear rates, which are challenging to probe directly through experiment. As a result, the behaviour of lubricants under EHL conditions remains somewhat unclear\cite{Spikes2014}.
 
-In order to reduce hydrodynamic losses, there has been a progressive reduction in lubricant viscosity; however, this means that thinner films separate the sliding surfaces. Thin film lubrication (TFL) describes a lubrication regime when the lubricant film ranges from a few nanometers to tens of nanometers; i.e. between boundary lubrication and elastohydrodynamic lubrication (EHL)\cite{Wang2013a}. The behaviour of lubricants under nanoconfinement remains unclear, and is ideally suited to study by nonequilibrium molecular dynamics (NEMD) simulations \cite{Ewen2017a}. Since the early 1990s, many studies have investigated the behaviour of lubricants strongly confined (< 6 molecular layers) between solid surfaces \cite{Ewen2018}, where confinement is known to strongly affect viscosity \cite{Granick1991}. NEMD simulations suggested that this viscosity increase was due to vitrification to a glassy state (atomic fluid) or even crystallization (chain) \cite{Thompson1992}. Early NEMD simulations of atomic fluids suggested that, under such conditions, lubricant viscosity deviates significantly from bulk values \cite{Bitsanis1990}. Moreover, NEMD simulations of simple model lubricants under such conditions showed flow behaviour which deviated from Couette predictions such as slip at the solid-lubricant interface as well as between molecular layers in the lubricant film \cite{Thompson1990}. Long, linear alkanes have also been studied under strong confinement at shear. For metal-like surfaces at high sliding velocities (100 m/s), the shear stress was found to be relatively independent
-of molecular length between C20 and C1400 \cite{Sivebaek2008}. For the same chain lengths, it was also found that the shear stress was shown to increase monotonically with the sliding velocity \cite{Sivebaek2010}. It was also found that linear C20 molecules melt under shear, whereas longer chains only showed a softening transition \cite{Sivebaek2012}.
+Alongside experiments, nonequilibrium molecular dynamics (NEMD) simulations can provide unique insights into the behaviour of lubricants under EHL conditions\cite{Ewen2018}. Since the early 1990s, many studies have investigated the behaviour of lubricants strongly confined ($< 6$ molecular layers) between solid surfaces, where confinement is known to significantly increase viscosity \cite{Granick1991}. Early NEMD simulations of thin atomic and molecular fluid films suggested that this viscosity increase is due to vitrification to a glassy state or crystallization\cite{Thompson1992}. They also showed flow behaviour that deviated from the linear (Couette) case, such as boundary slip as well as slip between molecular layers within the fluid film \cite{Thompson1990}. NEMD comparisons between thin (8 molecular layers) films of different n-alkane chain lengths (C6 - C80) suggested that, at low pressure (0.1 MPa), interlayer slip within the ordered film occurred and shear stress was sensitive to the chain length. Conversely, at high pressure (100 MPa), boundary slip occurred and the shear stress was insensitive to the chain length \cite{Koike1998}. The shear stress was also found to be relatively independent of molecular length (C20 - C1400) for thin (7 molecular layers) n-alkane films sheared between metal-like surfaces at low pressure (10 MPa) \cite{Sivebaek2008}. For the same systems, the shear stress was subsequently shown to increase monotonically with the sliding velocity \cite{Sivebaek2010}. It was also found that C20 molecules melt under shear, whereas longer n-alkanes only showed thermal softening\cite{Sivebaek2012}. Much of this behaviour is driven by boundary slip which, for thin films, has been shown to be substantially reduced in the presence of atomic-scale surface roughness \cite{Gao2000}. NEMD simulations have also shown that, in the absence of slip, friction generally increases with alkane chain length (C2 - C25)\cite{Savio2012}.
 
-Fewer NEMD studies have investigated the behaviour of slightly thicker lubricant films ($> 6$ molecular layers) of direct relevance to TFL. NEMD simulations \cite{Thompson1992,Robbins1996} and experiments \cite{VanAlsten1988} suggested that there were similarities between the behaviour of strongly confined films and thicker films under high pressure. Comprehensive NEMD simulations of relatively thick Lennard-Jones (LJ) fluid films showed that LJ fluids give different but well defined phases depending on the external constraints (velocity and pressure), a behaviour that can be well described by a nonequilibrium phase diagram \cite{Heyes2012}. It was also found that single component LJ liquids form semicrystalline arrangements and behave more like traction fluids, while binary mixtures discourages crystallization and give a more classical tribological response, closer to that of lubricants \cite{Gattinoni2013}. Another study found that, due to the nonequilibrium phase adopted by fluid, the friction coefficient does not necessarily echo the classical friction relations between macroscopic bodies \cite{Mackowiak2016}. More recently, similar nonequilibrium phase behaviour has been observed in NEMD simulations of more realistic lubricant and traction fluid molecules at high pressure \cite{Ewen2017a}.
+Fewer NEMD studies have investigated the behaviour of thicker lubricant films ($> 10$ molecular layers) of direct relevance to EHL. NEMD simulations \cite{Thompson1992,Robbins1996} and experiments \cite{VanAlsten1988} suggested that there were similarities between the behaviour of strongly confined films and thicker films subjected to higher pressures. More recently, comprehensive NEMD simulations of relatively thick (35 atomic layers) atomic fluid films showed that they give different but well defined phases depending on the external constraints (sliding velocity and pressure), a behaviour that can be well described by a nonequilibrium phase diagram \cite{Heyes2012}. It was also found that single component atomic fluids form semicrystalline arrangements and behave more like traction fluids, while binary mixtures discourages crystallization and give a more similar response to conventional lubricants \cite{Gattinoni2013}. Another study found that, due to the nonequilibrium phase adopted by fluid, the friction coefficient can deviate from the classical friction relations between macroscopic bodies \cite{Mackowiak2016}. More recently, similar friction and nonequilibrium phase behaviour has been observed in NEMD simulations of more realistic lubricant and traction fluid molecules films at high pressure \cite{Ewen2017a}.
 
-In the present study, the behaviour of linear alkanes confined and sheared between iron oxide surfaces have been investigated under TFL conditions. The effect of the alkane chain length (C16 - C60) as well as the applied pressure (0.5 - 1.5 GPa) and the sliding velocity (10 - 100 m/s) have been studied.
+In the present study, the behaviour of linear alkanes confined and sheared between iron oxide surfaces has been investigated under EHL conditions. The effect of the alkane chain length (C16 - C60) as well as the applied pressure (0.5 - 1.5 GPa) and the sliding velocity (10 - 100 m/s) have been studied. The results shed light on lubricant behaviour under EHL conditions.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Methods}
 
-\subsubsection{Simulation Details}
+\subsubsection{Simulation Setup}
 
-The generation of all the initial configurations is done using the software LAMMPS\_builder\footnote{\url{https://github.com/JE1314/LAMMPS_builder}} \cite{Ewen2017b,Jewett2013,HjorthLarsen2017}. The systems consist of two parallel flat surfaces separated by a region containing a lubricant, see Figure \ref{fig:Steps}. Periodic boundary conditions were applied in the x and y directions.
+Classical MD simulations were performed using the LAMMPS \cite{Plimpton1995} software. The velocity-Verlet algorithm was used to integrate the equations of motion using a  time-step of \SI{1.0}{\femto\second}. All of the initial configurations were generated using the LAMMPS\_builder software\footnote{\url{https://github.com/JE1314/LAMMPS_builder}} \cite{Ewen2017b,Jewett2013,HjorthLarsen2017}. The systems consist of two parallel flat surfaces separated an approximately \SI{10}{\nano\meter} X.X nm thick lubricant layer, see Figure \ref{fig:Steps}. The alkane layer was sufficiently thick ($>15$ molecular diameters) such that no lubricant structuring was evident in the middle of the film and thus any confinement-induced viscosity increase was expected to be negligible \cite{Gee1990}. Periodic boundary conditions were applied in the x and y directions.
 
-The lubricant is generated as a polymer melt of alkanes. Three different types of alkanes are used, the only difference between them being the number of carbons in the backbone:  hexadecane (C16),  triacontane (C30) and  hexacontane (C60). For all the cases, a  total number of 19200 carbon atoms    are inserted into the system; this corresponds to 1200, 640 and 320 chains for C16, C30 and C60, respectively.
+The separating lubricant layer consisted of different n-alkanes of various length: n-hexadecane (C16), n-triacontane (C30) and n-hexacontane (C60). For all the cases, a  total number of 19200 carbon atoms were inserted into the system; this corresponds to 1200, 640 and 320 chains for C16, C30 and C60, respectively. Base oil molecules are usually in the middle of this range, with n-alkanes constituting a significant proportion of modern engine oils \cite{Liang2018}.
 
-The surfaces are composed of $\text{Fe}$ and $\text{O}$ atoms arranged in a hexagonal structure to form hematite $\left(\text{Fe}_2\text{O}_3\right)$. The initial lattice parameters for the $\text{Fe}_2\text{O}_3$ unit cell are $a=b=\SI{5.029}{\angstrom}$ and  $c=\SI{13.730}{\angstrom}$ with the angles $\alpha=\beta=\SI{90}{\degree}$ and  $\gamma=\SI{120}{\degree}$. The surfaces are oriented in such a way that   $\left[001\right]$ direction points towards z (perpendicular to the surface) and  $\left[100\right]$ towards x (shearing direction). For all the simulations, the thickness of the surfaces is equivalent to one lattice constant, $c=\SI{13.730}{\angstrom}$; the size of the surface in the  y and x direction are $16a=\SI{80.464}{\angstrom}$ and $16a\sin{\SI{60}{\degree}}=\SI{78.394}{\angstrom}$. The dimensions are selected to be large enough to prevent self interaction of individual alkane chains.
+Parameters from the long hydrocarbon-optimised potentials for liquid simulations, all-atom force field (L-OPLS-AA)\cite{Jorgensen1996,Siu2012} were used for the carbon and hydrogen atoms in the alkane chains. This force-field has been shown to correctly describe the viscous behaviour of long alkanes under ambient and high temperature, high pressure conditions \cite{Ewen2016a}. All-atom force-fields are also important to accurately model phase transitions in confined alkane systems \cite{Docherty2010}. Cross-interactions were evaluated using the geometric mean mixing rules \cite{Jorgensen1996}. All C-H bonds were constrained using the SHAKE algorithm \cite{Ryckaert1977}. Lennard-Jones interactions were cut off at \SI{12}{\angstrom} and electrostatic interactions were evaluated using a slab implementation of the particle-particle-particle-mesh (PPPM) algorithm \cite{Yeh1999} with a relative accuracy in the forces of \SI{1e-7}{}.
 
-
-Classical MD simulations were performed using the software LAMMPS \cite{Plimpton1995}. The velocity-Verlet algorithm was used to integrate the equations of motion using a  time-step of \SI{1.0}{\femto\second}. Fast-moving bonds involving hydrogen atoms were constrained with the SHAKE algorithm \cite{Ryckaert1977}. The interaction between the atoms in the alkane chains are defined by the all atom L-OPLS force-field \cite{Jorgensen1988,Siu2012}, as recommended in \cite{Ewen2016a} for this type of simulations. To define the behaviour of the atoms in the surfaces, the approach taken in \cite{Savio2012} is followed.  Cross-interactions between atoms in the surfaces and in the lubricant were evaluated using  geometric mean mixing rules \cite{Jorgensen1996}. Electrostatic interactions were evaluated using a slab implementation of the particle-particle-particle-mesh (PPPM) algorithm \cite{Yeh1999} with a relative accuracy in the forces of \SI{1e-7}{}. 
-
-
-
+Hematite slabs are chosen as a representative model for steel surfaces \cite{Oh1998}. The hematite $\left(\text{Fe}_2\text{O}_3\right)$ surfaces \cite{Maslen1994} are cleaved and oriented such that the $\left[001\right]$ plane points towards z and $\left[100\right]$ points towards x (see Figure \ref{fig:Steps}). The thickness of the surfaces in the z direction is \SI{13.73}{\angstrom} and the size of the surface in the y and x directions are \SI{80.46}{\angstrom} and \SI{78.39}{\angstrom} respectively. The dimensions are selected to be large enough to prevent interaction of individual n-alkane chains with their own periodic image. The Fe and O surface atoms are restrained in the corundum crystal structure with harmonic bonds between atoms within \SI{3}{\angstrom}. The force constant of these bonds was chosen to be \SI{22.7}{\kilo\calorie\per\mol\per\angstrom\squared}, which has been shown previously by Savio et al.\cite{Savio2012} to keep the surface structure suitably rigid but not to adversely affect the thermostatting\cite{Savio2012}. The Lennard-Jones and partial charge parameters, which determine the interactions with the lubricant atoms, were also developed by Savio et al. for alkane adsorption\cite{Savio2012}.
 
 \begin{figure*}
     	\begin{center}
@@ -184,91 +179,18 @@ Classical MD simulations were performed using the software LAMMPS \cite{Plimpton
 			\end{scope}
 		\end{tikzpicture}
 
-		\caption{General steps carried out for the preparation and NEMD simulation of   each of the the systems considered in the present work. The orange atoms represent iron (Fe), the red ones oxygen (O), the gray ones carbon (C), and the white ones hydrogen (H). a) System generation. b) Equilibration. c) Compresion. d) Shear. }
+		\caption{General steps carried out for the preparation and NEMD simulation of   each of the the systems considered in the present work. The orange atoms represent iron (Fe), the red ones oxygen (O), the gray ones carbon (C), and the white ones hydrogen (H). a) System generation. b) Equilibration. c) Compression. d) Shear. }
 		\label{fig:Steps}
 	\end{center}
 \end{figure*}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{Simulation Procedure}
 
-\subsubsection{Segmental Orientation}
+First, alkane molecules were inserted between the slabs in an ordered fashion (Figure \ref{fig:Steps}a), followed by energy minimisation. Next, a fully equilibrated system was a generated using a simple 'brute force' scheme. In this procedure, the initially (artificially) ordered alkanes are heated to \SI{2000}{\kelvin} to accelerate diffusion and left to evolve until equilibrium is reached (\SI{10}{\nano\second}). The system is then quenched back to the simulation temperature \SI{353}{\kelvin} for \SI{10}{\nano\second}. During the heat-quench sequence, the fluid temperature is controlled using a global Langevin thermostat \cite{Schneider1978} with a damping constant of \SI{0.1}{\pico\second} acting in all directions.
 
-Particle models like MD allow to measure orientation of polymer segments explicitly by taking the orientation of a bond as a segment orientation. The segmental orientation \cite{Monnerie1983,Erman1985,Besbes1992} of the fluid in terms of the second Legendre polynomial $\left(P_2\right)$ is defined as:
+Three different criteria are considered to ensure that the systems have reached equilibrium. The first two, consist on verifying that there is convergence of the mean squared end-to-end distance $\left(\left< R^2 \right> \right)$ and of the mean squared radius of gyration $\left(\left< S^2 \right> \right)$.
 
-\begin{equation}\label{eq:P_2}
-\left\langle P_2 \right\rangle =\frac{3\left\langle \cos ^2 \alpha \right\rangle - 1}{2},
-\end{equation}
-
-where $\alpha$ is the angle between a chain segment and a reference axis. In practice, $\left\langle \cos ^2 \alpha \right\rangle$ is calculated in the following way:
-
-\begin{equation}
-\left\langle \cos ^2 \alpha \right\rangle = \frac{1}{N_\text{bonds}} \sum_{b=1}^{N_\text{bonds}} \left(\frac{\textbf{r}^b_{ij}}{r^b_{ij}} \cdot \mathbf{\hat \imath} \right)^2
-\end{equation}
-
- in which $N_\text{bonds}$ is the total number of bonds, $\textbf{r}^b_{ij}$ is the difference between the positions of the two beads that form the bond $b$, and $\mathbf{\hat \imath}$ is the direction of the main axis. 
- 
- In this work we are interested in  the changes of the orientation in the shearing direction, so we will only focus on  the segmental orientation with respect to $x$ projected in the $xz$ plane: $P_{2}^{xz}$. Note that, by definition,  if all the chains are parallel to the shearing direction $\langle P_{2}^{xz}\rangle=1 $; if all the chains are perpendicular to the surfaces   $\langle P_{2}^{xz} \rangle=-0.5$, and, interestingly, if all the chains are oriented at  \SI{45}{\degree} or if they are randomly oriented $\langle P_{2}^{xz}\rangle=0.25 $
- 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\subsubsection{Mean squared end-to-end distance}
-
-
-The  squared end-to-end distance  of a single polymer chain is defined as the square  of the magnitude of  the vector that points from one end of a polymer to the other end. for a system containing several polymer chains, the mean squared end-to-end distance $\left(\left< R^2 \right>\right)$ is given by the following equation \cite{Brown1994}:
-
-\begin{equation}
-	\left< R^2 \right> = \left<\left( \mathbf{r}_1 - \mathbf{r}_N \right)^2\right>
-	\label{eq:e2e2}
-\end{equation}
-
-where, for each polymer chain,  $N$ is the number of atoms and  $ \mathbf{r}_i$ is the position vector of atom $i$. 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\subsubsection{Mean squared radius of gyration}
-
-The mean squared radius of gyration $\left(\left< S^2 \right>\right)$  is the average squared distance of each atom in the polymer chain  from its centre of mass, as defined in the following equation\cite{Brown1994}:
-
-\begin{equation}
-	\left< S^2 \right> = \frac{\left< \sum_{i=1}^{N}  \left ( \lVert \mathbf{r}_i - \mathbf{r}_{\text{com}} \rVert \right)^2 \right>}{N}
-\end{equation}
-
-where, for each polymer chain,  $N$ is the number of atoms, $ \mathbf{r}_i$ is the position vector of atom $i$  and $\mathbf{r}_{\text{com}}$ is the centre of mass. 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\subsubsection{Mean squared displacement}
-
-The mean squared displacement (MSD) of an atom  is a measure of the deviation between its  current  and its initial position. For a material block consisting of several atoms, the  MSD averaged over the number of atoms  $\left(N\right)$ can be used to quantify  diffusion. The MSD is defined as:
-
-\begin{equation}
-	\text{MSD} = \frac{1}{N}\sum_{i=1}^{N} \left( \mathbf{r}_i\left(t\right)-\mathbf{r}_i\left(0\right)\right)^2
-\end{equation}
-
-where   $\mathbf{r}_i\left(t\right)$ is a vector containing the coordinates of atom $i$ at time $t$.
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\subsubsection{Temperature}
-
-The temperature of the lubricant is calculated as classically done in molecular dynamics via the kinetic energy of the atoms but excluding the velocity component in the direction of the movement of the surfaces (x) to avoid contributions that are not related to the thermal vibration of the atoms. The measurements are averaged every 100 steps to damp the fluctuations that are  characteristic of such small systems.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Equilibration}
-\label{sec:eq}
-
-
-The first thing that needs to be done when simulating long chains of polymers is to generate a fully equilibrated system. In the present work, a simple 'brute force' scheme is used. In this procedure, an initially (artificially) ordered set of chains is heated-up to  a certain temperature, and is left to evolve until equilibrium is reached. Although it is not particularly efficient,  thanks to its simplicity and to the fact that the present system sizes are not prohibitively large, a method of this type was selected to equilibrate the systems. 
-
-Here we split the equilibration procedure in two steps. First, the systems are heated-up to \SI{2000}{\kelvin}  --using a Langevin thermostat on the fluid-- to accelerate the diffusion of the chains, and maintained at this temperature for \SI{10}{\nano\second}.  Then the systems are cooled down and re-equilibrated at  \SI{353}{\kelvin}, which is the initial temperature of the NEMD simulations presented in the following sections. This second step also lasts  \SI{10}{\nano\second}.
-
-Three different criteria are considered to ensure that the systems have reached equilibrium. The first two, consist on verifying that there is convergence of the mean squared end-to-end distance $\left(\left< R^2 \right> \right)$ and of  the mean squared radius of gyration $\left(\left< S^2 \right> \right)$.
-
-The evolution of $\left< R^2 \right>$ and   $\left< S^2 \right>$  for C16, C30 and C60 at \SI{2000}{\kelvin}   are presented on the main part of  Figures  \ref{fig:e2e2} and \ref{fig:rg2}. For the case of the longest chains, which are the ones with lower diffusivity,  these two quantities converge after approx. \SI{2e5}{} steps (\SI{0.2}{\nano\second}). The insets of the figures show the evolution of the same quantities but after reducing the temperature to    \SI{353}{\kelvin}; we notice that after \SI{1e7}{} steps (\SI{10}{\nano\second}), both $\left(\left< R^2 \right> \right)$ and   $\left(\left< S^2 \right> \right)$ have reached their equilibrium values for the three  chain lengths considered.
-
+The evolution of $\left< R^2 \right>$ and   $\left< S^2 \right>$  for C16, C30 and C60 at \SI{2000}{\kelvin} are presented on the main part of Figures  \ref{fig:e2e2} and \ref{fig:rg2}. For the case of the longest chains, which are the ones with lower diffusivity, these two quantities converge after approximately \SI{2e5}{} steps (\SI{0.2}{\nano\second}). The insets of the figures show the evolution of the same quantities but after reducing the temperature to \SI{353}{\kelvin}; we notice that after \SI{1e7}{} steps (\SI{10}{\nano\second}), both $\left(\left< R^2 \right> \right)$ and   $\left(\left< S^2 \right> \right)$ have reached their equilibrium values for the three  chain lengths considered.
 
 %\begin{gnuplot}[terminal=pdf]
 %\end{gnuplot}
@@ -305,7 +227,7 @@ The evolution of $\left< R^2 \right>$ and   $\left< S^2 \right>$  for C16, C30 a
 							'Data/Equilibration/C60/e2e2.plot' u ($1/1e6):($2) 
 			unset multiplot
 		\end{gnuplot}
-		\caption{Evolution of the mean squared end-to-end distance $\left(\left< R^2 \right>\right)$ during the equilibration stage for the three considered alkane lengths: C16, C30 and C60. The main plot shows the initial equilibration at  \SI{2000}{\kelvin}; the inset the continuation at  \SI{353}{\kelvin}. Note that $1 \times 10^{6}$ steps correspond to  \SI{1}{\nano\second}.}
+		\caption{Evolution of the mean squared end-to-end distance $\left(\left< R^2 \right>\right)$ during the equilibration stage for the three considered alkane lengths: C16, C30 and C60. The main plot shows the initial equilibration at  \SI{2000}{\kelvin}; the inset the continuation at \SI{353}{\kelvin}. Note that $1 \times 10^{6}$ steps correspond to \SI{1}{\nano\second}.}
 		\label{fig:e2e2}
 	\end{center}
  \end{figure}
@@ -340,17 +262,14 @@ The evolution of $\left< R^2 \right>$ and   $\left< S^2 \right>$  for C16, C30 a
 							'Data/Equilibration/C60/Rg2.plot' u ($1/1e6):($2) 
 			unset multiplot
 		\end{gnuplot}
-		\caption{Evolution of the mean squared radius of gyration $\left(\left< S^2 \right>\right)$  during the equilibration stage for the three considered alkane lengths: C16, C30 and C60. The main plot shows the initial equilibration at  \SI{2000}{\kelvin}; the inset the continuation at  \SI{353}{\kelvin}. Note that $1 \times 10^{6}$ steps correspond to  \SI{1}{\nano\second}.}
+		\caption{Evolution of the mean squared radius of gyration $\left(\left< S^2 \right>\right)$  during the equilibration stage for the three considered alkane lengths: C16, C30 and C60. The main plot shows the initial equilibration at \SI{2000}{\kelvin}; the inset the continuation at  \SI{353}{\kelvin}. Note that $1 \times 10^{6}$ steps correspond to  \SI{1}{\nano\second}.}
 		\label{fig:rg2}
 	\end{center}
  \end{figure}
 
+The last criterion, is based on the fact that systems of long chain alkanes are not properly equilibrated and can present deformation on short length scales, and this deformation is only relaxed after the chains have moved at least their own size\cite{Auhl2003}. In order to verify this, the mean squared displacement per atom $\left(\text{MSD}_{\text{atom}}\right)$ and per centre of mass of alkane chain $\left(\text{MSD}_{\text{CG}}\right)$ are followed during equilibration. 
 
-The last criterion, is based on the fact that a  polymer melt that is not properly equilibrated can present deformation on short length scales, and this deformation  is only relaxed after the chains have moved --at least-- their own size\cite{Auhl2003}.  In order to verify it, the mean squared displacement per atom $\left(\text{MSD}_{\text{atom}}\right)$ and per centre of mass of polymer chain $\left(\text{MSD}_{\text{CG}}\right)$ are followed during equilibration. 
-
-
-Figure \ref{fig:msd} shows the  $\text{MSD}_{\text{atom}}$ and $\text{MSD}_{\text{CG}}$ for the three different systems. Just like in the two previous figures, the main plot is dedicated to the evolution at  \SI{2000}{\kelvin}. Note that due to the artificial way that the chains are first introduced into the system (see Figure \ref{fig:Steps}), the diffusivity of the longer chains is initially higher than that of the shorter chains.  If we take the length of a C60 chain to be approx. \SI{74}{\angstrom} (the angle between the C-C bonds is \SI{109.5}{\degree} and the C-C distance equal to \SI{1.54}{\angstrom}),  it can be seen that the chains move their own size after approx. \SI{3e6}{} to  \SI{4e6}{} steps (\SI{3}{\nano\second} to \SI{4}{\nano\second}). Taking a conservative approach, the systems are equilibrated during  \SI{1e7}{} steps (\SI{10}{\nano\second}). The insets show the evolution after the temperature has been decreased; here, as expected, the slope of the $\text{MSD}_{\text{atom}}$ and $\text{MSD}_{\text{CG}}$ curves is less steep than at higher temperatures. We take these last configurations as the fully equilibrated systems for the following NEMD simulations.
-
+Figure \ref{fig:msd} shows the  $\text{MSD}_{\text{atom}}$ and $\text{MSD}_{\text{CG}}$ for the three different systems. Just like in the two previous figures, the main plot is dedicated to the evolution at  \SI{2000}{\kelvin}. Note that due to the artificial way that the chains are first introduced into the system (see Figure \ref{fig:Steps}), the diffusivity of the longer chains is initially higher than that of the shorter chains.  If we take the length of a C60 chain to be approx. \SI{74}{\angstrom} (the angle between the C-C bonds is \SI{109.5}{\degree} and the C-C distance equal to \SI{1.54}{\angstrom}),  it can be seen that the chains move their own size after approx. \SI{3e6}{} to  \SI{4e6}{} steps (\SI{3}{\nano\second} to \SI{4}{\nano\second}). Taking a conservative approach, the systems are equilibrated during  \SI{1e7}{} steps (\SI{10}{\nano\second}). The insets show the evolution after the temperature has been decreased; here, as expected, the slope of the $\text{MSD}_{\text{atom}}$ and $\text{MSD}_{\text{CG}}$ curves is shallower than at higher temperatures. The final configurations are taken as the fully equilibrated systems for use in the following compression and shear simulations.
 
 \pgfmathsetmacro{\SERFigwidth}{.035\linewidth}
 \pgfmathsetmacro{\SERFigheight}{.026\linewidth}
@@ -394,18 +313,14 @@ Figure \ref{fig:msd} shows the  $\text{MSD}_{\text{atom}}$ and $\text{MSD}_{\tex
 
 			unset multiplot
 		\end{gnuplot}
-		\caption{Evolution of the mean squared displacement (MSD)  during the equilibration stage for the three considered alkane lengths: C16, C30 and C60. The main plot shows the initial equilibration at  \SI{2000}{\kelvin}; the inset the continuation at  \SI{353}{\kelvin}. The full circles represent the mean squared displacement per atom $\left(\text{MSD}_{\text{atom}}\right)$ while the empty squares the mean squared displacement per centre of mass of polymer chain $\left(\text{MSD}_{\text{CG}}\right)$. Note that $1 \times 10^{6}$ steps correspond to  \SI{1}{\nano\second}.}
+		\caption{Evolution of the mean squared displacement (MSD) during the equilibration stage for the three considered alkane lengths: C16, C30 and C60. The main plot shows the initial equilibration at  \SI{2000}{\kelvin}; the inset the continuation at  \SI{353}{\kelvin}. The full circles represent the mean squared displacement per atom $\left(\text{MSD}_{\text{atom}}\right)$ while the empty squares the mean squared displacement per centre of mass of polymer chain $\left(\text{MSD}_{\text{CG}}\right)$. Note that $1 \times 10^{6}$ steps correspond to  \SI{1}{\nano\second}.}
 		\label{fig:msd}
 	\end{center}
  \end{figure}
 
+\subsection{Compression}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Compression}
-
-After the systems are fully equilibrated, a uniform pressure perpendicular to the surface is applied by blocking all the frozen atoms in the bottom wall, and applying a downwards force along the $z$ axis on the frozen Fe atoms in the top wall (see figures \ref{fig:Regions} and \ref{fig:Steps}c). The force is only applied on the Fe atoms --and not on the O-- due to the difference in their mass: if a force of the same magnitude  were applied to both species, different accelerations would be obtained and the structure of the walls could change. Three different pressure  values are considered, namely \SI{0.5}{\giga\pascal}, \SI{1.0}{\giga\pascal} and \SI{1.5}{\giga\pascal}. 
+After the systems are fully equilibrated, the pressure was increased by giving a uniform normal force to the outer layer of Fe atoms in the top wall while keeping the outer layer of atoms in the bottom wall fixed in the z direction (see Figure \ref{fig:Regions}). Three different pressure values are considered here, namely \SI{0.5}{\giga\pascal}, \SI{1.0}{\giga\pascal} and \SI{1.5}{\giga\pascal}. These are of direct relevance to the EHL regime\cite{Spikes2014}.
 
 \begin{figure}
     	\begin{center}
@@ -438,11 +353,9 @@ After the systems are fully equilibrated, a uniform pressure perpendicular to th
 	\end{center}
 \end{figure}
 
+For the compression and shearing stages, the temperature of the system is controlled (T = \SI{353}{\kelvin}) by a Langevin thermostat \cite{Schneider1978} with a damping constant of \SI{0.1}{\pico\second} acting only on the central surface atoms (\textit{thermostat} in Figure \ref{fig:Regions}). The thermostat was applied only in the direction perpendicular to both the sliding and compression (y). This approach is known to be more physically accurate than applying the thermostat directly to the confined fluid, which has been shown to significantly affect its behaviour under sliding conditions \cite{Liem1992,Bernardi2010,Yong2013}.
 
-For the compression (and shearing) stages, the Langevin thermostat applied on the fluid during the equilibration stage is deactivated to avoid affecting dynamics of the lubricant;  the temperature of the system is then controlled only by a Langevin thermostat applied on the  \textit{thermostat} atoms on the surfaces (see Figure \ref{fig:Regions}). The thermostat  was applied exclusively in the direction perpendicular to both the sliding and compression (y). Note that the thermostat is not applied to the layer of atoms in contact with the lubricant.
-
-The compression phase is performed in two steps: first, the pressure  is linearly incremented during  \SI{1e7}{} steps (\SI{10}{\nano\second}); and, second,  the pressure is maintained for the same amount of time. During this phase, we monitor the density of  the fluid region and the  pressure  on the bottom wall to  ensure that the system reaches equilibrium. In the case of the pressure, as expected, the measured values in all cases coincide with the desired applied pressures. For the densities,  we notice that the simulation time is long enough to obtain a stable value; the different final densities are presented in Table \ref{tab:rho}. These values  correspond to the average density of the last  \SI{1e6}{} steps (\SI{1}{\nano\second})  of the compression phase. Consistent with experimental results available in the literature\cite{Griesbaum2000}, we see an increase in density with the length of the chains and with the pressure.
-
+The compression phase is performed in two steps: first, the pressure is linearly incremented over \SI{10}{\nano\second} and then the target pressure is maintained for a further \SI{10}{\nano\second}. The density of the fluid region and the average pressure reach equilibrium well within the simulation time. The different final densities are presented in Table \ref{tab:rho} which correspond to the average density of the final \SI{1}{\nano\second} of the compression phase. In agreement with available experimental data\cite{Griesbaum2000}, there is a clear increase in density with increasing alkane chain length as well as with increasing pressure.
 
 \begin{table}
 	\caption{Measured density values for confined alkanes  with three different chain lengths (C16, C30 and C60) at three different pressures (\SI{0.5}{\giga\pascal}, \SI{1.0}{\giga\pascal} and \SI{1.5}{\giga\pascal}).}   
@@ -466,27 +379,17 @@ The compression phase is performed in two steps: first, the pressure  is linearl
 	\label{tab:rho}  
 \end{table}
 
-
-Equilibrium is reached via the movement and reorganisation in layers  of the polymer chains: the closer the chains are to the walls, the better defined is this layered structure. The polymer chains that are farther away  from the walls tend not to be so well organised and, for higher pressures and longer chain lengths, an amorphous-like region is formed. The formation of the amorphous regions is due to the fact that it is more difficult for longer chains to diffuse and find a more ordered and energetically favourable configuration, especially at higher pressures; this results, concurrently,  in  higher densities for longer chains (see Table \ref{tab:rho}). Note that this is in contrast with the behaviour of atomic fluids, which have the tendency to form ordered structures when subjected to higher pressures. 
-
-
+%Equilibrium is reached via the movement and reorganisation in layers of the alkane chains. The chains close to the walls form a clear layered structure, while those further away from the walls are not as well organised and in the centre of the film a central amorphous-like region is evident. The formation of the amorphous regions is due to the fact that it is more difficult for longer chains to diffuse and find a more ordered and energetically favourable configuration, especially at higher pressures; this results, concurrently, in  higher densities for longer chains (see Table \ref{tab:rho}). Note that this is in contrast with the behaviour of atomic fluids, which have the tendency to form more ordered structures when subjected to higher pressures\cite{Gattinoni2013}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Shear}
 
-Once the polymer melts are fully equilibrated at the desired pressures (\SI{0.5}{\giga\pascal}, \SI{1.0}{\giga\pascal}, \SI{1.5}{\giga\pascal}) we proceed to study the response of the lubricant to a shear deformation at applied  at the surfaces. The shearing deformation is applied by rigidly displacing the frozen atoms of the $\text{Fe}_2\text{O}_3$ surfaces in opposite directions along the $x$ axis (see Figure \ref{fig:Steps}). We consider the following absolute shearing velocities: \SI{20}{\meter\per\second}, \SI{50}{\meter\per\second} and \SI{100}{\meter\per\second}.
+\subsection{Shear}
 
+After the alkane chains are fully equilibrated at the target pressures (\SI{0.5}{\giga\pascal}, \SI{1.0}{\giga\pascal}, \SI{1.5}{\giga\pascal}) the shear response of the lubricant is studied. A shear velocity gradient was imposed on the system by means of a constant velocity, $v_x = \pm v/2$ applied to the outermost layer of atoms in each slab (see Figure \ref{fig:Steps}) in the x direction. We consider the following sliding velocities, vs; \SI{10}{\meter\per\second}, \SI{20}{\meter\per\second}, \SI{50}{\meter\per\second} and \SI{100}{\meter\per\second}. For the simulated film thickness (X nm), these correspond to shear rates of approximately $10^{9} - 10^{10} s^{-1}$. While these are above those encountered in real engineering components \cite{Taylor2017}, lower shear rates do not reach a steady state in the available simulation time\cite{Ewen2018}.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\subsection{Transient State}
-
-Similarly to what was done in Section \ref{sec:eq} to verify that equilibrium was reached, we measure the evolution of three quantities to ensure that the shear simulations reach a steady state, namely,  the squared end-to end distance $\left(\left< R^2 \right> \right)$, the segmental orientation $\left(\left<P_{2}^{xz} \right> \right)$ and the lateral (friction) force $\left(F_L \right)$ on the surfaces. In general, the transition from a well equilibrated polymer melt to a steady state behaviour in shear is very similar for all the considered pressures and chain lengths. In general, a steady state is reached faster for shorter chains, higher shearing velocities and lower pressures. As a representative case, we will focus on the chain length C30 at a pressure of  \SI{1.0}{\giga\pascal}.
- 
-The evolution of these three quantities for the chain length C30 at a pressure of  \SI{1.0}{\giga\pascal} and the three selected shearing velocities is presented in Figure \ref{fig:SS}.
-
+To verify that a nonequilibrium steady state was reached, the evolution of the RMS end-to-end distance $\left(\left< R^2 \right> \right)$, the segmental orientation $\left(\left<P_{2}^{xz} \right> \right)$ and the shear stress $\left(F_L \right)$ on the surfaces in response to the fluid, were monitored. In general, a steady state is reached in a shorter simulation time for shorter chains, lower pressures and particularly higher shearing velocities. A representative case is C30 at \SI{1.0}{\giga\pascal}, for which the evolution of the e2e distance, segmental orientation, and shear stress is presented at the four sliding velocities in Figure \ref{fig:SS}.
 
 \pgfmathsetmacro{\SERFigwidth}{.035\linewidth}
 \pgfmathsetmacro{\SERFigheight}{.036\linewidth}
@@ -556,7 +459,7 @@ The evolution of these three quantities for the chain length C30 at a pressure o
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{End-to-end distance}
 
-Since the initial configuration is the same for all the shearing velocities  they all have an initial value of  $\left< R^2 \right> = \SI{282.8}{\angstrom\squared}$. Once the surfaces start to move, and the lubricant to be sheared, there is virtually no change in $\left< R^2 \right> $ for a short amount of time. The reason for this phenomenon is that the surfaces are set in motion  instantaneously, that is, the final velocity is reached in only one time step.  During this time, the lubricant has a solid like behaviour and slides with respect to one of the surfaces, as evidenced by a discontinuity in the velocity field (see Figure \ref{fig:VelProf_MDP}).    For the case C30, \SI{1.0}{\giga\pascal} and \SI{50}{\meter\per\second} this ``plug'' flow  behaviour  lasts for about \SI{1e6}{} steps  -- see Figure \ref{fig:SS}a for the evolution of $\left< R^2 \right> $ with time.
+Since the initial configuration is the same for all the shearing velocities they all have an initial value of  $\left< R^2 \right> = \SI{282.8}{\angstrom\squared}$. Once the surfaces start to move, and the lubricant to be sheared, there is virtually no change in $\left< R^2 \right> $ for a short amount of time. The reason for this phenomenon is that the surfaces are set in motion  instantaneously, that is, the final velocity is reached in only one time step. During this time, the lubricant has a solid like behaviour and slides with respect to one of the surfaces, as evidenced by a discontinuity in the velocity field (see Figure \ref{fig:VelProf_MDP}). For the case C30, \SI{1.0}{\giga\pascal} and \SI{50}{\meter\per\second} this ``plug'' flow  behaviour  lasts for about \SI{1e6}{} steps see Figure \ref{fig:SS}a for the evolution of $\left< R^2 \right> $ with time.
 
 \pgfmathsetmacro{\SERFigwidth}{.035\linewidth}
 \pgfmathsetmacro{\SERFigheight}{.026\linewidth}
@@ -605,9 +508,7 @@ Since the initial configuration is the same for all the shearing velocities  the
 	\end{center}
  \end{figure}
 
-
 As shear continues to be applied to the system,  we see a linear increment of $\left< R^2 \right> $ until an equilibrium value is reached. For the case C30 and \SI{1.0}{\giga\pascal}  the steady state is reached after \SI{10e6}{}, \SI{4e6}{} and \SI{2e6}{} steps for the velocities  \SI{20}{\meter\per\second}, \SI{50}{\meter\per\second} and \SI{100}{\meter\per\second}, which suggests that the equilibration of  $\left< R^2 \right> $ is not time but shearing-distance dependent, as shown in Figure \ref{fig:SS}a and previously seen experimentally\cite{Drummond2000}.   A change in the structure of the polymer chains occurs while the simulation reaches steady state: initially the  chains are folded and, as the system is deformed, they unfold and stretch causing an increase in the value of  $\left< R^2 \right> $, until a steady state is attained. One of the reasons  for the increase  is that the chains that are closer to the surface are attracted by it while simultaneously being pulled by the flow. Note that lower shearing velocities result in more elongated chains.
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -615,16 +516,11 @@ As shear continues to be applied to the system,  we see a linear increment of $\
  
  According to theory, and as mentioned previously, the equilibrium average segmental orientation of an ideal chain (or freely-jointed chain)  should be $\langle P_{2}^{xz}\rangle=0.25$. Nevertheless, in the cases considered in this work, the equilibrium value before any shearing deformation is higher. For instance, for the case C30 and  \SI{1.0}{\giga\pascal}, $\langle P_{2}^{xz}\rangle=0.32$ (see Figure \ref{fig:SS}b), indicating that there is  a defined preferential orientation caused by the presence of the surfaces; the surfaces  drive  the chains off the ideal orientation towards a more horizontal position (parallel to the surface). %, see Figure \ref{fig:steady}).   
  
-The chains adjacent  to the surfaces tend to lie horizontally  to form a first  layer of lubricant. This first layer itself has an influence in the orientations of the neighbouring chains, producing  a cascading effect that results in the formation of  a layered structure, as show in figure \ref{fig:VelProf_MDP} where the mass density profile of the chains is presented for the case of  C30,  \SI{1.0}{\giga\pascal} and  \SI{50}{\meter\per\second} --for the information before shearing, refer to Step 0 in the figure. 
-
-
-
-
+The chains adjacent to the surfaces tend to lie horizontally to form a first layer of lubricant. This first layer itself has an influence in the orientations of the neighbouring chains, producing  a cascading effect that results in the formation of  a layered structure, as show in figure \ref{fig:VelProf_MDP} where the mass density profile of the chains is presented for the case of  C30,  \SI{1.0}{\giga\pascal} and  \SI{50}{\meter\per\second} --for the information before shearing, refer to Step 0 in the figure. 
 
 Although we also see a linear increase of $\left<P_{2}^{xz} \right> $ as shear is applied, the path towards a steady state of  $\left<P_{2}^{xz} \right> $ starts earlier than that of  $\left< R^2 \right> $. The chains begin to reorient themselves even during the ``plug'' flow regime. %This can be seen, for example, in Figure  \ref{fig:steady}b, where some of the chains in the bulk  are still folded but with an orientation close to the steady state value of  $\left<P_{2}^{xz}\right>=0.50$, which corresponds to an angle of \SI{35.3}{\degree} measured from the $x$ towards the $z$ axis. 
 
 The time needed for $\left<P_{2}^{xz} \right>$ to reach a steady state  is similar to that needed for the equilibration of  $\left< R^2 \right> $ and follows the same trend: faster shearing velocities lead the system  to reach faster a steady state, as shown in  Figure \ref{fig:SS}b.
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -632,15 +528,14 @@ The time needed for $\left<P_{2}^{xz} \right>$ to reach a steady state  is simil
 
 The lateral (friction) force $F_L$ is calculated from the simulations as the average total force in the $x$ direction acting on the outermost layer of atoms (frozen atoms in Figure \ref{fig:Regions}) in each of the slabs divided by their area. The time needed for $F_L$  to reach a steady state is consistent with the time  needed for $\left< R^2 \right> $ and $\left<P_{2}^{xz} \right> $, revealing a dependency of $F_L$ on these two quantities: $F_L$ will only reach a steady state after the chains are steadily oriented and elongated.
 
+The studied chain lengths are below the entanglement length and thus no stress overshoot behaviour is observed\cite{Jeong2017}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsubsection{Temperature}
 
-The evolution of the temperature follows the same trend as the other studied parameters: for the same system,  higher shearing velocities reach a steady state faster. We also notice that, even though the temperature at the thermostated atoms at the surfaces is maintained at  \SI{353}{\kelvin}, the larger amount of kinetic energy inserted to the system due to the higher velocities causes more energy dissipation in the fluid and leads to a more pronounced increase of the  temperature.
+The evolution of the temperature follows the same trend as the other studied parameters: for the same system,  higher shearing velocities reach a steady state in a shorter simulation time. We also notice that, even though the temperature at the thermostatted atoms at the surfaces is maintained at  \SI{353}{\kelvin}, the larger amount of kinetic energy inserted to the system due to the higher velocities causes more energy dissipation in the fluid and leads to a more pronounced increase of the  temperature.
 %xxxx what happens in a case where the lubricant is solid
-
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -648,16 +543,13 @@ The evolution of the temperature follows the same trend as the other studied par
 
 Once the simulations reach a steady state, they are left to run for  \SI{5}{\nano\second} to  \SI{10}{\nano\second}  while maintaining constant the shearing velocity and the applied pressure. During the last  \SI{2}{\nano\second} of the simulation, the values of the average squared end-to-end distance $\left(\left< R^2 \right> \right)$,   average segmental orientation $\left<P_{2}^{xz} \right> $, and lateral (friction) force $\left(F_L\right)$ are measured and averaged; the results and analysis of these measurements are presented in this section.   
 
-
 %At 0.5GPa the velocity does not contribute much to the friction
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsubsection{End-to-end distance}
 
-As previously defined in equation \ref{eq:e2e2}, the values of  the end-to-end distance are chain length dependent. In order to be able to compare the variation of $\left< R^2 \right> $ between the different chain lengths considered, we calculate instead the average squared end-to-end distance per bond: $\left< R^2 \right>/\left(N_\text{bonds}\right)^2$. The results of such calculations as a function of the applied pressure and shearing velocity are presented in Figure   \ref{fig:e2e2_v}.
-
+As previously defined in equation \ref{eq:e2e2}, the values of  the end-to-end distance are chain length dependent. In order to be able to compare the variation of $\left< R^2 \right> $ between the different chain lengths considered, we calculate instead the average squared end-to-end distance per bond: $\left< R^2 \right>/\left(N_\text{bonds}\right)^2$. The results of such calculations as a function of the applied pressure and shearing velocity are presented in Figure \ref{fig:e2e2_v}.
 
 \pgfmathsetmacro{\SERFigwidth}{.035\linewidth}
 \pgfmathsetmacro{\SERFigheight}{.026\linewidth}
@@ -692,12 +584,9 @@ As previously defined in equation \ref{eq:e2e2}, the values of  the end-to-end d
 	\end{center}
  \end{figure}
 
-
-
 In terms of the shearing velocities, the behaviour of $\left< R^2 \right>/\left(N_\text{bonds}\right)^2$ follows the same trend for all the chain lengths and pressures: higher shearing velocities result in more compact (less elongated) molecules. This behaviour is explained by the two following arguments:
 
 First,  when the movement of the surfaces is slower, the  polymer chains have more time to organise themselves in layers parallel to the surfaces, as evidenced in the mass density profiles plotted in Figure \ref{fig:VelProf_MDP2}, where the peaks are more pronounced for  a velocity of \SI{20}{\meter\per\second} than for \SI{100}{\meter\per\second}. Then, as the chains position themselves in layers, they are  elongated by the opposite relative movement of the surfaces, resulting in larger values of $\left< R^2 \right>/\left(N_\text{bonds}\right)^2$ for slower shearing velocities.
-
 
 \pgfmathsetmacro{\SERFigwidth}{.035\linewidth}
 \pgfmathsetmacro{\SERFigheight}{.026\linewidth}
@@ -744,20 +633,16 @@ First,  when the movement of the surfaces is slower, the  polymer chains have mo
 	\end{center}
  \end{figure}
 
-
-And second,   higher shearing velocities increase the slip between the surfaces and the lubricant, as shown in the velocity profiles of Figure \ref{fig:VelProf_MDP2}, where, at \SI{100}{\meter\per\second}, there is a discontinuity in the velocity when passing from the surfaces to the lubricant. Higher slip causes more turbulent flows, which,   at the same time, hinders the formation of lubricant layers and the elongation of the chains.
-
+And second, higher shearing velocities increase the slip between the surfaces and the lubricant, as shown in the velocity profiles of Figure \ref{fig:VelProf_MDP2}, where, at \SI{100}{\meter\per\second}, there is a discontinuity in the velocity when passing from the surfaces to the lubricant. Higher slip causes more turbulent flows, which, at the same time, hinders the formation of lubricant layers and the elongation of the chains.
 
 Although for most all of the studied systems the measurements of the end-to-end distances follow the same trend (reduction of  $\left< R^2 \right>/\left(N_\text{bonds}\right)^2$ as the velocity is increased), there is one that stands out because of its different behaviour, namely the one with the largest chains (C60) at the highest pressures (\SI{1.5}{\giga\pascal}). In this case, due to the higher pressure and long chains, the lubricant starts to solidify, making it more difficult for the chains to slide against each other and forcing the system into a stick-slip regime.  
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Segmental orientation}
 
-
 Just like with the squared end-to-end distance,  the segmental orientation has a stronger dependency on the shearing velocity and the chain length than on the applied pressure, at least for the intervals considered in this work --see Figure \ref{fig:P2_v}. 
 
 There is a reduction of  $\left<P_{2}^{xz} \right> $ with the increase of velocity for all the considered chain lengths, indicating an increase of the average  angle of segments relative  to the sharing direction; in other words, at higher velocities, the chains tend not to be lying parallel to the shearing direction. This is confirmed by the reduction of the height of the peaks in the  mass density profile with the increase of the velocity, as can be seen e.g.  in Figure  \ref{fig:VelProf_MDP2} for the case of C30, \SI{1.0}{\giga\pascal} and velocities of  \SI{20}{\meter\per\second} and  \SI{100}{\meter\per\second}. Additionally, the results show that longer chains tend to  lye  with a smaller angle with respect to the shearing direction.
-
 
 \pgfmathsetmacro{\SERFigwidth}{.035\linewidth}
 \pgfmathsetmacro{\SERFigheight}{.026\linewidth}
@@ -791,7 +676,6 @@ There is a reduction of  $\left<P_{2}^{xz} \right> $ with the increase of veloci
 		\label{fig:P2_v}
 	\end{center}
  \end{figure}
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -828,40 +712,128 @@ For the lateral (friction) force the following trends have been identified (see 
 				'Data/Shear/Compiled_e2e2_v.plot8.plot' i 8 u ($3):($4):($5) w p notitle  lt 3 lc 0 ps 2,\
 		\end{gnuplot}
 		\caption{Lateral (friction) force as a function of the shearing velocity measured after reaching steady state. Error bars, calculated from the standard deviation between the trajectory time-averages, are omitted for clarity, but are of a similar size to the symbols.}
-		\label{fig:FL_v}
+		\label{fig:FL_v1}
 	\end{center}
  \end{figure}
-
-
-First, higher pressures result on higher lateral (friction) forces, consistent with Amontons' first law for dry friction that postulates that the force of friction is directly proportional to the applied load. 
-
-Second, in general, longer chains generate more friction than shorter chains (due to their higher viscosities)  by  generating larger amounts of viscous drag  --viscous drag can be interpreted as the force of friction caused by a a flowing fluid. Nevertheless,  at higher velocities the  lateral (friction) force is almost independent of the chain length. This behaviour can be explained by comparing  the velocity profiles of two limiting cases: C60 and C16 at a pressure of \SI{1.5}{\giga\pascal}, see Figure  \ref{fig:VelProfFL}. At higher shearing velocities  $\left( \SI{100}{\meter\per\second}\right)$, the velocity profiles are very similar and they superimpose on each other: for both chain lengths, the velocity changes linearly   between the surfaces resulting in similar lateral (friction) forces. 
-
 
 \pgfmathsetmacro{\SERFigwidth}{.035\linewidth}
 \pgfmathsetmacro{\SERFigheight}{.026\linewidth}
 \begin{figure}
     	\begin{center}
 		\begin{gnuplot}[terminal=pdf, terminaloptions={size \SERFigwidth cm, \SERFigheight cm color solid}]
-			set key bottom right
-			set xlabel "z coordinate"  
-			set ylabel "x Velocity $\\left[ \\SI{}{\\meter\\per\\second} \\right]$"
+			set key above
+			set ylabel "$F_L \\, [\\SI{}{\\mega\\pascal}]$"
 			set key noautotitle
-			set xrange [-50:50]
-			plot  	'Data/Shear/C16/1.5GPa/100m_s2/vel_prof_x_s.dump' u ($2-38.76):($4*100) w l lw 2   lt 4  title "C16" ,\
-				  	'Data/Shear/C60/1.5GPa/100m_s3/vel_prof_x_s.dump' u ($2-36.76):($4*100) w l lw 2   lt 10  title "C60" 
+			set xlabel  "$\\dot{\\gamma} \\, \\left[ \\SI{}{\\per\\second} \\right]$"  
+			set format x  '$10^{%L}$' 
+			set logscale x
+			p [:2e10][]	'Data/Shear/Compiled_e2e2_v.plot8.plot' i 0 u ($3/($12*1e-10)):($4):($5) w p title "$\\SI{0.5}{\\giga\\pascal}$" lt 1 lc 0 ps 2,\
+				'Data/Shear/Compiled_e2e2_v.plot8.plot' i 1 u ($3/($12*1e-10)):($4):($5) w p title  "$\\SI{1.0}{\\giga\\pascal}$" lt 2 lc 0 ps 2,\
+				'Data/Shear/Compiled_e2e2_v.plot8.plot' i 1 u ($3/($12*1e-10)):($4) w l notitle lt 2 lc 1  lw 2 ,\
+				'Data/Shear/Compiled_e2e2_v.plot8.plot' i 2 u ($3/($12*1e-10)):($4):($5) w p title  "$\\SI{1.5}{\\giga\\pascal}$" lt 3 lc 0 ps 2,\
+				'Data/Shear/Compiled_e2e2_v.plot8.plot' i 2 u ($3/($12*1e-10)):($4) w l notitle lt 3 lc 1 lw 2 ,\
+				'Data/Shear/Compiled_e2e2_v.plot8.plot' i 3 u ($3/($12*1e-10)):($4):($5) w p notitle lt 1 lc 0 ps 2 ,\
+				'Data/Shear/Compiled_e2e2_v.plot8.plot' i 0 u ($3/($12*1e-10)):($4) w l title "C16" lt 1 lc 1 lw 2 ,\
+				'Data/Shear/Compiled_e2e2_v.plot8.plot' i 3 u ($3/($12*1e-10)):($4) w l title "C30" lt 1 lc 2 lw 2 ,\				
+				'Data/Shear/Compiled_e2e2_v.plot8.plot' i 4 u ($3/($12*1e-10)):($4) w l notitle lt 2 lc 2 lw 2 ,\
+				'Data/Shear/Compiled_e2e2_v.plot8.plot' i 4 u ($3/($12*1e-10)):($4):($5) w p notitle lt 2 lc 0 ps 2,\
+				'Data/Shear/Compiled_e2e2_v.plot8.plot' i 5 u ($3/($12*1e-10)):($4) w l notitle lt 3 lc 2 lw 2 ,\
+				'Data/Shear/Compiled_e2e2_v.plot8.plot' i 5 u ($3/($12*1e-10)):($4):($5) w p notitle lt 3 lc 0 ps 2 ,\
+				'Data/Shear/Compiled_e2e2_v.plot8.plot' i 6 u ($3/($12*1e-10)):($4):($5) w p notitle lt 1 lc 0 ps 2 ,\
+				'Data/Shear/Compiled_e2e2_v.plot8.plot' i 6 u ($3/($12*1e-10)):($4) w l title 'C60' lt 1 lc 3 lw 2 ,\				
+				'Data/Shear/Compiled_e2e2_v.plot8.plot' i 7 u ($3/($12*1e-10)):($4) w l notitle  lt 2 lc 3 lw 2 ,\
+				'Data/Shear/Compiled_e2e2_v.plot8.plot' i 7 u ($3/($12*1e-10)):($4):($5) w p notitle  lt 2 lc 0 ps 2,\
+				'Data/Shear/Compiled_e2e2_v.plot8.plot' i 8 u ($3/($12*1e-10)):($4) w l notitle  lt 3 lc 3 lw 2 ,\
+				'Data/Shear/Compiled_e2e2_v.plot8.plot' i 8 u ($3/($12*1e-10)):($4):($5) w p notitle  lt 3 lc 0 ps 2,\
 		\end{gnuplot}
-		\caption{Velocity profiles along x  during the steady state of the simulation. Results are presented for the case of  C16 and C60 at   \SI{1.5}{\giga\pascal} and  \SI{100}{\meter\per\second}. }
-		\label{fig:VelProfFL}
+		\caption{Lateral (friction) force as a function of the shear rate $\left( \dot{\gamma} \right)$ measured after reaching steady state. Error bars, calculated from the standard deviation between the trajectory time-averages, are omitted for clarity, but are of a similar size to the symbols.}
+		\label{fig:FL_v1a}
 	\end{center}
  \end{figure}
 
+\pgfmathsetmacro{\SERFigwidth}{.035\linewidth}
+\pgfmathsetmacro{\SERFigheight}{.026\linewidth}
+\begin{figure}
+    	\begin{center}
+		\begin{gnuplot}[terminal=pdf, terminaloptions={size \SERFigwidth cm, \SERFigheight cm color solid}]
+			set key above
+			set xlabel  "x Velocity $\\left[ \\SI{}{\\meter\\per\\second} \\right]$"  
+			set ylabel "$\\mu$"
+			set key noautotitle
+			p [:110][]	'Data/Shear/Compiled_e2e2_v.plot8.plot' i 0 u ($3):($4/($2*1000)) w p title "$\\SI{0.5}{\\giga\\pascal}$" lt 1 lc 0 ps 2,\
+			        	'Data/Shear/Compiled_e2e2_v.plot8.plot' i 1 u ($3):($4/($2*1000)) w p title  "$\\SI{1.0}{\\giga\\pascal}$" lt 2 lc 0 ps 2,\
+			        	'Data/Shear/Compiled_e2e2_v.plot8.plot' i 1 u ($3):($4/($2*1000)) w l notitle lt 2 lc 1  lw 2 ,\
+			        	'Data/Shear/Compiled_e2e2_v.plot8.plot' i 2 u ($3):($4/($2*1000)) w p title  "$\\SI{1.5}{\\giga\\pascal}$" lt 3 lc 0 ps 2,\
+			        	'Data/Shear/Compiled_e2e2_v.plot8.plot' i 2 u ($3):($4/($2*1000)) w l notitle lt 3 lc 1 lw 2 ,\
+			        	'Data/Shear/Compiled_e2e2_v.plot8.plot' i 3 u ($3):($4/($2*1000)) w p notitle lt 1 lc 0 ps 2 ,\
+        				'Data/Shear/Compiled_e2e2_v.plot8.plot' i 0 u ($3):($4/($2*1000)) w l title "C16" lt 1 lc 1 lw 2 ,\
+		        		'Data/Shear/Compiled_e2e2_v.plot8.plot' i 3 u ($3):($4/($2*1000)) w l title "C30" lt 1 lc 2 lw 2 ,\				
+				        'Data/Shear/Compiled_e2e2_v.plot8.plot' i 4 u ($3):($4/($2*1000)) w l notitle lt 2 lc 2 lw 2 ,\
+				        'Data/Shear/Compiled_e2e2_v.plot8.plot' i 4 u ($3):($4/($2*1000)) w p notitle lt 2 lc 0 ps 2,\
+        				'Data/Shear/Compiled_e2e2_v.plot8.plot' i 5 u ($3):($4/($2*1000)) w l notitle lt 3 lc 2 lw 2 ,\
+		        		'Data/Shear/Compiled_e2e2_v.plot8.plot' i 5 u ($3):($4/($2*1000)) w p notitle lt 3 lc 0 ps 2 ,\
+				        'Data/Shear/Compiled_e2e2_v.plot8.plot' i 6 u ($3):($4/($2*1000)) w p notitle lt 1 lc 0 ps 2 ,\
+        				'Data/Shear/Compiled_e2e2_v.plot8.plot' i 6 u ($3):($4/($2*1000)) w l title 'C60' lt 1 lc 3 lw 2 ,\				
+		        		'Data/Shear/Compiled_e2e2_v.plot8.plot' i 7 u ($3):($4/($2*1000)) w l notitle  lt 2 lc 3 lw 2 ,\
+				        'Data/Shear/Compiled_e2e2_v.plot8.plot' i 7 u ($3):($4/($2*1000)) w p notitle  lt 2 lc 0 ps 2,\
+        	   			'Data/Shear/Compiled_e2e2_v.plot8.plot' i 8 u ($3):($4/($2*1000)) w l notitle  lt 3 lc 3 lw 2 ,\
+			        	'Data/Shear/Compiled_e2e2_v.plot8.plot' i 8 u ($3):($4/($2*1000)) w p notitle  lt 3 lc 0 ps 2,\
+		\end{gnuplot}
+		\caption{Friction coefficient $\mu$ as a function of the shearing velocity measured after reaching steady state.}
+		\label{fig:FL_v}
+	\end{center}
+ \end{figure}
 
-And third, for lower pressures and, especially for shorter chains, the lateral (friction) force remains constant independent of the velocity, similar to  Coulomb's law for dry friction that postulates that kinetic (dry) friction is independent of the sliding velocity. In spite of that,  at higher pressures, there is a reduction of the lateral (friction) force as the shearing velocity  increases, especially for the longest chains.  
+\pgfmathsetmacro{\SERFigwidth}{.035\linewidth}
+\pgfmathsetmacro{\SERFigheight}{.026\linewidth}
+\begin{figure}
+    	\begin{center}
+		\begin{gnuplot}[terminal=pdf, terminaloptions={size \SERFigwidth cm, \SERFigheight cm color solid}]
+			set key above
+			set ylabel "$\\mu$"
+			set key noautotitle
+			set xlabel  "$\\dot{\\gamma} \\, \\left[ \\SI{}{\\per\\second} \\right]$"  
+			set format x  '$10^{%L}$' 
+			set logscale x
+			p [:2e10][]	'Data/Shear/Compiled_e2e2_v.plot8.plot' i 0 u ($3/($12*1e-10)):($4/($2*1000)) w p title "$\\SI{0.5}{\\giga\\pascal}$" lt 1 lc 0 ps 2,\
+			        	'Data/Shear/Compiled_e2e2_v.plot8.plot' i 1 u ($3/($12*1e-10)):($4/($2*1000)) w p title  "$\\SI{1.0}{\\giga\\pascal}$" lt 2 lc 0 ps 2,\
+			        	'Data/Shear/Compiled_e2e2_v.plot8.plot' i 1 u ($3/($12*1e-10)):($4/($2*1000)) w l notitle lt 2 lc 1  lw 2 ,\
+			        	'Data/Shear/Compiled_e2e2_v.plot8.plot' i 2 u ($3/($12*1e-10)):($4/($2*1000)) w p title  "$\\SI{1.5}{\\giga\\pascal}$" lt 3 lc 0 ps 2,\
+			        	'Data/Shear/Compiled_e2e2_v.plot8.plot' i 2 u ($3/($12*1e-10)):($4/($2*1000)) w l notitle lt 3 lc 1 lw 2 ,\
+			        	'Data/Shear/Compiled_e2e2_v.plot8.plot' i 3 u ($3/($12*1e-10)):($4/($2*1000)) w p notitle lt 1 lc 0 ps 2 ,\
+        				'Data/Shear/Compiled_e2e2_v.plot8.plot' i 0 u ($3/($12*1e-10)):($4/($2*1000)) w l title "C16" lt 1 lc 1 lw 2 ,\
+		        		'Data/Shear/Compiled_e2e2_v.plot8.plot' i 3 u ($3/($12*1e-10)):($4/($2*1000)) w l title "C30" lt 1 lc 2 lw 2 ,\				
+				        'Data/Shear/Compiled_e2e2_v.plot8.plot' i 4 u ($3/($12*1e-10)):($4/($2*1000)) w l notitle lt 2 lc 2 lw 2 ,\
+				        'Data/Shear/Compiled_e2e2_v.plot8.plot' i 4 u ($3/($12*1e-10)):($4/($2*1000)) w p notitle lt 2 lc 0 ps 2,\
+        				'Data/Shear/Compiled_e2e2_v.plot8.plot' i 5 u ($3/($12*1e-10)):($4/($2*1000)) w l notitle lt 3 lc 2 lw 2 ,\
+		        		'Data/Shear/Compiled_e2e2_v.plot8.plot' i 5 u ($3/($12*1e-10)):($4/($2*1000)) w p notitle lt 3 lc 0 ps 2 ,\
+				        'Data/Shear/Compiled_e2e2_v.plot8.plot' i 6 u ($3/($12*1e-10)):($4/($2*1000)) w p notitle lt 1 lc 0 ps 2 ,\
+        				'Data/Shear/Compiled_e2e2_v.plot8.plot' i 6 u ($3/($12*1e-10)):($4/($2*1000)) w l title 'C60' lt 1 lc 3 lw 2 ,\				
+		        		'Data/Shear/Compiled_e2e2_v.plot8.plot' i 7 u ($3/($12*1e-10)):($4/($2*1000)) w l notitle  lt 2 lc 3 lw 2 ,\
+				        'Data/Shear/Compiled_e2e2_v.plot8.plot' i 7 u ($3/($12*1e-10)):($4/($2*1000)) w p notitle  lt 2 lc 0 ps 2,\
+        	   			'Data/Shear/Compiled_e2e2_v.plot8.plot' i 8 u ($3/($12*1e-10)):($4/($2*1000)) w l notitle  lt 3 lc 3 lw 2 ,\
+			        	'Data/Shear/Compiled_e2e2_v.plot8.plot' i 8 u ($3/($12*1e-10)):($4/($2*1000)) w p notitle  lt 3 lc 0 ps 2,\
+		\end{gnuplot}
+		\caption{Friction coefficient $\mu$ as a function of the shear rate $\left( \dot{\gamma} \right)$ measured after reaching steady state.}
+		\label{fig:FL_va}
+	\end{center}
+ \end{figure}
 
+In the ranges studied, the shear stress seems to be more sensitive to pressure than the chain length, particularly at high shear rates. Higher pressures result in higher shear stress, consistent with Amontons' first law for dry friction that postulates that the shear stress is directly proportional to the applied load.
 
-This reduction of the friction is a consequence of a combination of factors: the increase of the temperature generates a decrease of the viscosity and, simultaneously, a decrease in friction.   And, the lower $\left<P_{2}^{xz} \right> $  and $\left< R^2 \right>$, which indicate that the chains are  less elongated, not orderly  oriented parallel to the surfaces and, thus, farther from having a solid like behaviour, also result in a reduction of the friction of the system.
+% PLOT FL vs FN
 
+In general, longer chains give higher shear stress than shorter chains, as expected due to their higher ambient viscosity \cite{Zhang2017}. The difference in shear stress between chain lengths decreases with increasing shear rate, such that they are almost identical at the highest shear rate studied ($10^{10} s^{-1}$). Tribology experiments\cite{Ewen2017a, Zhang2017} and engineering components\cite{Taylor2017} operate at lower shear rates (< $10^{7} s^{-1}$) than those accessible through NEMD simulations\cite{Ewen2018}. At these lower shear rates, there is expected to be an even more significant increase in EHL friction with increasing chain length.
+
+For short chains at low pressure, the shear stress increases linearly with log(shear rate) as is commonly observed for lubricants in macroscopic friction experiments\cite{Ewen2017a}. Such behaviour has also been observed in previous NEMD simulations of linear C20 confined (6 molecular layers) between polymer-like surfaces at low pressure (10 MPa)\cite{Sivebaek2010}. At intermediate chain length and pressure, the shear stress is relatively independent of the velocity, in line with Coulomb's law for dry friction. The transition to this behaviour, above the limiting shear stress, has been observed for several model lubricants in macroscopic friction experiments \cite{Martinie2016a}. Similar behaviour has also been observed in previous NEMD simulations of linear C60 confined (6 molecular layers) between polymer-like surfaces at low pressure (10 MPa)\cite{Sivebaek2010}. For long chains at high pressures, there is a reduction of the shear stress with increasing sliding velocity, particularly for the longest chains. Such behaviour has been observed for single component atomic fluids at high pressure, where the flow profile becomes non-linear\cite{Heyes2012,Gattinoni2013,Mackowiak2016}.
+
+In this study, non-linear flow profiles appear transiently for many of the systems; however, plug flow only persists into the steady state for the longest chains at the highest pressures and lowest shear rates. A small amount of boundary slip occurs at the highest velocity studied (100 m/s). The slip length increases with pressure as has been observed previously\cite{Ta2017}. However, most of the flow profiles are Couette-like, suggesting that the friction-velocity behaviour is driven by different mechanisms to the atomic fluids in refs\cite{Heyes2012,Gattinoni2013,Mackowiak2016}.
+
+The decrease in friction with increasing shear rate in this study is due to a combination of factors. Firstly, the increase of the temperature at high shear rates decreases the viscosity and thus also decreases the shear stress. The lower $\left<P_{2}^{xz} \right> $ and $\left< R^2 \right>$, which indicate that the chains are less elongated, not orderly oriented parallel to the surfaces and, thus, farther from having a solid like behaviour. RDF shows less long range order, more liquid-like, lower friction.
+
+Generally, the friction coefficients are rather high due to solidification of the n-alkanes under the high pressures studied. In the current study, the friction coefficients for n-hexadecane are higher than in previous simulations of thinner films under the same pressures\cite{Ta2017}. The main reason for this is that boundary slip occurred in the thin films while it does not occur for C16 here.
+
+Friction is significantly higher for the n-alkanes in this study compared to previous confined NEMD simulations of branched alkanes of similar size (squalane) under the same conditions\cite{Ewen2017a}. This is because n-alkanes are more solid-like, as evidenced by the mass density profiles and radial distribution functions. The methyl branches in squalane strongly suppress crystallization (melting point -38°C) compared to linear C30 (65°C) but also increase the viscosity \cite{Jabbarzadeh2002}. The far lower friction for branched alkanes compared to n-alkanes in NEMD simulations under high pressure, high shear rate conditions suggests that the former is more important than the latter in terms of EHL friction.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Effective Viscosity}
@@ -916,7 +888,9 @@ The effect of the velocity is explained by the fact that higher shearing velocit
 
 Similarly, for the pressure, in lubricated contact higher pressures correlate with higher friction. The augmentation of the friction causes higher energy dissipation in form of heat and, thus, higher temperatures. 
 
-It is also interesting to note that although larger chains result in  higher temperatures, the effect of the  chain length on the temperature raise is negligible compared to the effect of the velocity and of the pressure. 
+It is also interesting to note that although larger chains result in higher temperatures, the effect of the chain length on the temperature raise is less significant than the effect of the velocity and of the pressure. 
+
+Much larger temperature rise than branched alkanes\cite{Ewen2017a} owing to larger shear stress caused by solid-like fluid.
 
 \pgfmathsetmacro{\SERFigwidth}{.035\linewidth}
 \pgfmathsetmacro{\SERFigheight}{.026\linewidth}
@@ -960,8 +934,41 @@ It is also interesting to note that although larger chains result in  higher tem
 	\end{center}
  \end{figure}
 
+\pgfmathsetmacro{\SERFigwidth}{.035\linewidth}
+\pgfmathsetmacro{\SERFigheight}{.026\linewidth}
+\begin{figure}
+    	\begin{center}
+		\begin{gnuplot}[terminal=pdf, terminaloptions={size \SERFigwidth cm, \SERFigheight cm color solid}]
+			set key above
+			set xlabel  "$\\dot{\\gamma} \\, \\left[ \\SI{}{\\per\\second} \\right]$"  
+			set ylabel "$T \\, [\\SI{}{\\kelvin}]$"
+			set format x  '$10^{%L}$' 
+			set key noautotitle
+			set logscale x
+			p [:2e10][]	'Data/Shear/Compiled_e2e2_v.plot8.plot' i 0 u ($3/($12*1e-10)):($10) w p title "$\\SI{0.5}{\\giga\\pascal}$" lt 1 lc 0 ps 2,\
+					'Data/Shear/Compiled_e2e2_v.plot8.plot' i 1 u ($3/($12*1e-10)):($10) w p title  "$\\SI{1.0}{\\giga\\pascal}$" lt 2 lc 0 ps 2,\
+					'Data/Shear/Compiled_e2e2_v.plot8.plot' i 1 u ($3/($12*1e-10)):($10) w l notitle lt 2 lc 1  lw 2 ,\
+					'Data/Shear/Compiled_e2e2_v.plot8.plot' i 2 u ($3/($12*1e-10)):($10) w p title  "$\\SI{1.5}{\\giga\\pascal}$" lt 3 lc 0 ps 2,\
+					'Data/Shear/Compiled_e2e2_v.plot8.plot' i 2 u ($3/($12*1e-10)):($10) w l notitle lt 3 lc 1 lw 2 ,\
+					'Data/Shear/Compiled_e2e2_v.plot8.plot' i 3 u ($3/($12*1e-10)):($10) w p notitle lt 1 lc 0 ps 2 ,\
+					'Data/Shear/Compiled_e2e2_v.plot8.plot' i 0 u ($3/($12*1e-10)):($10) w l title "C16" lt 1 lc 1 lw 2 ,\
+					'Data/Shear/Compiled_e2e2_v.plot8.plot' i 3 u ($3/($12*1e-10)):($10) w l title "C30" lt 1 lc 2 lw 2 ,\				
+					'Data/Shear/Compiled_e2e2_v.plot8.plot' i 4 u ($3/($12*1e-10)):($10) w l notitle lt 2 lc 2 lw 2 ,\
+					'Data/Shear/Compiled_e2e2_v.plot8.plot' i 4 u ($3/($12*1e-10)):($10) w p notitle lt 2 lc 0 ps 2,\
+					'Data/Shear/Compiled_e2e2_v.plot8.plot' i 5 u ($3/($12*1e-10)):($10) w l notitle lt 3 lc 2 lw 2 ,\
+					'Data/Shear/Compiled_e2e2_v.plot8.plot' i 5 u ($3/($12*1e-10)):($10) w p notitle lt 3 lc 0 ps 2 ,\
+					'Data/Shear/Compiled_e2e2_v.plot8.plot' i 6 u ($3/($12*1e-10)):($10) w p notitle lt 1 lc 0 ps 2 ,\
+					'Data/Shear/Compiled_e2e2_v.plot8.plot' i 6 u ($3/($12*1e-10)):($10) w l title 'C60' lt 1 lc 3 lw 2 ,\				
+					'Data/Shear/Compiled_e2e2_v.plot8.plot' i 7 u ($3/($12*1e-10)):($10) w l notitle  lt 2 lc 3 lw 2 ,\
+					'Data/Shear/Compiled_e2e2_v.plot8.plot' i 7 u ($3/($12*1e-10)):($10) w p notitle  lt 2 lc 0 ps 2,\
+					'Data/Shear/Compiled_e2e2_v.plot8.plot' i 8 u ($3/($12*1e-10)):($10) w l notitle  lt 3 lc 3 lw 2 ,\
+					'Data/Shear/Compiled_e2e2_v.plot8.plot' i 8 u ($3/($12*1e-10)):($10) w p notitle  lt 3 lc 0 ps 2,\
+		\end{gnuplot}
+		\caption{Temperature of the fluid region  as a function of the shear rate $\left( \dot{\gamma} \right)$ measured after reaching steady state. Error bars, calculated from the standard deviation between the trajectory time-averages, are omitted for clarity, but are of a similar size to the symbols.}
+		\label{fig:T_v}
+	\end{center}
+ \end{figure}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 
@@ -969,7 +976,6 @@ It is also interesting to note that although larger chains result in  higher tem
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Conclusions}
 \label{sec:Conc}
-
 
 In the present article we compared the behaviour of alkanes of three different left confined into two smooth parallel haematite ($\text{Fe}_2\text{O}_3$) surfaces. The comparison was made during equilibration, while reaching steady state (under shear), and after steady state was reached in terms of the end-to-end distance and segmental orientation of the chains, and of the changes in friction and temperature.
 
@@ -979,18 +985,78 @@ For systems under shear, we propose to monitor the evolution of the mean squared
 
 From the point of view of the morphology of the polymer chains, we notice that, after reaching steady state, higher shearing velocities result in more compact (less elongated) molecules, and that longer chains tend to  lye  with a smaller angle with respect to the shearing direction.  We also see that the segmental orientation has a stronger dependency on the shearing velocity and on the chain length, than on the applied pressure.
 
-In terms of the frictional response, we corroborate that higher pressures result on higher lateral (friction) forces, consistent with Amontons' first law for dry friction. Results also show that  longer chains generate more friction than shorter chains by  generating larger amounts of viscous drag and that at higher velocities the  lateral (friction) force is almost independent of the chain length0. Finally, we see that the high shearing velocities that we studied, for lower pressures, and especially for shorter chains, the lateral (friction) force remains constant independent of the velocity.
+In terms of the frictional response, we corroborate that higher pressures result on higher lateral (friction) forces, consistent with Amontons' first law for dry friction. Results also show that longer chains generate more friction than shorter chains by  generating larger amounts of viscous drag and that at higher velocities the  lateral (friction) force is almost independent of the chain length. Finally, we see that the high shearing velocities that we studied, for lower pressures, and especially for shorter chains, the lateral (friction) force remains constant independent of the velocity.
 
+The friction coefficients are rather high, owing to solidification of the n-alkanes at the high contact pressure.
+
+Friction higher than in previous simulations of thinner alkane films - no slip.
+
+Friction much higher than in similar sized branched alkanes - solidification. Branched alkanes higher viscosity - but suppress crystalisation - lower EHL friction.
+
+The shear stress increases with increasing chain length, but the differences are only significant at low speed.
+
+The shear stress is far more sensitive to pressure than chain length in the range studied. At low pressure, the usual increase in shear stress with sliding velocity is observed. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section*{Acknowledgments}
 
-All the figures of the atomic configurations where generated using the software OVITO\cite{Stukowski2010b}. The project was partially financed by the European Commission Marie Curie Industry-Academia Partnerships and Pathways (IAPP) –iBETTER Project: \url{http://cordis.europa.eu/project/rcn/109976_en.html}.
+S.E.R. acknowledges the support of the European Commission through the Marie Curie Industry-Academia Partnerships and Pathways (IAPP) iBETTER Project: \url{http://cordis.europa.eu/project/rcn/109976_en.html}. J.P.E acknowledges the financial support of the Engineering and Physical Sciences Research Council (EPSRC) via a Doctoral Prize Fellowship. D.D. also thanks the EPSRC for an Established Career Fellowship EP/N025954/1 and grant EP/P030211/1. All the figures of the atomic configurations where generated using the OVITO\cite{Stukowski2010b} software. Simulations were facilitated through the Imperial College London Research Computing Service (RCS).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{figure*}
+    	\begin{center}
+		\begin{tikzpicture}
+			\node[anchor=south west,inner sep=0] (fig_All_M_Profiles) at (0,0){\includegraphics[width=\textwidth]{Data/Images/All_M_Profiles.png}};
+			\begin{scope}[x={(fig_All_M_Profiles.south east)},y={(fig_All_M_Profiles.north west)}]
+			\end{scope}
+		\end{tikzpicture}
+		\caption{}
+		\label{fig:All_M_Profiles}
+	\end{center}
+\end{figure*}
+
+\begin{figure*}
+    	\begin{center}
+		\begin{tikzpicture}
+			\node[anchor=south west,inner sep=0] (fig_All_RPF_Profiles) at (0,0){\includegraphics[width=\textwidth]{Data/Images/All_RPF_Profiles.png}};
+			\begin{scope}[x={(fig_All_RPF_Profiles.south east)},y={(fig_All_RPF_Profiles.north west)}]
+			\end{scope}
+		\end{tikzpicture}
+		\caption{}
+		\label{fig:All_RPF_Profiles}
+	\end{center}
+\end{figure*}
+
+\begin{figure*}
+    	\begin{center}
+		\begin{tikzpicture}
+			\node[anchor=south west,inner sep=0] (fig_All_T_Profiles) at (0,0){\includegraphics[width=\textwidth]{Data/Images/All_T_Profiles.png}};
+			\begin{scope}[x={(fig_All_T_Profiles.south east)},y={(fig_All_T_Profiles.north west)}]
+			\end{scope}
+		\end{tikzpicture}
+		\caption{}
+		\label{fig:All_T_Profiles}
+	\end{center}
+\end{figure*}
+
+\begin{figure*}
+    	\begin{center}
+		\begin{tikzpicture}
+			\node[anchor=south west,inner sep=0] (fig_All_V_Profiles) at (0,0){\includegraphics[width=\textwidth]{Data/Images/All_V_Profiles.png}};
+			\begin{scope}[x={(fig_All_V_Profiles.south east)},y={(fig_All_V_Profiles.north west)}]
+			\end{scope}
+		\end{tikzpicture}
+		\caption{}
+		\label{fig:All_V_Profiles}
+	\end{center}
+\end{figure*}
+
+
+
 
 \bibliography{MyCollection}
 \bibliographystyle{unsrt}
@@ -1001,3 +1067,73 @@ All the figures of the atomic configurations where generated using the software 
 %git add -A
 %git commit
 %git push origin master
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Supplementary Information}
+
+\subsubsection{Segmental Orientation}
+
+Particle models like MD allow to measure orientation of polymer segments explicitly by taking the orientation of a bond as a segment orientation. The segmental orientation \cite{Monnerie1983,Erman1985,Besbes1992} of the fluid in terms of the second Legendre polynomial $\left(P_2\right)$ is defined as:
+
+\begin{equation}\label{eq:P_2}
+\left\langle P_2 \right\rangle =\frac{3\left\langle \cos ^2 \alpha \right\rangle - 1}{2},
+\end{equation}
+
+where $\alpha$ is the angle between a chain segment and a reference axis. In practice, $\left\langle \cos ^2 \alpha \right\rangle$ is calculated in the following way:
+
+\begin{equation}
+\left\langle \cos ^2 \alpha \right\rangle = \frac{1}{N_\text{bonds}} \sum_{b=1}^{N_\text{bonds}} \left(\frac{\textbf{r}^b_{ij}}{r^b_{ij}} \cdot \mathbf{\hat \imath} \right)^2
+\end{equation}
+
+ in which $N_\text{bonds}$ is the total number of bonds, $\textbf{r}^b_{ij}$ is the difference between the positions of the two beads that form the bond $b$, and $\mathbf{\hat \imath}$ is the direction of the main axis. 
+ 
+ In this work we are interested in  the changes of the orientation in the shearing direction, so we will only focus on  the segmental orientation with respect to $x$ projected in the $xz$ plane: $P_{2}^{xz}$. Note that, by definition,  if all the chains are parallel to the shearing direction $\langle P_{2}^{xz}\rangle=1 $; if all the chains are perpendicular to the surfaces   $\langle P_{2}^{xz} \rangle=-0.5$, and, interestingly, if all the chains are oriented at  \SI{45}{\degree} or if they are randomly oriented $\langle P_{2}^{xz}\rangle=0.25 $
+ 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsubsection{Mean squared end-to-end distance}
+
+The  squared end-to-end distance  of a single polymer chain is defined as the square  of the magnitude of  the vector that points from one end of a polymer to the other end. for a system containing several polymer chains, the mean squared end-to-end distance $\left(\left< R^2 \right>\right)$ is given by the following equation \cite{Brown1994}:
+
+\begin{equation}
+	\left< R^2 \right> = \left<\left( \mathbf{r}_1 - \mathbf{r}_N \right)^2\right>
+	\label{eq:e2e2}
+\end{equation}
+
+where, for each polymer chain,  $N$ is the number of atoms and  $ \mathbf{r}_i$ is the position vector of atom $i$. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsubsection{Mean squared radius of gyration}
+
+The mean squared radius of gyration $\left(\left< S^2 \right>\right)$  is the average squared distance of each atom in the polymer chain  from its centre of mass, as defined in the following equation\cite{Brown1994}:
+
+\begin{equation}
+	\left< S^2 \right> = \frac{\left< \sum_{i=1}^{N}  \left ( \lVert \mathbf{r}_i - \mathbf{r}_{\text{com}} \rVert \right)^2 \right>}{N}
+\end{equation}
+
+where, for each polymer chain,  $N$ is the number of atoms, $ \mathbf{r}_i$ is the position vector of atom $i$  and $\mathbf{r}_{\text{com}}$ is the centre of mass. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsubsection{Mean squared displacement}
+
+The mean squared displacement (MSD) of an atom  is a measure of the deviation between its  current  and its initial position. For a material block consisting of several atoms, the  MSD averaged over the number of atoms  $\left(N\right)$ can be used to quantify  diffusion. The MSD is defined as:
+
+\begin{equation}
+	\text{MSD} = \frac{1}{N}\sum_{i=1}^{N} \left( \mathbf{r}_i\left(t\right)-\mathbf{r}_i\left(0\right)\right)^2
+\end{equation}
+
+where   $\mathbf{r}_i\left(t\right)$ is a vector containing the coordinates of atom $i$ at time $t$.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsubsection{Temperature}
+
+As common in NEMD simualtions, the temperature of the lubricant is calculated via the kinetic energy of the atoms but excluding the velocity component in the direction of sliding (x) to avoid contributions that are not related to the thermal vibration of the atoms. The measurements are averaged every 100 steps to damp the fluctuations that are characteristic of the relatively small system size.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
