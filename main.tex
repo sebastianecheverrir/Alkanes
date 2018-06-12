@@ -447,68 +447,70 @@ Longer chains tend be more aligned with the shearing direction, whereas the chai
     	\begin{center}
 		\begin{gnuplot}[terminal=pdf, terminaloptions={size \SERFigwidth cm, \SERFigheight cm color solid}]
 			set key above
-			set xlabel  "x Velocity $\\left[ \\SI{}{\\meter\\per\\second} \\right]$"  
+			set xlabel  "$\\dot{\\gamma} \\, \\left[ \\SI{}{\\per\\second} \\right]$"  
 			set ylabel "$\\left<P_{2}^{xz}\\right>$"
 			set key noautotitle
-			p [:110][]	'Data/Shear/Compiled_e2e2_v.plot8.plot' i 0 u ($3):($8):($9) w errorbars  title "$\\SI{0.5}{\\giga\\pascal}$" lt 1 lc 0 ps 1,\
-					'Data/Shear/Compiled_e2e2_v.plot8.plot' i 1 u ($3):($8):($9) w errorbars title  "$\\SI{1.0}{\\giga\\pascal}$" lt 2 lc 0 ps 1,\
-					'Data/Shear/Compiled_e2e2_v.plot8.plot' i 1 u ($3):($8) w l notitle lt 2 lc 1  lw 2 ,\
-					'Data/Shear/Compiled_e2e2_v.plot8.plot' i 2 u ($3):($8):($9) w errorbars title  "$\\SI{1.5}{\\giga\\pascal}$" lt 3 lc 0 ps 1,\
-					'Data/Shear/Compiled_e2e2_v.plot8.plot' i 2 u ($3):($8) w l notitle lt 3 lc 1 lw 2 ,\
-					'Data/Shear/Compiled_e2e2_v.plot8.plot' i 3 u ($3):($8):($9) w errorbars notitle lt 1 lc 0 ps 1 ,\
-					'Data/Shear/Compiled_e2e2_v.plot8.plot' i 0 u ($3):($8) w l title "C16" lt 1 lc 1 lw 2 ,\
-					'Data/Shear/Compiled_e2e2_v.plot8.plot' i 3 u ($3):($8) w l title "C30" lt 1 lc 2 lw 2 ,\				
-					'Data/Shear/Compiled_e2e2_v.plot8.plot' i 4 u ($3):($8) w l notitle lt 2 lc 2 lw 2 ,\
-					'Data/Shear/Compiled_e2e2_v.plot8.plot' i 4 u ($3):($8):($9) w errorbars notitle lt 2 lc 0 ps 1,\
-					'Data/Shear/Compiled_e2e2_v.plot8.plot' i 5 u ($3):($8) w l notitle lt 3 lc 2 lw 2 ,\
-					'Data/Shear/Compiled_e2e2_v.plot8.plot' i 5 u ($3):($8):($9) w errorbars notitle lt 3 lc 0 ps 1 ,\
-					'Data/Shear/Compiled_e2e2_v.plot8.plot' i 6 u ($3):($8):($9) w errorbars notitle lt 1 lc 0 ps 1 ,\
-					'Data/Shear/Compiled_e2e2_v.plot8.plot' i 6 u ($3):($8) w l title 'C60' lt 1 lc 3 lw 2 ,\				
-					'Data/Shear/Compiled_e2e2_v.plot8.plot' i 7 u ($3):($8) w l notitle  lt 2 lc 3 lw 2 ,\
-					'Data/Shear/Compiled_e2e2_v.plot8.plot' i 7 u ($3):($8):($9) w errorbars notitle  lt 2 lc 0 ps 1,\
-					'Data/Shear/Compiled_e2e2_v.plot8.plot' i 8 u ($3):($8) w l notitle  lt 3 lc 3 lw 2 ,\
-					'Data/Shear/Compiled_e2e2_v.plot8.plot' i 8 u ($3):($8):($9) w errorbars notitle  lt 3 lc 0 ps 1,\
+			set format x  '$10^{%L}$' 
+			set logscale x
+			p [:2e10][]	'Data/Shear/Compiled_e2e2_v.plot8.plot' i 0 u ($3/($12*1e-10)):($8) title "$\\SI{0.5}{\\giga\\pascal}$" lt 1 lc 0 ps 1,\
+					'Data/Shear/Compiled_e2e2_v.plot8.plot' i 1 u ($3/($12*1e-10)):($8) title  "$\\SI{1.0}{\\giga\\pascal}$" lt 2 lc 0 ps 1,\
+					'Data/Shear/Compiled_e2e2_v.plot8.plot' i 1 u ($3/($12*1e-10)):($8) w l notitle lt 2 lc 1  lw 2 ,\
+					'Data/Shear/Compiled_e2e2_v.plot8.plot' i 2 u ($3/($12*1e-10)):($8) title  "$\\SI{1.5}{\\giga\\pascal}$" lt 3 lc 0 ps 1,\
+					'Data/Shear/Compiled_e2e2_v.plot8.plot' i 2 u ($3/($12*1e-10)):($8) w l notitle lt 3 lc 1 lw 2 ,\
+					'Data/Shear/Compiled_e2e2_v.plot8.plot' i 3 u ($3/($12*1e-10)):($8) notitle lt 1 lc 0 ps 1 ,\
+					'Data/Shear/Compiled_e2e2_v.plot8.plot' i 0 u ($3/($12*1e-10)):($8) w l title "C16" lt 1 lc 1 lw 2 ,\
+					'Data/Shear/Compiled_e2e2_v.plot8.plot' i 3 u ($3/($12*1e-10)):($8) w l title "C30" lt 1 lc 2 lw 2 ,\				
+					'Data/Shear/Compiled_e2e2_v.plot8.plot' i 4 u ($3/($12*1e-10)):($8) w l notitle lt 2 lc 2 lw 2 ,\
+					'Data/Shear/Compiled_e2e2_v.plot8.plot' i 4 u ($3/($12*1e-10)):($8) notitle lt 2 lc 0 ps 1,\
+					'Data/Shear/Compiled_e2e2_v.plot8.plot' i 5 u ($3/($12*1e-10)):($8) w l notitle lt 3 lc 2 lw 2 ,\
+					'Data/Shear/Compiled_e2e2_v.plot8.plot' i 5 u ($3/($12*1e-10)):($8) notitle lt 3 lc 0 ps 1 ,\
+					'Data/Shear/Compiled_e2e2_v.plot8.plot' i 6 u ($3/($12*1e-10)):($8) notitle lt 1 lc 0 ps 1 ,\
+					'Data/Shear/Compiled_e2e2_v.plot8.plot' i 6 u ($3/($12*1e-10)):($8) w l title 'C60' lt 1 lc 3 lw 2 ,\				
+					'Data/Shear/Compiled_e2e2_v.plot8.plot' i 7 u ($3/($12*1e-10)):($8) w l notitle  lt 2 lc 3 lw 2 ,\
+					'Data/Shear/Compiled_e2e2_v.plot8.plot' i 7 u ($3/($12*1e-10)):($8) notitle  lt 2 lc 0 ps 1,\
+					'Data/Shear/Compiled_e2e2_v.plot8.plot' i 8 u ($3/($12*1e-10)):($8) w l notitle  lt 3 lc 3 lw 2 ,\
+					'Data/Shear/Compiled_e2e2_v.plot8.plot' i 8 u ($3/($12*1e-10)):($8) notitle  lt 3 lc 0 ps 1,\
 		\end{gnuplot}
-		\caption{Average segmental orientation as a function of the shearing velocity measured after reaching steady state.}
+		\caption{Average segmental orientation as a function of the shear rate $\left( \dot{\gamma} \right)$ measured after reaching steady state. Error bars, calculated from the standard deviation between the trajectory time-averages, are omitted for clarity, but are of a similar size to the symbols.}
 		\label{fig:P2_v}
 	\end{center}
  \end{figure}
 
 \subsection{Friction}
 
-\pgfmathsetmacro{\SERFigwidth}{.035\linewidth}
-\pgfmathsetmacro{\SERFigheight}{.026\linewidth}
-\begin{figure}
-    	\begin{center}
-		\begin{gnuplot}[terminal=pdf, terminaloptions={size \SERFigwidth cm, \SERFigheight cm color solid}]
-			set key above
-			set xlabel  "x Velocity $\\left[ \\SI{}{\\meter\\per\\second} \\right]$"  
-			set ylabel "$F_L \\, [\\SI{}{\\mega\\pascal}]$"
-			set ytics 20,20,120
-			set key noautotitle
-			p [:110][15:125]	'Data/Shear/Compiled_e2e2_v.plot8.plot' i 0 u ($3):($4/10):($5/10) w p title "$\\SI{0.5}{\\giga\\pascal}$" lt 1 lc 0 ps 1,\
-				'Data/Shear/Compiled_e2e2_v.plot8.plot' i 1 u ($3):($4/10):($5/10) w p title  "$\\SI{1.0}{\\giga\\pascal}$" lt 2 lc 0 ps 1,\
-				'Data/Shear/Compiled_e2e2_v.plot8.plot' i 1 u ($3):($4/10) w l notitle lt 2 lc 1  lw 2 ,\
-				'Data/Shear/Compiled_e2e2_v.plot8.plot' i 2 u ($3):($4/10):($5/10) w p title  "$\\SI{1.5}{\\giga\\pascal}$" lt 3 lc 0 ps 1,\
-				'Data/Shear/Compiled_e2e2_v.plot8.plot' i 2 u ($3):($4/10) w l notitle lt 3 lc 1 lw 2 ,\
-				'Data/Shear/Compiled_e2e2_v.plot8.plot' i 3 u ($3):($4/10):($5/10) w p notitle lt 1 lc 0 ps 1 ,\
-				'Data/Shear/Compiled_e2e2_v.plot8.plot' i 0 u ($3):($4/10) w l title "C16" lt 1 lc 1 lw 2 ,\
-				'Data/Shear/Compiled_e2e2_v.plot8.plot' i 3 u ($3):($4/10) w l title "C30" lt 1 lc 2 lw 2 ,\				
-				'Data/Shear/Compiled_e2e2_v.plot8.plot' i 4 u ($3):($4/10) w l notitle lt 2 lc 2 lw 2 ,\
-				'Data/Shear/Compiled_e2e2_v.plot8.plot' i 4 u ($3):($4/10):($5/10) w p notitle lt 2 lc 0 ps 1,\
-				'Data/Shear/Compiled_e2e2_v.plot8.plot' i 5 u ($3):($4/10) w l notitle lt 3 lc 2 lw 2 ,\
-				'Data/Shear/Compiled_e2e2_v.plot8.plot' i 5 u ($3):($4/10):($5/10) w p notitle lt 3 lc 0 ps 1 ,\
-				'Data/Shear/Compiled_e2e2_v.plot8.plot' i 6 u ($3):($4/10):($5/10) w p notitle lt 1 lc 0 ps 1 ,\
-				'Data/Shear/Compiled_e2e2_v.plot8.plot' i 6 u ($3):($4/10) w l title 'C60' lt 1 lc 3 lw 2 ,\				
-				'Data/Shear/Compiled_e2e2_v.plot8.plot' i 7 u ($3):($4/10) w l notitle  lt 2 lc 3 lw 2 ,\
-				'Data/Shear/Compiled_e2e2_v.plot8.plot' i 7 u ($3):($4/10):($5/10) w p notitle  lt 2 lc 0 ps 1,\
-				'Data/Shear/Compiled_e2e2_v.plot8.plot' i 8 u ($3):($4/10) w l notitle  lt 3 lc 3 lw 2 ,\
-				'Data/Shear/Compiled_e2e2_v.plot8.plot' i 8 u ($3):($4/10):($5/10) w p notitle  lt 3 lc 0 ps 1,\
-		\end{gnuplot}
-		\caption{Lateral (friction) force as a function of the shearing velocity measured after reaching steady state. Error bars, calculated from the standard deviation between the trajectory time-averages, are omitted for clarity, but are of a similar size to the symbols.}
-		\label{fig:FL_v1}
-	\end{center}
- \end{figure}
+% \pgfmathsetmacro{\SERFigwidth}{.035\linewidth}
+% \pgfmathsetmacro{\SERFigheight}{.026\linewidth}
+% \begin{figure}
+%     	\begin{center}
+% 		\begin{gnuplot}[terminal=pdf, terminaloptions={size \SERFigwidth cm, \SERFigheight cm color solid}]
+% 			set key above
+% 			set xlabel  "x Velocity $\\left[ \\SI{}{\\meter\\per\\second} \\right]$"  
+% 			set ylabel "$F_L \\, [\\SI{}{\\mega\\pascal}]$"
+% 			set ytics 20,20,120
+% 			set key noautotitle
+% 			p [:110][15:125]	'Data/Shear/Compiled_e2e2_v.plot8.plot' i 0 u ($3):($4/10):($5/10) w p title "$\\SI{0.5}{\\giga\\pascal}$" lt 1 lc 0 ps 1,\
+% 				'Data/Shear/Compiled_e2e2_v.plot8.plot' i 1 u ($3):($4/10):($5/10) w p title  "$\\SI{1.0}{\\giga\\pascal}$" lt 2 lc 0 ps 1,\
+% 				'Data/Shear/Compiled_e2e2_v.plot8.plot' i 1 u ($3):($4/10) w l notitle lt 2 lc 1  lw 2 ,\
+% 				'Data/Shear/Compiled_e2e2_v.plot8.plot' i 2 u ($3):($4/10):($5/10) w p title  "$\\SI{1.5}{\\giga\\pascal}$" lt 3 lc 0 ps 1,\
+% 				'Data/Shear/Compiled_e2e2_v.plot8.plot' i 2 u ($3):($4/10) w l notitle lt 3 lc 1 lw 2 ,\
+% 				'Data/Shear/Compiled_e2e2_v.plot8.plot' i 3 u ($3):($4/10):($5/10) w p notitle lt 1 lc 0 ps 1 ,\
+% 				'Data/Shear/Compiled_e2e2_v.plot8.plot' i 0 u ($3):($4/10) w l title "C16" lt 1 lc 1 lw 2 ,\
+% 				'Data/Shear/Compiled_e2e2_v.plot8.plot' i 3 u ($3):($4/10) w l title "C30" lt 1 lc 2 lw 2 ,\				
+% 				'Data/Shear/Compiled_e2e2_v.plot8.plot' i 4 u ($3):($4/10) w l notitle lt 2 lc 2 lw 2 ,\
+% 				'Data/Shear/Compiled_e2e2_v.plot8.plot' i 4 u ($3):($4/10):($5/10) w p notitle lt 2 lc 0 ps 1,\
+% 				'Data/Shear/Compiled_e2e2_v.plot8.plot' i 5 u ($3):($4/10) w l notitle lt 3 lc 2 lw 2 ,\
+% 				'Data/Shear/Compiled_e2e2_v.plot8.plot' i 5 u ($3):($4/10):($5/10) w p notitle lt 3 lc 0 ps 1 ,\
+% 				'Data/Shear/Compiled_e2e2_v.plot8.plot' i 6 u ($3):($4/10):($5/10) w p notitle lt 1 lc 0 ps 1 ,\
+% 				'Data/Shear/Compiled_e2e2_v.plot8.plot' i 6 u ($3):($4/10) w l title 'C60' lt 1 lc 3 lw 2 ,\				
+% 				'Data/Shear/Compiled_e2e2_v.plot8.plot' i 7 u ($3):($4/10) w l notitle  lt 2 lc 3 lw 2 ,\
+% 				'Data/Shear/Compiled_e2e2_v.plot8.plot' i 7 u ($3):($4/10):($5/10) w p notitle  lt 2 lc 0 ps 1,\
+% 				'Data/Shear/Compiled_e2e2_v.plot8.plot' i 8 u ($3):($4/10) w l notitle  lt 3 lc 3 lw 2 ,\
+% 				'Data/Shear/Compiled_e2e2_v.plot8.plot' i 8 u ($3):($4/10):($5/10) w p notitle  lt 3 lc 0 ps 1,\
+% 		\end{gnuplot}
+% 		\caption{Lateral (friction) force as a function of the shearing velocity measured after reaching steady state. Error bars, calculated from the standard deviation between the trajectory time-averages, are omitted for clarity, but are of a similar size to the symbols.}
+% 		\label{fig:FL_v1}
+% 	\end{center}
+%  \end{figure}
 
 \pgfmathsetmacro{\SERFigwidth}{.035\linewidth}
 \pgfmathsetmacro{\SERFigheight}{.026\linewidth}
@@ -546,39 +548,39 @@ Longer chains tend be more aligned with the shearing direction, whereas the chai
 	\end{center}
  \end{figure}
 
-\pgfmathsetmacro{\SERFigwidth}{.035\linewidth}
-\pgfmathsetmacro{\SERFigheight}{.026\linewidth}
-\begin{figure}
-    	\begin{center}
-		\begin{gnuplot}[terminal=pdf, terminaloptions={size \SERFigwidth cm, \SERFigheight cm color solid}]
-			set key above
-			set xlabel  "x Velocity $\\left[ \\SI{}{\\meter\\per\\second} \\right]$"  
-			set ytics 0.04,0.01,0.08
-			set ylabel "$\\mu$"
-			set key noautotitle
-			p [:110][0.038:0.082]	'Data/Shear/Compiled_e2e2_v.plot8.plot' i 0 u ($3):(($4/10)/($2*1000)) w p title "$\\SI{0.5}{\\giga\\pascal}$" lt 1 lc 0 ps 1,\
-			        	'Data/Shear/Compiled_e2e2_v.plot8.plot' i 1 u ($3):(($4/10)/($2*1000)) w p title  "$\\SI{1.0}{\\giga\\pascal}$" lt 2 lc 0 ps 1,\
-			        	'Data/Shear/Compiled_e2e2_v.plot8.plot' i 1 u ($3):(($4/10)/($2*1000)) w l notitle lt 2 lc 1  lw 2 ,\
-			        	'Data/Shear/Compiled_e2e2_v.plot8.plot' i 2 u ($3):(($4/10)/($2*1000)) w p title  "$\\SI{1.5}{\\giga\\pascal}$" lt 3 lc 0 ps 1,\
-			        	'Data/Shear/Compiled_e2e2_v.plot8.plot' i 2 u ($3):(($4/10)/($2*1000)) w l notitle lt 3 lc 1 lw 2 ,\
-			        	'Data/Shear/Compiled_e2e2_v.plot8.plot' i 3 u ($3):(($4/10)/($2*1000)) w p notitle lt 1 lc 0 ps 1 ,\
-        				'Data/Shear/Compiled_e2e2_v.plot8.plot' i 0 u ($3):(($4/10)/($2*1000)) w l title "C16" lt 1 lc 1 lw 2 ,\
-		        		'Data/Shear/Compiled_e2e2_v.plot8.plot' i 3 u ($3):(($4/10)/($2*1000)) w l title "C30" lt 1 lc 2 lw 2 ,\				
-				        'Data/Shear/Compiled_e2e2_v.plot8.plot' i 4 u ($3):(($4/10)/($2*1000)) w l notitle lt 2 lc 2 lw 2 ,\
-				        'Data/Shear/Compiled_e2e2_v.plot8.plot' i 4 u ($3):(($4/10)/($2*1000)) w p notitle lt 2 lc 0 ps 1,\
-        				'Data/Shear/Compiled_e2e2_v.plot8.plot' i 5 u ($3):(($4/10)/($2*1000)) w l notitle lt 3 lc 2 lw 2 ,\
-		        		'Data/Shear/Compiled_e2e2_v.plot8.plot' i 5 u ($3):(($4/10)/($2*1000)) w p notitle lt 3 lc 0 ps 1 ,\
-				        'Data/Shear/Compiled_e2e2_v.plot8.plot' i 6 u ($3):(($4/10)/($2*1000)) w p notitle lt 1 lc 0 ps 1 ,\
-        				'Data/Shear/Compiled_e2e2_v.plot8.plot' i 6 u ($3):(($4/10)/($2*1000)) w l title 'C60' lt 1 lc 3 lw 2 ,\				
-		        		'Data/Shear/Compiled_e2e2_v.plot8.plot' i 7 u ($3):(($4/10)/($2*1000)) w l notitle  lt 2 lc 3 lw 2 ,\
-				        'Data/Shear/Compiled_e2e2_v.plot8.plot' i 7 u ($3):(($4/10)/($2*1000)) w p notitle  lt 2 lc 0 ps 1,\
-        	   			'Data/Shear/Compiled_e2e2_v.plot8.plot' i 8 u ($3):(($4/10)/($2*1000)) w l notitle  lt 3 lc 3 lw 2 ,\
-			        	'Data/Shear/Compiled_e2e2_v.plot8.plot' i 8 u ($3):(($4/10)/($2*1000)) w p notitle  lt 3 lc 0 ps 1,\
-		\end{gnuplot}
-		\caption{Friction coefficient $\mu$ as a function of the shearing velocity measured after reaching steady state.}
-		\label{fig:FL_v}
-	\end{center}
- \end{figure}
+% \pgfmathsetmacro{\SERFigwidth}{.035\linewidth}
+% \pgfmathsetmacro{\SERFigheight}{.026\linewidth}
+% \begin{figure}
+%     	\begin{center}
+% 		\begin{gnuplot}[terminal=pdf, terminaloptions={size \SERFigwidth cm, \SERFigheight cm color solid}]
+% 			set key above
+% 			set xlabel  "x Velocity $\\left[ \\SI{}{\\meter\\per\\second} \\right]$"  
+% 			set ytics 0.04,0.01,0.08
+% 			set ylabel "$\\mu$"
+% 			set key noautotitle
+% 			p [:110][0.038:0.082]	'Data/Shear/Compiled_e2e2_v.plot8.plot' i 0 u ($3):(($4/10)/($2*1000)) w p title "$\\SI{0.5}{\\giga\\pascal}$" lt 1 lc 0 ps 1,\
+% 			        	'Data/Shear/Compiled_e2e2_v.plot8.plot' i 1 u ($3):(($4/10)/($2*1000)) w p title  "$\\SI{1.0}{\\giga\\pascal}$" lt 2 lc 0 ps 1,\
+% 			        	'Data/Shear/Compiled_e2e2_v.plot8.plot' i 1 u ($3):(($4/10)/($2*1000)) w l notitle lt 2 lc 1  lw 2 ,\
+% 			        	'Data/Shear/Compiled_e2e2_v.plot8.plot' i 2 u ($3):(($4/10)/($2*1000)) w p title  "$\\SI{1.5}{\\giga\\pascal}$" lt 3 lc 0 ps 1,\
+% 			        	'Data/Shear/Compiled_e2e2_v.plot8.plot' i 2 u ($3):(($4/10)/($2*1000)) w l notitle lt 3 lc 1 lw 2 ,\
+% 			        	'Data/Shear/Compiled_e2e2_v.plot8.plot' i 3 u ($3):(($4/10)/($2*1000)) w p notitle lt 1 lc 0 ps 1 ,\
+%         				'Data/Shear/Compiled_e2e2_v.plot8.plot' i 0 u ($3):(($4/10)/($2*1000)) w l title "C16" lt 1 lc 1 lw 2 ,\
+% 		        		'Data/Shear/Compiled_e2e2_v.plot8.plot' i 3 u ($3):(($4/10)/($2*1000)) w l title "C30" lt 1 lc 2 lw 2 ,\				
+% 				        'Data/Shear/Compiled_e2e2_v.plot8.plot' i 4 u ($3):(($4/10)/($2*1000)) w l notitle lt 2 lc 2 lw 2 ,\
+% 				        'Data/Shear/Compiled_e2e2_v.plot8.plot' i 4 u ($3):(($4/10)/($2*1000)) w p notitle lt 2 lc 0 ps 1,\
+%         				'Data/Shear/Compiled_e2e2_v.plot8.plot' i 5 u ($3):(($4/10)/($2*1000)) w l notitle lt 3 lc 2 lw 2 ,\
+% 		        		'Data/Shear/Compiled_e2e2_v.plot8.plot' i 5 u ($3):(($4/10)/($2*1000)) w p notitle lt 3 lc 0 ps 1 ,\
+% 				        'Data/Shear/Compiled_e2e2_v.plot8.plot' i 6 u ($3):(($4/10)/($2*1000)) w p notitle lt 1 lc 0 ps 1 ,\
+%         				'Data/Shear/Compiled_e2e2_v.plot8.plot' i 6 u ($3):(($4/10)/($2*1000)) w l title 'C60' lt 1 lc 3 lw 2 ,\				
+% 		        		'Data/Shear/Compiled_e2e2_v.plot8.plot' i 7 u ($3):(($4/10)/($2*1000)) w l notitle  lt 2 lc 3 lw 2 ,\
+% 				        'Data/Shear/Compiled_e2e2_v.plot8.plot' i 7 u ($3):(($4/10)/($2*1000)) w p notitle  lt 2 lc 0 ps 1,\
+%         	   			'Data/Shear/Compiled_e2e2_v.plot8.plot' i 8 u ($3):(($4/10)/($2*1000)) w l notitle  lt 3 lc 3 lw 2 ,\
+% 			        	'Data/Shear/Compiled_e2e2_v.plot8.plot' i 8 u ($3):(($4/10)/($2*1000)) w p notitle  lt 3 lc 0 ps 1,\
+% 		\end{gnuplot}
+% 		\caption{Friction coefficient $\mu$ as a function of the shearing velocity measured after reaching steady state.}
+% 		\label{fig:FL_v}
+% 	\end{center}
+%  \end{figure}
 
 \pgfmathsetmacro{\SERFigwidth}{.035\linewidth}
 \pgfmathsetmacro{\SERFigheight}{.026\linewidth}
@@ -677,40 +679,40 @@ Generally, the friction coefficients observed are very high compared to previous
 
 Moreover, the friction coefficients for n-hexadecane are higher than in previous simulations of thinner films under the same pressures\cite{Ta2017}. The main reason for this is that boundary slip occurred in the thin films while it does not occur for C16 here.
 
-\pgfmathsetmacro{\SERFigwidth}{.035\linewidth}
-\pgfmathsetmacro{\SERFigheight}{.026\linewidth}
-\begin{figure}
-    	\begin{center}
-		\begin{gnuplot}[terminal=pdf, terminaloptions={size \SERFigwidth cm, \SERFigheight cm color solid}]
-			set key above
-			set xlabel  "$\\dot{\\gamma} \\, \\left[ \\SI{}{\\per\\second} \\right]$"  
-			set ylabel "$T \\, [\\SI{}{\\kelvin}]$"
-			set format x  '$10^{%L}$' 
-			set key noautotitle
-			set logscale x
-			p [:2e10][]	'Data/Shear/Compiled_e2e2_v.plot8.plot' i 0 u ($3/($12*1e-10)):($10) w p title "$\\SI{0.5}{\\giga\\pascal}$" lt 1 lc 0 ps 1,\
-					'Data/Shear/Compiled_e2e2_v.plot8.plot' i 1 u ($3/($12*1e-10)):($10) w p title  "$\\SI{1.0}{\\giga\\pascal}$" lt 2 lc 0 ps 1,\
-					'Data/Shear/Compiled_e2e2_v.plot8.plot' i 1 u ($3/($12*1e-10)):($10) w l notitle lt 2 lc 1  lw 2 ,\
-					'Data/Shear/Compiled_e2e2_v.plot8.plot' i 2 u ($3/($12*1e-10)):($10) w p title  "$\\SI{1.5}{\\giga\\pascal}$" lt 3 lc 0 ps 1,\
-					'Data/Shear/Compiled_e2e2_v.plot8.plot' i 2 u ($3/($12*1e-10)):($10) w l notitle lt 3 lc 1 lw 2 ,\
-					'Data/Shear/Compiled_e2e2_v.plot8.plot' i 3 u ($3/($12*1e-10)):($10) w p notitle lt 1 lc 0 ps 1 ,\
-					'Data/Shear/Compiled_e2e2_v.plot8.plot' i 0 u ($3/($12*1e-10)):($10) w l title "C16" lt 1 lc 1 lw 2 ,\
-					'Data/Shear/Compiled_e2e2_v.plot8.plot' i 3 u ($3/($12*1e-10)):($10) w l title "C30" lt 1 lc 2 lw 2 ,\				
-					'Data/Shear/Compiled_e2e2_v.plot8.plot' i 4 u ($3/($12*1e-10)):($10) w l notitle lt 2 lc 2 lw 2 ,\
-					'Data/Shear/Compiled_e2e2_v.plot8.plot' i 4 u ($3/($12*1e-10)):($10) w p notitle lt 2 lc 0 ps 1,\
-					'Data/Shear/Compiled_e2e2_v.plot8.plot' i 5 u ($3/($12*1e-10)):($10) w l notitle lt 3 lc 2 lw 2 ,\
-					'Data/Shear/Compiled_e2e2_v.plot8.plot' i 5 u ($3/($12*1e-10)):($10) w p notitle lt 3 lc 0 ps 1 ,\
-					'Data/Shear/Compiled_e2e2_v.plot8.plot' i 6 u ($3/($12*1e-10)):($10) w p notitle lt 1 lc 0 ps 1 ,\
-					'Data/Shear/Compiled_e2e2_v.plot8.plot' i 6 u ($3/($12*1e-10)):($10) w l title 'C60' lt 1 lc 3 lw 2 ,\				
-					'Data/Shear/Compiled_e2e2_v.plot8.plot' i 7 u ($3/($12*1e-10)):($10) w l notitle  lt 2 lc 3 lw 2 ,\
-					'Data/Shear/Compiled_e2e2_v.plot8.plot' i 7 u ($3/($12*1e-10)):($10) w p notitle  lt 2 lc 0 ps 1,\
-					'Data/Shear/Compiled_e2e2_v.plot8.plot' i 8 u ($3/($12*1e-10)):($10) w l notitle  lt 3 lc 3 lw 2 ,\
-					'Data/Shear/Compiled_e2e2_v.plot8.plot' i 8 u ($3/($12*1e-10)):($10) w p notitle  lt 3 lc 0 ps 1,\
-		\end{gnuplot}
-		\caption{Temperature of the fluid region  as a function of the shear rate $\left( \dot{\gamma} \right)$ measured after reaching steady state. Error bars, calculated from the standard deviation between the trajectory time-averages, are omitted for clarity, but are of a similar size to the symbols.}
-		\label{fig:T_v}
-	\end{center}
- \end{figure}
+% \pgfmathsetmacro{\SERFigwidth}{.035\linewidth}
+% \pgfmathsetmacro{\SERFigheight}{.026\linewidth}
+% \begin{figure}
+%     	\begin{center}
+% 		\begin{gnuplot}[terminal=pdf, terminaloptions={size \SERFigwidth cm, \SERFigheight cm color solid}]
+% 			set key above
+% 			set xlabel  "$\\dot{\\gamma} \\, \\left[ \\SI{}{\\per\\second} \\right]$"  
+% 			set ylabel "$T \\, [\\SI{}{\\kelvin}]$"
+% 			set format x  '$10^{%L}$' 
+% 			set key noautotitle
+% 			set logscale x
+% 			p [:2e10][]	'Data/Shear/Compiled_e2e2_v.plot8.plot' i 0 u ($3/($12*1e-10)):($10) w p title "$\\SI{0.5}{\\giga\\pascal}$" lt 1 lc 0 ps 1,\
+% 					'Data/Shear/Compiled_e2e2_v.plot8.plot' i 1 u ($3/($12*1e-10)):($10) w p title  "$\\SI{1.0}{\\giga\\pascal}$" lt 2 lc 0 ps 1,\
+% 					'Data/Shear/Compiled_e2e2_v.plot8.plot' i 1 u ($3/($12*1e-10)):($10) w l notitle lt 2 lc 1  lw 2 ,\
+% 					'Data/Shear/Compiled_e2e2_v.plot8.plot' i 2 u ($3/($12*1e-10)):($10) w p title  "$\\SI{1.5}{\\giga\\pascal}$" lt 3 lc 0 ps 1,\
+% 					'Data/Shear/Compiled_e2e2_v.plot8.plot' i 2 u ($3/($12*1e-10)):($10) w l notitle lt 3 lc 1 lw 2 ,\
+% 					'Data/Shear/Compiled_e2e2_v.plot8.plot' i 3 u ($3/($12*1e-10)):($10) w p notitle lt 1 lc 0 ps 1 ,\
+% 					'Data/Shear/Compiled_e2e2_v.plot8.plot' i 0 u ($3/($12*1e-10)):($10) w l title "C16" lt 1 lc 1 lw 2 ,\
+% 					'Data/Shear/Compiled_e2e2_v.plot8.plot' i 3 u ($3/($12*1e-10)):($10) w l title "C30" lt 1 lc 2 lw 2 ,\				
+% 					'Data/Shear/Compiled_e2e2_v.plot8.plot' i 4 u ($3/($12*1e-10)):($10) w l notitle lt 2 lc 2 lw 2 ,\
+% 					'Data/Shear/Compiled_e2e2_v.plot8.plot' i 4 u ($3/($12*1e-10)):($10) w p notitle lt 2 lc 0 ps 1,\
+% 					'Data/Shear/Compiled_e2e2_v.plot8.plot' i 5 u ($3/($12*1e-10)):($10) w l notitle lt 3 lc 2 lw 2 ,\
+% 					'Data/Shear/Compiled_e2e2_v.plot8.plot' i 5 u ($3/($12*1e-10)):($10) w p notitle lt 3 lc 0 ps 1 ,\
+% 					'Data/Shear/Compiled_e2e2_v.plot8.plot' i 6 u ($3/($12*1e-10)):($10) w p notitle lt 1 lc 0 ps 1 ,\
+% 					'Data/Shear/Compiled_e2e2_v.plot8.plot' i 6 u ($3/($12*1e-10)):($10) w l title 'C60' lt 1 lc 3 lw 2 ,\				
+% 					'Data/Shear/Compiled_e2e2_v.plot8.plot' i 7 u ($3/($12*1e-10)):($10) w l notitle  lt 2 lc 3 lw 2 ,\
+% 					'Data/Shear/Compiled_e2e2_v.plot8.plot' i 7 u ($3/($12*1e-10)):($10) w p notitle  lt 2 lc 0 ps 1,\
+% 					'Data/Shear/Compiled_e2e2_v.plot8.plot' i 8 u ($3/($12*1e-10)):($10) w l notitle  lt 3 lc 3 lw 2 ,\
+% 					'Data/Shear/Compiled_e2e2_v.plot8.plot' i 8 u ($3/($12*1e-10)):($10) w p notitle  lt 3 lc 0 ps 1,\
+% 		\end{gnuplot}
+% 		\caption{Temperature of the fluid region  as a function of the shear rate $\left( \dot{\gamma} \right)$ measured after reaching steady state. Error bars, calculated from the standard deviation between the trajectory time-averages, are omitted for clarity, but are of a similar size to the symbols.}
+% 		\label{fig:T_v}
+% 	\end{center}
+%  \end{figure}
  
  \pgfmathsetmacro{\SERFigwidth}{.035\linewidth}
 \pgfmathsetmacro{\SERFigheight}{.026\linewidth}
@@ -907,53 +909,53 @@ S.E.R. acknowledges the support of the European Commission through the Marie Cur
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{figure*}
-    	\begin{center}
-		\begin{tikzpicture}
-			\node[anchor=south west,inner sep=0] (fig_All_M_Profiles) at (0,0){\includegraphics[width=\textwidth]{Data/Images/All_M_Profiles.png}};
-			\begin{scope}[x={(fig_All_M_Profiles.south east)},y={(fig_All_M_Profiles.north west)}]
-			\end{scope}
-		\end{tikzpicture}
-		\caption{}
-		\label{fig:All_M_Profiles}
-	\end{center}
-\end{figure*}
+% \begin{figure*}
+%     	\begin{center}
+% 		\begin{tikzpicture}
+% 			\node[anchor=south west,inner sep=0] (fig_All_M_Profiles) at (0,0){\includegraphics[width=\textwidth]{Data/Images/All_M_Profiles.png}};
+% 			\begin{scope}[x={(fig_All_M_Profiles.south east)},y={(fig_All_M_Profiles.north west)}]
+% 			\end{scope}
+% 		\end{tikzpicture}
+% 		\caption{}
+% 		\label{fig:All_M_Profiles}
+% 	\end{center}
+% \end{figure*}
 
-\begin{figure*}
-    	\begin{center}
-		\begin{tikzpicture}
-			\node[anchor=south west,inner sep=0] (fig_All_RPF_Profiles) at (0,0){\includegraphics[width=\textwidth]{Data/Images/All_RPF_Profiles.png}};
-			\begin{scope}[x={(fig_All_RPF_Profiles.south east)},y={(fig_All_RPF_Profiles.north west)}]
-			\end{scope}
-		\end{tikzpicture}
-		\caption{}
-		\label{fig:All_RPF_Profiles}
-	\end{center}
-\end{figure*}
+% \begin{figure*}
+%     	\begin{center}
+% 		\begin{tikzpicture}
+% 			\node[anchor=south west,inner sep=0] (fig_All_RPF_Profiles) at (0,0){\includegraphics[width=\textwidth]{Data/Images/All_RPF_Profiles.png}};
+% 			\begin{scope}[x={(fig_All_RPF_Profiles.south east)},y={(fig_All_RPF_Profiles.north west)}]
+% 			\end{scope}
+% 		\end{tikzpicture}
+% 		\caption{}
+% 		\label{fig:All_RPF_Profiles}
+% 	\end{center}
+% \end{figure*}
 
-\begin{figure*}
-    	\begin{center}
-		\begin{tikzpicture}
-			\node[anchor=south west,inner sep=0] (fig_All_T_Profiles) at (0,0){\includegraphics[width=\textwidth]{Data/Images/All_T_Profiles.png}};
-			\begin{scope}[x={(fig_All_T_Profiles.south east)},y={(fig_All_T_Profiles.north west)}]
-			\end{scope}
-		\end{tikzpicture}
-		\caption{}
-		\label{fig:All_T_Profiles}
-	\end{center}
-\end{figure*}
+% \begin{figure*}
+%     	\begin{center}
+% 		\begin{tikzpicture}
+% 			\node[anchor=south west,inner sep=0] (fig_All_T_Profiles) at (0,0){\includegraphics[width=\textwidth]{Data/Images/All_T_Profiles.png}};
+% 			\begin{scope}[x={(fig_All_T_Profiles.south east)},y={(fig_All_T_Profiles.north west)}]
+% 			\end{scope}
+% 		\end{tikzpicture}
+% 		\caption{}
+% 		\label{fig:All_T_Profiles}
+% 	\end{center}
+% \end{figure*}
 
-\begin{figure*}
-    	\begin{center}
-		\begin{tikzpicture}
-			\node[anchor=south west,inner sep=0] (fig_All_V_Profiles) at (0,0){\includegraphics[width=\textwidth]{Data/Images/All_V_Profiles.png}};
-			\begin{scope}[x={(fig_All_V_Profiles.south east)},y={(fig_All_V_Profiles.north west)}]
-			\end{scope}
-		\end{tikzpicture}
-		\caption{}
-		\label{fig:All_V_Profiles}
-	\end{center}
-\end{figure*}
+% \begin{figure*}
+%     	\begin{center}
+% 		\begin{tikzpicture}
+% 			\node[anchor=south west,inner sep=0] (fig_All_V_Profiles) at (0,0){\includegraphics[width=\textwidth]{Data/Images/All_V_Profiles.png}};
+% 			\begin{scope}[x={(fig_All_V_Profiles.south east)},y={(fig_All_V_Profiles.north west)}]
+% 			\end{scope}
+% 		\end{tikzpicture}
+% 		\caption{}
+% 		\label{fig:All_V_Profiles}
+% 	\end{center}
+% \end{figure*}
 
 \appendix
 
