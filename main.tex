@@ -226,7 +226,7 @@ After the systems are properly equilibrated, the pressure was increased by givin
 
 For the compression and shearing stages, the temperature of the system is controlled (T = \SI{353}{\kelvin}) by a Langevin thermostat \cite{Schneider1978} with a damping constant of \SI{0.1}{\pico\second} acting only on the central surface atoms (\textit{thermostat} in Figure \ref{fig:Regions}). The thermostat was applied only in the direction perpendicular to both the sliding and compression (\emph{y}). This approach is known to be more physically accurate than applying the thermostat directly to the confined fluid, which has been shown to significantly affect its behaviour under sliding conditions \cite{Liem1992,Bernardi2010,Yong2013}.
 
-The compression phase is performed in two steps: first, the pressure is linearly incremented over \SI{10}{\nano\second} and then the target pressure is maintained for a further \SI{10}{\nano\second}. The density of the fluid region and the average pressure reach equilibrium well within the simulation time. The different final densities are presented in Table \ref{tab:rho} which correspond to the average density of the final \SI{1}{\nano\second} of the compression phase. In agreement with the available experimental data\cite{Griesbaum2000}, there is a clear increase in density with increasing alkane chain length as well as with increasing pressure.
+The compression phase is performed in two steps: first, the pressure is linearly incremented over \SI{10}{\nano\second} and then the target pressure is maintained for a further \SI{10}{\nano\second}. The density of the fluid region and the average pressure reach equilibrium well within the simulation time. The different final densities are presented in Table \ref{tab:rho} which correspond to the average density of the final \SI{1}{\nano\second} of the compression phase. In agreement with the available experimental data\cite{Griesbaum2000}, there is an increase in average density with increasing alkane chain length, as well as with increasing pressure.
 
 \begin{table}
 	\caption{Measured density values for confined alkanes  with three different chain lengths (C16, C30 and C60) at three different pressures (\SI{0.5}{\giga\pascal}, \SI{1.0}{\giga\pascal} and \SI{1.5}{\giga\pascal}).}   
@@ -330,7 +330,7 @@ To verify that a nonequilibrium steady state was reached, the evolution of the R
 \begin{figure}
     	\begin{center}
 		\begin{gnuplot}[terminal=pdf, terminaloptions={size \SERFigwidth cm, \SERFigheight cm color solid}]
-			set multiplot layout 4,1 rowsfirst
+			set multiplot layout 3,1 rowsfirst
 			set format x ' '
 			unset xlabel
 			set key top right
@@ -410,24 +410,24 @@ Longer chains will clearly have a larger $\left< R^2 \right> $, so to compare th
 			set key noautotitle
 			set format x  '$10^{%L}$' 
 			set logscale x
-			p [:2e10][0.28:0.601]	'Data/Shear/Compiled_e2e2_v.plot8.plot' i 0 u ($3/($12*1e-10)):($6/($1-1)**2):($7/($1-1)**2) w errorbars title "$\\SI{0.5}{\\giga\\pascal}$" lt 1 lc 0 ps 1,\
-				'Data/Shear/Compiled_e2e2_v.plot8.plot' i 1 u ($3/($12*1e-10)):($6/($1-1)**2):($7/($1-1)**2) w errorbars title  "$\\SI{1.0}{\\giga\\pascal}$" lt 2 lc 0 ps 1,\
+			p [:2e10][0.28:0.601]	'Data/Shear/Compiled_e2e2_v.plot8.plot' i 0 u ($3/($12*1e-10)):($6/($1-1)**2):($7/($1-1)**2)  title "$\\SI{0.5}{\\giga\\pascal}$" lt 1 lc 0 ps 1,\
+				'Data/Shear/Compiled_e2e2_v.plot8.plot' i 1 u ($3/($12*1e-10)):($6/($1-1)**2):($7/($1-1)**2)  title  "$\\SI{1.0}{\\giga\\pascal}$" lt 2 lc 0 ps 1,\
 				'Data/Shear/Compiled_e2e2_v.plot8.plot' i 1 u ($3/($12*1e-10)):($6/($1-1)**2) w l notitle lt 2 lc 1  lw 2 ,\
-				'Data/Shear/Compiled_e2e2_v.plot8.plot' i 2 u ($3/($12*1e-10)):($6/($1-1)**2):($7/($1-1)**2) w errorbars title  "$\\SI{1.5}{\\giga\\pascal}$" lt 3 lc 0 ps 1,\
+				'Data/Shear/Compiled_e2e2_v.plot8.plot' i 2 u ($3/($12*1e-10)):($6/($1-1)**2):($7/($1-1)**2)  title  "$\\SI{1.5}{\\giga\\pascal}$" lt 3 lc 0 ps 1,\
 				'Data/Shear/Compiled_e2e2_v.plot8.plot' i 2 u ($3/($12*1e-10)):($6/($1-1)**2) w l notitle lt 3 lc 1 lw 2 ,\
-				'Data/Shear/Compiled_e2e2_v.plot8.plot' i 3 u ($3/($12*1e-10)):($6/($1-1)**2):($7/($1-1)**2) w errorbars notitle lt 1 lc 0 ps 1 ,\
+				'Data/Shear/Compiled_e2e2_v.plot8.plot' i 3 u ($3/($12*1e-10)):($6/($1-1)**2):($7/($1-1)**2)  notitle lt 1 lc 0 ps 1 ,\
 				'Data/Shear/Compiled_e2e2_v.plot8.plot' i 0 u ($3/($12*1e-10)):($6/($1-1)**2) w l title "C16" lt 1 lc 1 lw 2 ,\
 				'Data/Shear/Compiled_e2e2_v.plot8.plot' i 3 u ($3/($12*1e-10)):($6/($1-1)**2) w l title "C30" lt 1 lc 2 lw 2 ,\				
 				'Data/Shear/Compiled_e2e2_v.plot8.plot' i 4 u ($3/($12*1e-10)):($6/($1-1)**2) w l notitle lt 2 lc 2 lw 2 ,\
-				'Data/Shear/Compiled_e2e2_v.plot8.plot' i 4 u ($3/($12*1e-10)):($6/($1-1)**2):($7/($1-1)**2) w errorbars notitle lt 2 lc 0 ps 1,\
+				'Data/Shear/Compiled_e2e2_v.plot8.plot' i 4 u ($3/($12*1e-10)):($6/($1-1)**2):($7/($1-1)**2)  notitle lt 2 lc 0 ps 1,\
 				'Data/Shear/Compiled_e2e2_v.plot8.plot' i 5 u ($3/($12*1e-10)):($6/($1-1)**2) w l notitle lt 3 lc 2 lw 2 ,\
-				'Data/Shear/Compiled_e2e2_v.plot8.plot' i 5 u ($3/($12*1e-10)):($6/($1-1)**2):($7/($1-1)**2) w errorbars notitle lt 3 lc 0 ps 1 ,\
-				'Data/Shear/Compiled_e2e2_v.plot8.plot' i 6 u ($3/($12*1e-10)):($6/($1-1)**2):($7/($1-1)**2) w errorbars notitle lt 1 lc 0 ps 1 ,\
+				'Data/Shear/Compiled_e2e2_v.plot8.plot' i 5 u ($3/($12*1e-10)):($6/($1-1)**2):($7/($1-1)**2)  notitle lt 3 lc 0 ps 1 ,\
+				'Data/Shear/Compiled_e2e2_v.plot8.plot' i 6 u ($3/($12*1e-10)):($6/($1-1)**2):($7/($1-1)**2)  notitle lt 1 lc 0 ps 1 ,\
 				'Data/Shear/Compiled_e2e2_v.plot8.plot' i 6 u ($3/($12*1e-10)):($6/($1-1)**2) w l title 'C60' lt 1 lc 3 lw 2 ,\				
 				'Data/Shear/Compiled_e2e2_v.plot8.plot' i 7 u ($3/($12*1e-10)):($6/($1-1)**2) w l notitle  lt 2 lc 3 lw 2 ,\
-				'Data/Shear/Compiled_e2e2_v.plot8.plot' i 7 u ($3/($12*1e-10)):($6/($1-1)**2):($7/($1-1)**2) w errorbars notitle  lt 2 lc 0 ps 1,\
+				'Data/Shear/Compiled_e2e2_v.plot8.plot' i 7 u ($3/($12*1e-10)):($6/($1-1)**2):($7/($1-1)**2)  notitle  lt 2 lc 0 ps 1,\
 				'Data/Shear/Compiled_e2e2_v.plot8.plot' i 8 u ($3/($12*1e-10)):($6/($1-1)**2) w l notitle  lt 3 lc 3 lw 2 ,\
-				'Data/Shear/Compiled_e2e2_v.plot8.plot' i 8 u ($3/($12*1e-10)):($6/($1-1)**2):($7/($1-1)**2) w errorbars notitle  lt 3 lc 0 ps 1,\
+				'Data/Shear/Compiled_e2e2_v.plot8.plot' i 8 u ($3/($12*1e-10)):($6/($1-1)**2):($7/($1-1)**2) notitle  lt 3 lc 0 ps 1,\
 		\end{gnuplot}
 		\caption{Average squared end-to-end distance per bond as a function of the shear rate $\left( \dot{\gamma} \right)$ measured after reaching steady state.}
 		\label{fig:e2e2_v}
@@ -435,9 +435,9 @@ Longer chains will clearly have a larger $\left< R^2 \right> $, so to compare th
  \end{figure}
  
  
-Generally, for the chain lengths and pressures studied, $\left< R^2 \right>/\left(N_\text{bonds}\right)^2$ decreases with increasing shear rate, suggesting more compact chain conformations. This has been observed in previous simulations of similar systems at high shear rates\cite{Cho2017}. This decrease has been ascribed to stronger intermolecular collisions together with intense chain rotation and tumbling dynamics at high shear rates. Longer chains at higher pressures are relatively less extended than shorter chains at lower pressures.
+For the chain lengths and pressures studied, $\left< R^2 \right>/\left(N_\text{bonds}\right)^2$ generally decreases with increasing shear rate, suggesting more compact chain conformations. This has been observed in previous simulations of similar systems at high shear rates\cite{Cho2017}. This decrease has been ascribed to stronger intermolecular collisions together with intense chain rotation and tumbling dynamics at high shear rates. Longer chains are relatively less extended than shorter chains at all shear rates studied. The chains are slightly less extended at higher pressure, although the difference is only noticeable at low shear rates.
 
-There is also a reduction of $\left<P_{2}^{xz} \right> $ with increasing shear rate for all the considered chain lengths and pressures (see Figure \ref{fig:P2_v}). This indicates an increase of the average angle of segments relative to the shearing direction at higher shear rate, meaning that the chains are less aligned with shearing direction.
+There is also a reduction of $\left<P_{2}^{xz} \right> $ with increasing shear rate for all the chain lengths and pressures considered (see Figure \ref{fig:P2_v}). This indicates an increase of the average angle of segments relative to the shearing direction at higher shear rate, meaning that the chains are less aligned with shearing direction.
 % Are we sure? Would expect the reverse to be true... Need citation and explanation (maybe 'Fluid n-decane undergoing planar Couette flow')
 Longer chains tend be more aligned with the shearing direction, whereas the chains are less aligned at higher pressure.
 
@@ -477,6 +477,48 @@ Longer chains tend be more aligned with the shearing direction, whereas the chai
  \end{figure}
 
 \subsection{Friction}
+
+Figure \ref{fig:FL_FN} shows that shear stress increases linearly with increasing pressure. For all of the the systems and conditions studied, there is an approximately zero intercept in Figure \ref{fig:FL_FN}. This suggests that it appropriate to calculate the friction coefficient, $\mu$, using the Amontons–Coulomb law under the high load approximation; $F_L/F_N = F_0/F_N + \mu \approx \mu$, where $F_L$ and $F_N$ are respectively the mean lateral (friction) force and normal force acting on the outer layer of atoms in each slab, and $F_0$ is the load-independent Derjaguin offset representing adhesive surface forces\cite{Ewen2017a}.
+
+\pgfmathsetmacro{\SERFigwidth}{.035\linewidth}
+\pgfmathsetmacro{\SERFigheight}{.026\linewidth}
+\begin{figure}
+    	\begin{center}
+		\begin{gnuplot}[terminal=pdf, terminaloptions={size \SERFigwidth cm, \SERFigheight cm color solid}]
+			set key above
+			set xlabel "$F_N \\, [\\SI{}{\\mega\\pascal}]$"
+			set ylabel "$F_L \\, [\\SI{}{\\mega\\pascal}]$"
+			set ytics 0,20,120
+			set key noautotitle
+            p [400:1600][0:125]	'Data/Shear/Compiled_e2e2_p.plot7' i 0 u ($2*1000):($4/10) w p title "$\\SI{10}{\\meter\\per\\second}$" lt 1 lc 0 ps 1,\
+                'Data/Shear/Compiled_e2e2_p.plot7' i 1 u ($2*1000):($4/10) w p title "$\\SI{20}{\\meter\\per\\second}$" lt 2 lc 0 ps 1,\
+	    		'Data/Shear/Compiled_e2e2_p.plot7' i 1 u ($2*1000):($4/10) w l notitle  lt 1 lc 1 lw 2	,\
+                'Data/Shear/Compiled_e2e2_p.plot7' i 2 u ($2*1000):($4/10) w p title "$\\SI{50}{\\meter\\per\\second}$" lt 3 lc 0 ps 1,\
+	    		'Data/Shear/Compiled_e2e2_p.plot7' i 2 u ($2*1000):($4/10) w l notitle  lt 1 lc 1 lw 2	,\
+                'Data/Shear/Compiled_e2e2_p.plot7' i 3 u ($2*1000):($4/10) w p title "$\\SI{100}{\\meter\\per\\second}$" lt 4 lc 0 ps 1,\
+	    		'Data/Shear/Compiled_e2e2_p.plot7' i 3 u ($2*1000):($4/10) w l notitle  lt 1 lc 1 lw 2 ,\
+                'Data/Shear/Compiled_e2e2_p.plot7' i 4 u ($2*1000):($4/10) w p notitle  lt 1 lc 0 ps 1,\
+	    		'Data/Shear/Compiled_e2e2_p.plot7' i 0 u ($2*1000):($4/10) w l title "C16" lt 1 lc 1 lw 2 ,\
+	    		'Data/Shear/Compiled_e2e2_p.plot7' i 4 u ($2*1000):($4/10) w l title "C30" lt 1 lc 2 lw 2 ,\	    		
+                'Data/Shear/Compiled_e2e2_p.plot7' i 5 u ($2*1000):($4/10) w p notitle lt 2 lc 0 ps 1,\
+	    		'Data/Shear/Compiled_e2e2_p.plot7' i 5 u ($2*1000):($4/10) w l notitle lt 1 lc 2 lw 2 ,\
+	            'Data/Shear/Compiled_e2e2_p.plot7' i 6 u ($2*1000):($4/10) w p notitle lt 3 lc 0 ps 1,\
+	    		'Data/Shear/Compiled_e2e2_p.plot7' i 6 u ($2*1000):($4/10) w l notitle lt 1 lc 2 lw 2 ,\	    		
+                'Data/Shear/Compiled_e2e2_p.plot7' i 7 u ($2*1000):($4/10) w p notitle lt 4 lc 0 ps 1,\
+	    		'Data/Shear/Compiled_e2e2_p.plot7' i 7 u ($2*1000):($4/10) w l notitle lt 1 lc 2 lw 2 ,\	    		
+                'Data/Shear/Compiled_e2e2_p.plot7' i 8 u ($2*1000):($4/10) w p notitle  lt 1 lc 0 ps 1,\
+	    		'Data/Shear/Compiled_e2e2_p.plot7' i 8 u ($2*1000):($4/10) w l title "C60" lt 1 lc 3 lw 2 ,\	    		
+                'Data/Shear/Compiled_e2e2_p.plot7' i 9 u ($2*1000):($4/10) w p notitle lt 2 lc 0 ps 1,\
+	    		'Data/Shear/Compiled_e2e2_p.plot7' i 9 u ($2*1000):($4/10) w l notitle lt 1 lc 3 lw 2 ,\
+	            'Data/Shear/Compiled_e2e2_p.plot7' i 10 u ($2*1000):($4/10) w p notitle lt 3 lc 0 ps 1,\
+	    		'Data/Shear/Compiled_e2e2_p.plot7' i 10 u ($2*1000):($4/10) w l notitle lt 1 lc 3 lw 2 ,\	    		
+                'Data/Shear/Compiled_e2e2_p.plot7' i 11 u ($2*1000):($4/10) w p notitle lt 4 lc 0 ps 1,\
+	    		'Data/Shear/Compiled_e2e2_p.plot7' i 11 u ($2*1000):($4/10) w l notitle lt 1 lc 3 lw 2 	    		
+	    		\end{gnuplot}
+		\caption{Lateral (friction) force, $F_L$, as a function of the applied pressure, $F_N$, on the outer layer of atoms in the top and bottom slabs measured after reaching steady stat}
+		\label{fig:FL_FN}
+	\end{center}
+ \end{figure}
 
 % \pgfmathsetmacro{\SERFigwidth}{.035\linewidth}
 % \pgfmathsetmacro{\SERFigheight}{.026\linewidth}
@@ -524,7 +566,7 @@ Longer chains tend be more aligned with the shearing direction, whereas the chai
 			set xlabel  "$\\dot{\\gamma} \\, \\left[ \\SI{}{\\per\\second} \\right]$"  
 			set format x  '$10^{%L}$' 
 			set logscale x
-			p [:2e10][15:125]	'Data/Shear/Compiled_e2e2_v.plot8.plot' i 0 u ($3/($12*1e-10)):($4/10):($5/10) w p title "$\\SI{0.5}{\\giga\\pascal}$" lt 1 lc 0 ps 1,\
+			p [:2e10][0:125]	'Data/Shear/Compiled_e2e2_v.plot8.plot' i 0 u ($3/($12*1e-10)):($4/10):($5/10) w p title "$\\SI{0.5}{\\giga\\pascal}$" lt 1 lc 0 ps 1,\
 				'Data/Shear/Compiled_e2e2_v.plot8.plot' i 1 u ($3/($12*1e-10)):($4/10):($5/10) w p title  "$\\SI{1.0}{\\giga\\pascal}$" lt 2 lc 0 ps 1,\
 				'Data/Shear/Compiled_e2e2_v.plot8.plot' i 1 u ($3/($12*1e-10)):($4/10) w l notitle lt 2 lc 1  lw 2 ,\
 				'Data/Shear/Compiled_e2e2_v.plot8.plot' i 2 u ($3/($12*1e-10)):($4/10):($5/10) w p title  "$\\SI{1.5}{\\giga\\pascal}$" lt 3 lc 0 ps 1,\
@@ -618,66 +660,132 @@ Longer chains tend be more aligned with the shearing direction, whereas the chai
 	\end{center}
  \end{figure}
 
-In the ranges studied, the shear stress seems to be more sensitive to the pressure than the chain length, particularly at high shear rates. Higher pressures result in higher shear stress, consistent with Amontons' first law of friction that postulates that the shear stress is directly proportional to the applied load.
+In the ranges studied, the shear stress seems to be more sensitive to the pressure than the chain length, particularly at high shear rates. In general, longer chains give higher shear stress than shorter chains, as expected due to their higher bulk viscosity\cite{Zhang2017}. The difference in shear stress between chain lengths decreases with increasing shear rate, such that they are almost identical at the highest shear rate studied ($\approx \SI{e10}{\per\second}$). Tribology experiments\cite{Ewen2017a, Zhang2017} and engineering components\cite{Taylor2017} operate at lower shear rates ($<\SI{e7}{\per\second}$) than those accessible through NEMD simulations\cite{Ewen2018}. At these lower shear rates, there is expected to be an more significant increase in EHL friction with increasing chain length.
 
+At low pressure, the shear stress increases linearly with the log(shear rate) as is commonly observed for lubricants in macroscopic EHL friction experiments\cite{Ewen2017a}. Such behaviour has also been observed in previous NEMD simulations of linear C20 confined (6 molecular layers) between polymer-like surfaces at low pressure (\SI{10}{\mega\pascal})\cite{Sivebaek2010}. At intermediate pressure, the shear stress is relatively independent of the velocity, in line with Coulomb's law for dry friction. The transition to this behaviour, above the limiting shear stress, has been observed for several model lubricants in macroscopic friction experiments \cite{Martinie2016a}. Similar behaviour has also been observed in previous NEMD simulations of linear C60 confined (6 molecular layers) between polymer-like surfaces at low pressure (\SI{10}{\mega\pascal})\cite{Sivebaek2010}. At high pressure, there is a reduction of the shear stress with increasing sliding velocity, particularly for longer chains. Such behaviour has been observed for single component atomic fluids at high pressure, where the flow profile becomes non-linear\cite{Heyes2012,Gattinoni2013,Mackowiak2016}.
 
 \pgfmathsetmacro{\SERFigwidth}{.035\linewidth}
 \pgfmathsetmacro{\SERFigheight}{.026\linewidth}
 \begin{figure}
     	\begin{center}
 		\begin{gnuplot}[terminal=pdf, terminaloptions={size \SERFigwidth cm, \SERFigheight cm color solid}]
-			set key above
-			set xlabel "$F_N \\, [\\SI{}{\\mega\\pascal}]$"
-			set ylabel "$F_L \\, [\\SI{}{\\mega\\pascal}]$"
-			set ytics 20,20,120
-			set key noautotitle
-p [400:1600][15:125]	'Data/Shear/Compiled_e2e2_p.plot7' i 0 u ($2*1000):($4/10) w p title "$\\SI{10}{\\meter\\per\\second}$" lt 1 lc 0 ps 1,\
-                'Data/Shear/Compiled_e2e2_p.plot7' i 1 u ($2*1000):($4/10) w p title "$\\SI{20}{\\meter\\per\\second}$" lt 2 lc 0 ps 1,\
-	    		'Data/Shear/Compiled_e2e2_p.plot7' i 1 u ($2*1000):($4/10) w l notitle  lt 1 lc 1 lw 2	,\
-                'Data/Shear/Compiled_e2e2_p.plot7' i 2 u ($2*1000):($4/10) w p title "$\\SI{50}{\\meter\\per\\second}$" lt 3 lc 0 ps 1,\
-	    		'Data/Shear/Compiled_e2e2_p.plot7' i 2 u ($2*1000):($4/10) w l notitle  lt 1 lc 1 lw 2	,\
-                'Data/Shear/Compiled_e2e2_p.plot7' i 3 u ($2*1000):($4/10) w p title "$\\SI{100}{\\meter\\per\\second}$" lt 4 lc 0 ps 1,\
-	    		'Data/Shear/Compiled_e2e2_p.plot7' i 3 u ($2*1000):($4/10) w l notitle  lt 1 lc 1 lw 2 ,\
-                'Data/Shear/Compiled_e2e2_p.plot7' i 4 u ($2*1000):($4/10) w p notitle  lt 1 lc 0 ps 1,\
-	    		'Data/Shear/Compiled_e2e2_p.plot7' i 0 u ($2*1000):($4/10) w l title "C16" lt 1 lc 1 lw 2 ,\
-	    		'Data/Shear/Compiled_e2e2_p.plot7' i 4 u ($2*1000):($4/10) w l title "C30" lt 1 lc 2 lw 2 ,\	    		
-                'Data/Shear/Compiled_e2e2_p.plot7' i 5 u ($2*1000):($4/10) w p notitle lt 2 lc 0 ps 1,\
-	    		'Data/Shear/Compiled_e2e2_p.plot7' i 5 u ($2*1000):($4/10) w l notitle lt 1 lc 2 lw 2 ,\
-	            'Data/Shear/Compiled_e2e2_p.plot7' i 6 u ($2*1000):($4/10) w p notitle lt 3 lc 0 ps 1,\
-	    		'Data/Shear/Compiled_e2e2_p.plot7' i 6 u ($2*1000):($4/10) w l notitle lt 1 lc 2 lw 2 ,\	    		
-                'Data/Shear/Compiled_e2e2_p.plot7' i 7 u ($2*1000):($4/10) w p notitle lt 4 lc 0 ps 1,\
-	    		'Data/Shear/Compiled_e2e2_p.plot7' i 7 u ($2*1000):($4/10) w l notitle lt 1 lc 2 lw 2 ,\	    		
-                'Data/Shear/Compiled_e2e2_p.plot7' i 8 u ($2*1000):($4/10) w p notitle  lt 1 lc 0 ps 1,\
-	    		'Data/Shear/Compiled_e2e2_p.plot7' i 8 u ($2*1000):($4/10) w l title "C60" lt 1 lc 3 lw 2 ,\	    		
-                'Data/Shear/Compiled_e2e2_p.plot7' i 9 u ($2*1000):($4/10) w p notitle lt 2 lc 0 ps 1,\
-	    		'Data/Shear/Compiled_e2e2_p.plot7' i 9 u ($2*1000):($4/10) w l notitle lt 1 lc 3 lw 2 ,\
-	            'Data/Shear/Compiled_e2e2_p.plot7' i 10 u ($2*1000):($4/10) w p notitle lt 3 lc 0 ps 1,\
-	    		'Data/Shear/Compiled_e2e2_p.plot7' i 10 u ($2*1000):($4/10) w l notitle lt 1 lc 3 lw 2 ,\	    		
-                'Data/Shear/Compiled_e2e2_p.plot7' i 11 u ($2*1000):($4/10) w p notitle lt 4 lc 0 ps 1,\
-	    		'Data/Shear/Compiled_e2e2_p.plot7' i 11 u ($2*1000):($4/10) w l notitle lt 1 lc 3 lw 2 	    		
-	    		\end{gnuplot}
-		\caption{Lateral (friction) force , $F_L$, as a function of the applied pressure, $F_N$, on the outer layer of atoms in the top and bottom slabs measured after reaching steady stat}
-		\label{fig:FL_FN}
+
+			set key bottom right
+			set xlabel "z coordinate"  
+			set ylabel "x Velocity $\\left[ \\SI{}{\\meter\\per\\second} \\right]$"
+			set xrange [-50:50]
+			set yrange [-30:30]
+			set ytics -40,20,40
+			plot  	'Data/Shear/C30/1.0GPa/50m_s/vel_prof_x_s_50.dump.plot' u ($2-37.01):($4*100) w l  lt 7 lw 2  title               "$\\SI{0.5}{\\nano\\second}$",\
+					'Data/Shear/C30/1.0GPa/50m_s/vel_prof_x_s_200.dump.plot' u ($2-37.77):($4*100) w l  lt 8 lw 2  title     "$\\SI{2}{\\nano\\second}$",\
+					'Data/Shear/C30/1.0GPa/50m_s/vel_prof_x_s_500.dump.plot' u ($2-37.52):($4*100) w l  lt 9 lw 2  title     "$\\SI{5}{\\nano\\second}$"
+					
+		\end{gnuplot}
+		\caption{Velocity profiles along x at three different times during the transient state of the simulation. Results are presented for the case of  C30,  \SI{1.0}{\giga\pascal} and  \SI{50}{\meter\per\second}.}
+		\label{fig:VelProf_MDP}
 	\end{center}
  \end{figure}
 
 
+\pgfmathsetmacro{\SERFigwidth}{.035\linewidth}
+\pgfmathsetmacro{\SERFigheight}{.02\linewidth}
+\begin{figure}[h]
+    	\begin{center}
+		\begin{gnuplot}[terminal=pdf, terminaloptions={size \SERFigwidth cm, \SERFigheight cm color solid}]
+			binwidth=2
+			bin(x,width)=width*floor(x/width)
+			set format y2 '%g'
+			set label at graph 0.03,0.89 left "a)"
+			#set label at graph 0.5,0.89 center "$\\SI{100}{\\meter\\per\\second}$"
+			set ylabel "x Velocity $\\left[ \\SI{}{\\meter\\per\\second} \\right]$"
+			set y2label "AMD $\\left[ \\SI{}{\\gram\\per\\cubic\\centi\\meter} \\right]$ "
+			set key noautotitle
+			set xrange [-50:50]
+			set y2range [0:3]
+			set ytics  -5,2.5,5
+			set ytics nomirror
+			set y2tics 0,1,4
+			set xlabel "z coordinate"  
+			plot  	[][-6:6]  'Data/Shear/C16/0.5GPa/10m_s_cont2/fluid_mdp_z_s.dump' u ($2-39.9):($4) w l  lt 1 axes x1y2,\
+				              'Data/Shear/C16/0.5GPa/10m_s_cont2/vel_prof_x_s.dump'  u (bin($2-39.9,binwidth)):($4*100) smooth unique lt 1 dashtype 4 ,\	
+                              'Data/Shear/C60/0.5GPa/10m_s_cont2/fluid_mdp_z_s.dump' u ($2-37.28):($4) w l  lt 3  axes x1y2,\
+				              'Data/Shear/C60/0.5GPa/10m_s_cont2/vel_prof_x_s.dump'  u (bin($2-37.28,binwidth)):($4*100) smooth unique lt 3 dashtype 4 
+		\end{gnuplot}
+		\begin{gnuplot}[terminal=pdf, terminaloptions={size \SERFigwidth cm, \SERFigheight cm color solid}]
+			binwidth=2
+			bin(x,width)=width*floor(x/width)
+			set format y2 '%g'
+			set label at graph 0.03,0.89 left "b)"
+			#set label at graph 0.5,0.89 center "$\\SI{100}{\\meter\\per\\second}$"
+			set ylabel "x Velocity $\\left[ \\SI{}{\\meter\\per\\second} \\right]$"
+			set y2label "AMD $\\left[ \\SI{}{\\gram\\per\\cubic\\centi\\meter} \\right]$ "
+			set key noautotitle
+			set xrange [-50:50]
+			set y2range [0:3]
+			set ytics  -50,25,50
+			set ytics nomirror
+			set y2tics 0,1,4
+			set xlabel "z coordinate"  
+			plot  	[][-60:60]  'Data/Shear/C16/0.5GPa/100m_s_cont/fluid_mdp_z_s.dump' u ($2-42.7):($4) w l  lt 1 axes x1y2,\
+				              'Data/Shear/C16/0.5GPa/100m_s_cont/vel_prof_x_s.dump'  u (bin($2-42.7,binwidth)):($4*100) smooth unique lt 1 dashtype 4 ,\
+                              'Data/Shear/C60/0.5GPa/100m_s_cont2/fluid_mdp_z_s.dump' u ($2-40.11):($4) w l  lt 3  axes x1y2,\
+				              'Data/Shear/C60/0.5GPa/100m_s_cont2/vel_prof_x_s.dump'  u (bin($2-40.11,binwidth)):($4*100) smooth unique lt 3 dashtype 4 
+		\end{gnuplot}
+		\begin{gnuplot}[terminal=pdf, terminaloptions={size \SERFigwidth cm, \SERFigheight cm color solid}]
+			binwidth=2
+			bin(x,width)=width*floor(x/width)
+			set format y2 '%g'
+			set label at graph 0.03,0.89 left "c)"
+			#set label at graph 0.5,0.89 center "$\\SI{100}{\\meter\\per\\second}$"
+			set ylabel "x Velocity $\\left[ \\SI{}{\\meter\\per\\second} \\right]$"
+			set y2label "AMD $\\left[ \\SI{}{\\gram\\per\\cubic\\centi\\meter} \\right]$ "
+			set key noautotitle
+			set xrange [-50:50]
+			set y2range [0:3]
+			set ytics  -5,2.5,5
+			set ytics nomirror
+			set y2tics 0,1,4
+			set xlabel "z coordinate"  
+			plot  	[][-6:6]  'Data/Shear/C16/1.5GPa/10m_s_cont/fluid_mdp_z_s.dump' u ($2-35.9):($4) w l  lt 1 axes x1y2,\
+				              'Data/Shear/C16/1.5GPa/10m_s_cont/vel_prof_x_s.dump'  u (bin($2-35.9,binwidth)):($4*100) smooth unique lt 1 dashtype 4 ,\	
+                              'Data/Shear/C60/1.5GPa/10m_s_cont2/fluid_mdp_z_s.dump' u ($2-34.5):($4) w l  lt 3  axes x1y2,\
+				              'Data/Shear/C60/1.5GPa/10m_s_cont2/vel_prof_x_s.dump'  u (bin($2-34.5,binwidth)):($4*100) smooth unique lt 3 dashtype 4 
+		\end{gnuplot}
+		\begin{gnuplot}[terminal=pdf, terminaloptions={size \SERFigwidth cm, \SERFigheight cm color solid}]
+		set key top center
+			binwidth=2
+			bin(x,width)=width*floor(x/width)
+			set format y2 '%g'
+			set label at graph 0.03,0.89 left "d)"
+			#set label at graph 0.5,0.89 center "$\\SI{100}{\\meter\\per\\second}$"
+			set ylabel "x Velocity $\\left[ \\SI{}{\\meter\\per\\second} \\right]$"
+			set y2label "AMD $\\left[ \\SI{}{\\gram\\per\\cubic\\centi\\meter} \\right]$ "
+			set key noautotitle
+			set xrange [-50:50]
+			set y2range [0:3]
+			set ytics  -50,25,50
+			set ytics nomirror
+			set y2tics 0,1,4
+			set xlabel "z coordinate"  
+			plot  	[][-60:60]  'Data/Shear/C16/1.5GPa/100m_s_cont/fluid_mdp_z_s.dump' u ($2-38.2):($4) w l  lt 1 axes x1y2 title "C16",\
+				              'Data/Shear/C16/1.5GPa/100m_s_cont/vel_prof_x_s.dump'  u (bin($2-38.2,binwidth)):($4*100) smooth unique lt 1 dashtype 4 ,\
+                              'Data/Shear/C60/1.5GPa/100m_s_cont2/fluid_mdp_z_s.dump' u ($2-36.25):($4) w l  lt 3  axes x1y2 title "C60",\
+				              'Data/Shear/C60/1.5GPa/100m_s_cont2/vel_prof_x_s.dump'  u (bin($2-36.25,binwidth)):($4*100) smooth unique lt 3 dashtype 4 
+		\end{gnuplot}
+		
+		\caption{Velocity (solid lines) and mass density (dotted lines) measured during the steady state of the simulations for two different chain lenghts: C16 and C60. a) \SI{0.5}{\giga\pascal},  \SI{10}{\meter\per\second},   b) \SI{0.5}{\giga\pascal},  \SI{100}{\meter\per\second}, c) \SI{1.5}{\giga\pascal},  \SI{10}{\meter\per\second} and    d) \SI{1.5}{\giga\pascal},  \SI{100}{\meter\per\second}} 
+		\label{fig:VelProf_MDP2}
+	\end{center}
+ \end{figure}
 
 
-In general, longer chains give higher shear stress than shorter chains, as expected due to their higher bulk viscosity\cite{Zhang2017}. The difference in shear stress between chain lengths decreases with increasing shear rate, such that they are almost identical at the highest shear rate studied ($\approx \SI{e10}{\per\second}$). Tribology experiments\cite{Ewen2017a, Zhang2017} and engineering components\cite{Taylor2017} operate at lower shear rates ($<\SI{e7}{\per\second}$) than those accessible through NEMD simulations\cite{Ewen2018}. At these lower shear rates, there is expected to be an more significant increase in EHL friction with increasing chain length.
+In this study, non-linear flow profiles appear at the onset of shear for several of the systems and conditions studied; however, a Couette profile usually develops once a nonequilibrium steady state is reached. A representative example of this transition is shown for C30,  \SI{1.0}{\giga\pascal} and  \SI{50}{\meter\per\second} in Figure \ref{fig:VelProf_MDP}. A small amount of boundary slip (slip length < 1 nm) persists into the steady state for the highest shear rate studied ($10^{10} s^{-1}$) for all of the chain lengths. Figure Y shows the flow profiles observed for the three alkanes for the lowest and highest sliding velocity, and the highest pressure investigated (1.5 GPa). The slip length increases with increasing pressure as has been observed in previous simulations\cite{Ta2017} and experiments [ADD REF - The effect of boundary slip on elastohydrodynamic lubrication]. Steady state plug flow is observed for $C_60$, but only at low shear rate. At higher shear rate, a linear profile is recovered as the centre of the film becomes more liquid-like\cite{Ewen2017a}. Indeed, most of the flow profiles are Couette-like, suggesting that the friction-velocity behaviour is driven by different mechanisms those observed for atomic fluids\cite{Heyes2012,Gattinoni2013,Mackowiak2016}.
 
-At low pressure, the shear stress increases linearly with the log(shear rate) as is commonly observed for lubricants in macroscopic friction experiments\cite{Ewen2017a}. Such behaviour has also been observed in previous NEMD simulations of linear C20 confined (6 molecular layers) between polymer-like surfaces at low pressure (\SI{10}{\mega\pascal})\cite{Sivebaek2010}. At intermediate pressure, the shear stress is relatively independent of the velocity, in line with Coulomb's law for dry friction. The transition to this behaviour, above the limiting shear stress, has been observed for several model lubricants in macroscopic friction experiments \cite{Martinie2016a}. Similar behaviour has also been observed in previous NEMD simulations of linear C60 confined (6 molecular layers) between polymer-like surfaces at low pressure (\SI{10}{\mega\pascal})\cite{Sivebaek2010}. At high pressure, there is a reduction of the shear stress with increasing sliding velocity, particularly for the longest chains. Such behaviour has been observed for single component atomic fluids at high pressure, where the flow profile becomes non-linear\cite{Heyes2012,Gattinoni2013,Mackowiak2016}.
+The decrease in shear stress with increasing shear rate in this study is due to a combination of factors. Firstly, the increase of the temperature at high shear rates decreases the fluid viscosity. Figure \ref{fig:T_v} shows the change in temperature with log(shear rate). As predicted by the Archard \cite{Archard1959}, there is a linear increase in temperature with increasing shear rate (inset in Figure \ref{fig:T_v}). The temperature rises are much larger than those observed under similar conditions for branched alkanes\cite{Ewen2017a}; this can be attributed to the far higher friction. The temperature rise is larger at higher pressure \cite{Archard1959} (owing to the higher friction), but is insensitive to chain length.
 
-In this study, non-linear flow profiles appear transiently for many of the systems; however, they only persist into the steady state for the longest chains at the highest pressures and lowest shear rates investigated. A small amount of boundary slip (slip length < 1 nm) occurs at the highest shear rate studied ($10^10 s^{-1}$) for all of the chain lengths. The slip length increases with pressure as has been observed previously\cite{Ta2017}. However, most of the flow profiles are Couette-like, suggesting that the friction-velocity behaviour is driven by different mechanisms to the atomic fluids in refs\cite{Heyes2012,Gattinoni2013,Mackowiak2016}.
+The reduction in $\left<P_{2}^{xz} \right> $ and $\left< R^2 \right>$ with increasing shear rate (Figures \ref{fig:e2e2_v} and \ref{fig:P2_v}) indicate that the chains are less elongated, and less orientated with the flow direction, suggesting less solid-like behaviour. The radial distribution functions (RDFs) shown in Figure \ref{fig:RDF}) show that there is less long range order at higher shear rates, suggesting a more liquid-like film.
 
-The decrease in friction with increasing shear rate in this study is due to a combination of factors. Firstly, the increase of the temperature at high shear rates decreases the viscosity and thus also the shear stress. Figure \ref{fig:T_v} shows the change in temperature with log(shear rate). As predicted by the Archard [Ref], there is a linear increase in temperature with increasing shear rate. The temperature rises are much larger than those observed under similar conditions for branched alkanes\cite{Ewen2017a}; this can be attributed to the far higher friction. The temperature rise is larger at higher pressure \cite{Archard1959} (owing to the higher friction), but is insensitive to chain length.
-
-
-The reduction in $\left<P_{2}^{xz} \right> $ and $\left< R^2 \right>$ with increasing shear rate (Figure X) indicate that the chains are less elongated, and less orientated with the flow direction, suggesting less solid-like behaviour. The radial distribution functions (RDFs) shown in Figure X show that there is less long range order at higher shear rates, suggesting more liquid-like behaviour.
-
-Generally, the friction coefficients observed are very high compared to previous NEMD simulations under EHL conditions. In the current study, the friction coefficients under similar conditions for the n-alkanes are far higher than observed for branched alkanes of similar size (squalane)\cite{Ewen2017a}. This is due to solidification of the n-alkanes studied here under EHL conditions, which is suppressed for branched alkanes. This is evidenced by the mass density profiles and RDFs. The methyl branches in squalane strongly suppress crystallization (melting point \SI{-38}{\celsius}) compared to linear C30 (\SI{65}{\celsius}) but also increase the viscosity \cite{Jabbarzadeh2002}. The far lower friction for branched alkanes compared to n-alkanes in NEMD simulations under high pressure, high shear rate conditions suggests that the former is more important than the latter in terms of EHL friction.
-
-Moreover, the friction coefficients for n-hexadecane are higher than in previous simulations of thinner films under the same pressures\cite{Ta2017}. The main reason for this is that boundary slip occurred in the thin films while it does not occur for C16 here.
+Generally, the $\mu$ values shown in Figure \ref{fig:FL_va} are large compared to previous NEMD simulations under similar conditions. Specifically, $\mu$ for the n-alkanes studied here are far higher than observed in NEMD simulations branched alkanes of similar size (squalane)\cite{Ewen2017a}. This is due to solidification of the n-alkanes studied here under EHL conditions (\ref{fig:RDF}), which is not the case for squalane. The methyl branches in squalane strongly suppress crystallization (melting point \SI{-38}{\celsius}) compared to linear C30 (\SI{65}{\celsius}) but also increase the viscosity \cite{Jabbarzadeh2002}. The far lower friction for branched alkanes compared to n-alkanes in NEMD simulations under high pressure, high shear rate conditions suggests that the former is more important than the latter in terms of EHL friction. Moreover, the $\mu$ values for n-hexadecane are much higher than those reported in previous simulations of thinner n-hexadecane films at the same pressures studied here\cite{Ta2017}. The main reason for this is probably that boundary slip is much more prevalent in these thin films than in the current simulations.
 
 % \pgfmathsetmacro{\SERFigwidth}{.035\linewidth}
 % \pgfmathsetmacro{\SERFigheight}{.026\linewidth}
@@ -783,7 +891,7 @@ set multiplot
 	\end{center}
  \end{figure}
 
-\subsubsection{Radial Distribution Function}
+\subsection{Film structure and flow}
 
 The Radial Distribution Function $g(r)$ (RDF) is calculated considering only the carbon atoms in the system (the H atoms and the surfaces are ignored). Pairs of atoms connected to a common bond or constrained by an angle are not considered. A cut off distance of \SI{20}{\angstrom} is used.
 
@@ -796,44 +904,65 @@ The presence of the peak at a distance $d_3$ indicates that, at least locally, t
 RDFs also give some insight about the effect of the shearing rate and the pressure. We notice that higher velocities cause a reduction of the intensity in  the peaks of the RDF (see Figure \ref{fig:RDF}), leading to a more liquid-like structure. And, as expected, increases in the applied pressure are reflected in the RDF as a general increase on the intensity of the peaks, which is a sign that the atoms have a more pronounced order.
 
 \pgfmathsetmacro{\SERFigwidth}{.035\linewidth}
-\pgfmathsetmacro{\SERFigheight}{.026\linewidth}
+\pgfmathsetmacro{\SERFigheight}{.04\linewidth}
 \begin{figure}
     	\begin{center}
 		\begin{gnuplot}[terminal=pdf, terminaloptions={size \SERFigwidth cm, \SERFigheight cm color solid}]
-			set multiplot layout 2,1 rowsfirst
+			set multiplot layout 4,1 rowsfirst
 			set format x ' '
 			unset xlabel
 
 			set key samplen  0.0
 			set label at graph 0.03,0.89 left "a) P=0.5GPa, v=10m/s"
-			set lmargin at screen 0.25; set rmargin at screen 0.9
-			set tmargin at screen 1.00; set bmargin at screen 0.55
+#			set lmargin at screen 0.25; set rmargin at screen 0.9
+			set tmargin at screen 1.00; set bmargin at screen 0.775
 			set ylabel "g(r)"
 			set key noautotitle
 			set xrange [0:20]
-			set yrange [0:3.9]
+			set yrange [0:2.5]
 			set ytics 0,1,4
-			plot  	'Data/Shear/C16/0.5GPa/10m_s_cont2_RDF/all_c_rdf_s.dump' u  2:3 notitle   w l lw 2,\
-		        	'Data/Shear/C30/0.5GPa/10m_s_cont3_RDF/all_c_rdf_s.dump' u  2:3 notitle   w l lw 2,\
-		        	'Data/Shear/C60/0.5GPa/10m_s_cont2_RDF/all_c_rdf_s.dump' u  2:3 notitle   w l lw 2
+			plot  	'Data/Shear/C16/0.5GPa/10m_s_cont2_RDF/all_c_rdf_s.dump' u  ($2):($3/1.8) notitle   w l lw 2,\
+		        	'Data/Shear/C30/0.5GPa/10m_s_cont3_RDF/all_c_rdf_s.dump' u  ($2):($3/1.8) notitle   w l lw 2,\
+		        	'Data/Shear/C60/0.5GPa/10m_s_cont2_RDF/all_c_rdf_s.dump' u  ($2):($3/1.8) notitle   w l lw 2
 	    	unset label
 
-			set format x '%g'
 
-			set tmargin at screen 0.55; set bmargin at screen 0.10
+			set tmargin at screen 0.775; set bmargin at screen 0.550
 			set label at graph 0.03,0.89 left "b) P=0.5GPa, v=100m/s"
-			set key top right
-			set xlabel "r"  
 			set ylabel "g(r)"
 			set ytics 0,1,4
 			set key noautotitle
-			plot  	'Data/Shear/C16/0.5GPa/100m_s_cont_RDF/all_c_rdf_s.dump' u  2:3 title  'C16' w l lw 2,\
-		        	'Data/Shear/C30/0.5GPa/100m_s_cont_RDF/all_c_rdf_s.dump' u  2:3 title  'C30' w l lw 2,\
-		        	'Data/Shear/C60/0.5GPa/100m_s_cont2_RDF/all_c_rdf_s.dump' u  2:3 title  'C60' w l lw 2
+			plot  	'Data/Shear/C16/0.5GPa/100m_s_cont_RDF/all_c_rdf_s.dump' u  ($2):($3/1.8) notitle w l lw 2,\
+		        	'Data/Shear/C30/0.5GPa/100m_s_cont_RDF/all_c_rdf_s.dump' u  ($2):($3/1.8) notitle   w l lw 2,\
+		        	'Data/Shear/C60/0.5GPa/100m_s_cont2_RDF/all_c_rdf_s.dump' u  ($2):($3/1.8) notitle  w l lw 2
+	    	unset label
+
+
+
+			set tmargin at screen 0.550; set bmargin at screen 0.325
+			set label at graph 0.03,0.89 left "c) P=1.5GPa, v=10m/s"
+			set ylabel "g(r)"
+			set ytics 0,1,4
+			set key noautotitle
+			plot  	'Data/Shear/C16/1.5GPa/10m_s_cont_RDF/all_c_rdf_s.dump' u  ($2):($3/1.8) notitle   w l lw 2,\
+		        	'Data/Shear/C30/1.5GPa/10m_s_cont_RDF/all_c_rdf_s.dump' u  ($2):($3/1.8) notitle   w l lw 2,\
+		        	'Data/Shear/C60/1.5GPa/10m_s_cont2_RDF/all_c_rdf_s.dump' u  ($2):($3/1.8) notitle   w l lw 2
+	    	unset label
+
+			set format x '%g'
+			set tmargin at screen 0.325; set bmargin at screen 0.10
+			set label at graph 0.03,0.89 left "d) P=1.5GPa, v=100m/s"
+			set ylabel "g(r)"
+			set ytics 0,1,4
+			set key noautotitle
+			plot  	'Data/Shear/C16/1.5GPa/100m_s_cont_RDF/all_c_rdf_s.dump' u  ($2):($3/1.8) title  'C16' w l lw 2,\
+		        	'Data/Shear/C30/1.5GPa/100m_s_cont_RDF/all_c_rdf_s.dump' u  ($2):($3/1.8) title  'C30' w l lw 2,\
+		        	'Data/Shear/C60/1.5GPa/100m_s_cont2_RDF/all_c_rdf_s.dump' u  ($2):($3/1.8) title  'C60' w l lw 2
+	    	unset label
 
 			unset multiplot
 		\end{gnuplot}
-		\caption{Radial Distribution Function $g(r)$ (RDF) measured during the steady state of the simulations for three different chain lenghts: C16,C30 and C60. a) \SI{0.5}{\giga\pascal},  \SI{10}{\meter\per\second} and  b) \SI{0.5}{\giga\pascal},  \SI{100}{\meter\per\second}  .
+		\caption{Radial Distribution Function $g(r)$ (RDF) measured during the steady state of the simulations for three different chain lenghts: C16, C30 and C60. a) \SI{0.5}{\giga\pascal},  \SI{10}{\meter\per\second},   b) \SI{0.5}{\giga\pascal},  \SI{100}{\meter\per\second}, c) \SI{1.5}{\giga\pascal},  \SI{10}{\meter\per\second} and    d) \SI{1.5}{\giga\pascal},  \SI{100}{\meter\per\second}.
 }
 		\label{fig:RDF}
 	\end{center}
@@ -872,7 +1001,6 @@ RDFs also give some insight about the effect of the shearing rate and the pressu
 		\label{fig:RDF_Peaks}
 	\end{center}
 \end{figure}
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
